@@ -10,16 +10,36 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    // MARK: - ACTIONS
+    @IBAction func replayButtonTapped(_ sender: UIButton) {}
+    @IBAction func playButtonTapped(_ sender: UIButton) {}
+    
+    
+    // MARK: - OUTLETS
+    @IBOutlet weak var quoteLabel: UILabel!
+    @IBOutlet weak var replayButton: UIButton!
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var playButton: UIButton!
+    
+    
+    // MARK: - VARIABLES
+    // // Variables will go here
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    
+    
+    // MARK: - MISC FUNCTIONS
+    // // Functions will go here
+    
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
-
+    // MARK: - Closing Bracket
 }
 

@@ -13,6 +13,9 @@
 		8387FF6620A529980082CA78 /* Wavefully.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8387FF6420A529980082CA78 /* Wavefully.xcdatamodeld */; };
 		8387FF6820A529990082CA78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8387FF6720A529990082CA78 /* Assets.xcassets */; };
 		8387FF6B20A529990082CA78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8387FF6920A529990082CA78 /* LaunchScreen.storyboard */; };
+		8387FF7720A52E370082CA78 /* playStartSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8387FF7420A52E370082CA78 /* playStartSound.m4a */; };
+		8387FF7820A52E370082CA78 /* resetButtonSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8387FF7520A52E370082CA78 /* resetButtonSound.m4a */; };
+		8387FF7920A52E370082CA78 /* countdownFinishedSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8387FF7620A52E370082CA78 /* countdownFinishedSound.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		8387FF6720A529990082CA78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8387FF6A20A529990082CA78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8387FF6C20A529990082CA78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8387FF7420A52E370082CA78 /* playStartSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = playStartSound.m4a; sourceTree = "<group>"; };
+		8387FF7520A52E370082CA78 /* resetButtonSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = resetButtonSound.m4a; sourceTree = "<group>"; };
+		8387FF7620A52E370082CA78 /* countdownFinishedSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = countdownFinishedSound.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,34 @@
 		8387FF5C20A529980082CA78 /* Wavefully */ = {
 			isa = PBXGroup;
 			children = (
-				8387FF5D20A529980082CA78 /* AppDelegate.swift */,
-				8387FF5F20A529980082CA78 /* ViewController.swift */,
-				8387FF6120A529980082CA78 /* Main.storyboard */,
+				8387FF7220A52DB00082CA78 /* Music */,
 				8387FF6720A529990082CA78 /* Assets.xcassets */,
-				8387FF6920A529990082CA78 /* LaunchScreen.storyboard */,
+				8387FF7320A52DD60082CA78 /* Storyboards */,
+				8387FF5F20A529980082CA78 /* ViewController.swift */,
+				8387FF5D20A529980082CA78 /* AppDelegate.swift */,
 				8387FF6C20A529990082CA78 /* Info.plist */,
 				8387FF6420A529980082CA78 /* Wavefully.xcdatamodeld */,
 			);
 			path = Wavefully;
+			sourceTree = "<group>";
+		};
+		8387FF7220A52DB00082CA78 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				8387FF7620A52E370082CA78 /* countdownFinishedSound.m4a */,
+				8387FF7420A52E370082CA78 /* playStartSound.m4a */,
+				8387FF7520A52E370082CA78 /* resetButtonSound.m4a */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		8387FF7320A52DD60082CA78 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				8387FF6120A529980082CA78 /* Main.storyboard */,
+				8387FF6920A529990082CA78 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +150,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8387FF7820A52E370082CA78 /* resetButtonSound.m4a in Resources */,
 				8387FF6B20A529990082CA78 /* LaunchScreen.storyboard in Resources */,
+				8387FF7920A52E370082CA78 /* countdownFinishedSound.m4a in Resources */,
 				8387FF6820A529990082CA78 /* Assets.xcassets in Resources */,
 				8387FF6320A529980082CA78 /* Main.storyboard in Resources */,
+				8387FF7720A52E370082CA78 /* playStartSound.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
