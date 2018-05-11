@@ -90,6 +90,9 @@ class ViewController: UIViewController {
     var audioPlayer: AVAudioPlayer?
     
     
+    // MARK: - CONSTANTS
+    let impact = UIImpactFeedbackGenerator()
+    
     
     // MARK: - VIEW DID LOAD
     override func viewDidLoad() {
@@ -139,6 +142,7 @@ class ViewController: UIViewController {
         playButton.isHighlighted = false
         timer.invalidate()
         countdownFinishedSound()
+        impact.impactOccurred()
         print("Your countdown has finished.")
     }
     
@@ -153,6 +157,7 @@ class ViewController: UIViewController {
         seconds = 10
         baseTime = 0
         resetButtonSound()
+        impact.impactOccurred()
         print("You reset your timer.")
     }
     
