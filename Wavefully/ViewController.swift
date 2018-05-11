@@ -37,6 +37,7 @@ class ViewController: UIViewController {
                 runTimer()
                 playButton.isHighlighted = true
                 gestureRecognizer.minimumPressDuration = 0
+                countdownStartSound()
             }
         }
         
@@ -86,6 +87,7 @@ class ViewController: UIViewController {
     var baseTime = 0
     var isPaused = false
     var isRunning = false
+    var audioPlayer: AVAudioPlayer?
     
     
     
@@ -136,6 +138,7 @@ class ViewController: UIViewController {
         playButton.isHidden = true
         playButton.isHighlighted = false
         timer.invalidate()
+        countdownFinishedSound()
         print("Your countdown has finished.")
     }
     
@@ -149,10 +152,50 @@ class ViewController: UIViewController {
         playButton.isHighlighted = false
         seconds = 10
         baseTime = 0
+        resetButtonSound()
         print("You reset your timer.")
     }
     
 
+    // MARK: — UI SOUNDS
+    
+    // Play a sound when the countdown begins
+    func countdownStartSound() {
+        do {
+            if seconds > 9 {
+                audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "playStartSound", ofType: "m4a")!))
+                audioPlayer?.play()
+            }
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    func countdownFinishedSound() {
+        do {
+            if seconds < 1 {
+                audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "countdownFinishedSound", ofType: "m4a")!))
+                audioPlayer?.play()
+            }
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    func resetButtonSound() {
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "resetButtonSound", ofType: "m4a")!))
+            audioPlayer?.play()
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    
+    
 
     // MARK: - Closing Bracket  👇 🤙
 }
