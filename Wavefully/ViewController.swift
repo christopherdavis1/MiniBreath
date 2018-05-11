@@ -37,6 +37,7 @@ class ViewController: UIViewController {
                 runTimer()
                 playButton.isHighlighted = true
                 gestureRecognizer.minimumPressDuration = 0
+                timerLabel.isHidden = false
                 countdownStartSound()
             }
         }
@@ -100,6 +101,7 @@ class ViewController: UIViewController {
         
         replayButton.isHidden = true
         playButton.isHidden = false
+        timerLabel.isHidden = true
     }
     
     
@@ -141,6 +143,7 @@ class ViewController: UIViewController {
         playButton.isHidden = true
         playButton.isHighlighted = false
         timer.invalidate()
+        timerLabel.text = countdownSuccessMessage
         countdownFinishedSound()
         impact.impactOccurred()
         print("Your countdown has finished.")
@@ -149,6 +152,7 @@ class ViewController: UIViewController {
     // The function that resets everything back to normal
     func resetCountdown() {
         timerLabel.text = blankCountdown
+        timerLabel.isHidden = true
         isRunning = false
         isPaused = false
         replayButton.isHidden = true
