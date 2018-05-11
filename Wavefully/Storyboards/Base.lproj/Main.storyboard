@@ -23,13 +23,14 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulm-Vq-Kpp" userLabel="Play Button">
                                 <rect key="frame" x="139.5" y="548" width="95" height="95"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="95" id="LOd-s9-xcL"/>
                                     <constraint firstAttribute="width" constant="95" id="RQr-l8-KYf"/>
                                 </constraints>
                                 <state key="normal" image="playButton"/>
                                 <connections>
-                                    <action selector="playButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ykr-B5-eo5"/>
+                                    <outletCollection property="gestureRecognizers" destination="O0d-aB-x1P" appends="YES" id="wYs-8f-Wlu"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gby-HU-feK" userLabel="Countdown Label">
@@ -79,6 +80,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="O0d-aB-x1P">
+                    <connections>
+                        <action selector="startButtonPressed:" destination="BYZ-38-t0r" id="gKK-4u-HUp"/>
+                        <outlet property="delegate" destination="ulm-Vq-Kpp" id="PYs-O6-Umt"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
         </scene>
     </scenes>
