@@ -39,6 +39,12 @@ class ViewController: UIViewController {
                 gestureRecognizer.minimumPressDuration = 0
                 timerLabel.isHidden = false
                 countdownStartSound()
+                UIView.animate(withDuration: 0.4, delay: 0, options: [], animations: {
+                    
+                    self.timerLabel.transform = .identity
+                    self.timerLabel.alpha = 1
+                    
+                }, completion: nil)
             }
         }
         
@@ -99,9 +105,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        replayButton.isHidden = true
+        // replayButton.isHidden = true
         playButton.isHidden = false
-        timerLabel.isHidden = true
+        replayButton.alpha = 0
+        timerLabel.alpha = 0
+
+    }
+    
+    
+    // MARK: - VIEW WILL APPEAR
+    override func viewWillAppear(_ animated: Bool) {
+        
+        resetAnimationStartPositions()
+        
     }
     
     
@@ -140,9 +156,17 @@ class ViewController: UIViewController {
     func countdownFinished() {
         isRunning = false
         isPaused = false
-        replayButton.isHidden = false
-        playButton.isHidden = true
-        playButton.isHighlighted = false
+        
+        UIView.animate(withDuration: 0.4, delay: 0.1, options: [], animations: {
+            
+            let replayButtonTransformInto = CGAffineTransform.init(translationX: 0, y: -10)
+            self.replayButton.transform = replayButtonTransformInto
+            self.replayButton.alpha = 1
+            
+            self.playButton.alpha = 0
+            
+        }, completion: nil)
+        
         timer.invalidate()
         timerLabel.text = countdownSuccessMessage
         countdownFinishedSound()
@@ -153,17 +177,31 @@ class ViewController: UIViewController {
     // The function that resets everything back to normal
     func resetCountdown() {
         timerLabel.text = blankCountdown
-        timerLabel.isHidden = true
+        resetAnimationStartPositions()
         isRunning = false
         isPaused = false
-        replayButton.isHidden = true
-        playButton.isHidden = false
-        playButton.isHighlighted = false
         seconds = 10
         baseTime = 0
         resetButtonSound()
         impact.impactOccurred()
         print("You reset your timer.")
+    }
+    
+    
+    func resetAnimationStartPositions() {
+        UIView.animate(withDuration: 0.4, delay: 0.1, options: [], animations: {
+            let timerLabelTransform = CGAffineTransform.init(translationX: 0, y: 30)
+            self.timerLabel.transform = timerLabelTransform
+            self.timerLabel.alpha = 0
+            
+            let replayButtonTransformAway = CGAffineTransform.init(translationX: 0, y: 10)
+            self.replayButton.transform = replayButtonTransformAway
+            self.replayButton.alpha = 0
+            
+            // self.playButton.transform = .identity
+            self.playButton.alpha = 1
+        }, completion: nil)
+        
     }
     
 
