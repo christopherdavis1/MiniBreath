@@ -34,8 +34,8 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gby-HU-feK" userLabel="Countdown Label">
-                                <rect key="frame" x="48" y="489.5" width="279" height="26.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <rect key="frame" x="48" y="482.5" width="279" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.25490196079999999" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -46,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Z3-rA-3k6" userLabel="Replay Button">
-                                <rect key="frame" x="167" y="433.5" width="40" height="40"/>
+                                <rect key="frame" x="167" y="426.5" width="40" height="40"/>
                                 <state key="normal" image="replayButton"/>
                                 <connections>
                                     <action selector="replayButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LU2-P4-hvg"/>

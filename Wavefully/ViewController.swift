@@ -80,7 +80,7 @@ class ViewController: UIViewController {
     // MARK: - VARIABLES
     var defaultQuote = "The only way to make sense out of change is to plunge into it, move with it, and join the dance."
     var quoteIsHidden = true
-    var blankCountdown = "00:00:10"
+    var blankCountdown = "10"
     var countdownSuccessMessage = "Namaste"
     var timer = Timer()
     var seconds = 10
@@ -109,29 +109,30 @@ class ViewController: UIViewController {
     // MARK: - MISC FUNCTIONS
     
     func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
         isRunning = true
         print("Your timer is running.")
     }
     
     @objc func updateTimer() {
-        if seconds < 1 {
-            countdownFinished()
-        } else {
+        if seconds != 0 {
             seconds -= 1
             baseTime += 1
             print(baseTime)
             timerLabel.text = timeString(time: TimeInterval(seconds))
+        } else {
+            countdownFinished()
         }
     }
     
     func timeString(time:TimeInterval) -> String {
         
-        let hours = Int(time) / 3600
-        let minutes = Int(time) / 60 % 60
+        // let hours = Int(time) / 3600
+        // let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
         
-        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
+        // return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
+        return String(format: "%2i", seconds)
     }
     
     
