@@ -108,7 +108,6 @@ class ViewController: UIViewController {
         // replayButton.isHidden = true
         playButton.isHidden = false
         replayButton.alpha = 0
-        timerLabel.alpha = 0
 
     }
     
@@ -135,6 +134,7 @@ class ViewController: UIViewController {
             seconds -= 1
             baseTime += 1
             print(baseTime)
+            increaseQuoteOpacity()
             timerLabel.text = timeString(time: TimeInterval(seconds))
         } else {
             countdownFinished()
@@ -171,6 +171,9 @@ class ViewController: UIViewController {
         timerLabel.text = countdownSuccessMessage
         countdownFinishedSound()
         impact.impactOccurred()
+        
+        quoteLabel.alpha = 1
+        
         print("Your countdown has finished.")
     }
     
@@ -178,6 +181,7 @@ class ViewController: UIViewController {
     func resetCountdown() {
         timerLabel.text = blankCountdown
         resetAnimationStartPositions()
+        resetQuoteOpacity()
         isRunning = false
         isPaused = false
         seconds = 10
@@ -185,6 +189,21 @@ class ViewController: UIViewController {
         resetButtonSound()
         impact.impactOccurred()
         print("You reset your timer.")
+    }
+    
+    // This function is for changing the opacity of the quote
+    func increaseQuoteOpacity() {
+        if baseTime == 0 {
+            quoteLabel.alpha = 0
+        } else if seconds >= 9 {
+            quoteLabel.alpha = 0
+        } else {
+            quoteLabel.alpha += 0.10
+        }
+    }
+    
+    func resetQuoteOpacity() {
+        quoteLabel.alpha = 0
     }
     
     

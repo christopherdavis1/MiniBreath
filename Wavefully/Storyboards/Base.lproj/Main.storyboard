@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,14 +15,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Wavefully" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradientBackground" translatesAutoresizingMaskIntoConstraints="NO" id="aUF-z1-YyW">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulm-Vq-Kpp" userLabel="Play Button">
-                                <rect key="frame" x="139.5" y="548" width="95" height="95"/>
+                                <rect key="frame" x="159.66666666666666" y="601" width="95" height="95"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="95" id="LOd-s9-xcL"/>
@@ -34,19 +34,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gby-HU-feK" userLabel="Countdown Label">
-                                <rect key="frame" x="48" y="482.5" width="279" height="33.5"/>
+                                <rect key="frame" x="48" y="535.66666666666663" width="318" height="33.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.25490196079999999" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2o-2Z-gN1" userLabel="Quote Label">
-                                <rect key="frame" x="32" y="84" width="311" height="24"/>
+                                <rect key="frame" x="32" y="84" width="350" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.25490196079999999" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Z3-rA-3k6" userLabel="Replay Button">
-                                <rect key="frame" x="167" y="426.5" width="40" height="40"/>
+                                <rect key="frame" x="187" y="479.66666666666669" width="40" height="40.000000000000057"/>
                                 <state key="normal" image="replayButton"/>
                                 <connections>
                                     <action selector="replayButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LU2-P4-hvg"/>
@@ -60,7 +60,7 @@
                             <constraint firstItem="aUF-z1-YyW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4qR-1S-aWB"/>
                             <constraint firstItem="aUF-z1-YyW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="5MR-h4-rZB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j2o-2Z-gN1" secondAttribute="trailing" constant="32" id="8Vl-Os-Uja"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ulm-Vq-Kpp" secondAttribute="bottom" constant="24" id="EBN-qZ-6K8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ulm-Vq-Kpp" secondAttribute="bottom" constant="40" id="EBN-qZ-6K8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gby-HU-feK" secondAttribute="trailing" constant="48" id="FO3-4m-ilQ"/>
                             <constraint firstItem="gby-HU-feK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="GAf-t5-aIJ"/>
                             <constraint firstItem="j2o-2Z-gN1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="64" id="PCS-eM-YBP"/>
