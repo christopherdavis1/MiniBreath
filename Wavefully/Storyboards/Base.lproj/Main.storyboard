@@ -55,20 +55,28 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ulm-Vq-Kpp" firstAttribute="top" secondItem="gby-HU-feK" secondAttribute="bottom" constant="32" id="2UE-fY-0tQ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aUF-z1-YyW" secondAttribute="trailing" id="4bO-ZK-s3F"/>
-                            <constraint firstItem="aUF-z1-YyW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4qR-1S-aWB"/>
+                            <constraint firstItem="ulm-Vq-Kpp" firstAttribute="top" secondItem="gby-HU-feK" secondAttribute="bottom" constant="32" id="2UE-fY-0tQ">
+                                <variation key="heightClass=compact-widthClass=compact" constant="16"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="aUF-z1-YyW" secondAttribute="trailing" id="4bO-ZK-s3F"/>
+                            <constraint firstItem="aUF-z1-YyW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4qR-1S-aWB"/>
                             <constraint firstItem="aUF-z1-YyW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="5MR-h4-rZB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j2o-2Z-gN1" secondAttribute="trailing" constant="32" id="8Vl-Os-Uja"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ulm-Vq-Kpp" secondAttribute="bottom" constant="40" id="EBN-qZ-6K8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ulm-Vq-Kpp" secondAttribute="bottom" constant="40" id="EBN-qZ-6K8">
+                                <variation key="heightClass=compact-widthClass=compact" constant="16"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="120"/>
+                            </constraint>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gby-HU-feK" secondAttribute="trailing" constant="48" id="FO3-4m-ilQ"/>
                             <constraint firstItem="gby-HU-feK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="GAf-t5-aIJ"/>
-                            <constraint firstItem="j2o-2Z-gN1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="64" id="PCS-eM-YBP"/>
+                            <constraint firstItem="j2o-2Z-gN1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="64" id="PCS-eM-YBP">
+                                <variation key="heightClass=compact-widthClass=compact" constant="32"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="160"/>
+                            </constraint>
                             <constraint firstItem="gby-HU-feK" firstAttribute="top" secondItem="8Z3-rA-3k6" secondAttribute="bottom" constant="16" id="a2P-mL-tkG"/>
                             <constraint firstItem="j2o-2Z-gN1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="bqp-Zh-2kn"/>
                             <constraint firstItem="8Z3-rA-3k6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="deg-aP-ywb"/>
                             <constraint firstItem="ulm-Vq-Kpp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ewR-qJ-UOl"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="aUF-z1-YyW" secondAttribute="bottom" id="piC-0K-PsG"/>
+                            <constraint firstAttribute="bottom" secondItem="aUF-z1-YyW" secondAttribute="bottom" id="piC-0K-PsG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
