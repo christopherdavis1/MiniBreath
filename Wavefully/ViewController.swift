@@ -105,16 +105,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // replayButton.isHidden = true
         playButton.isHidden = false
+        timerLabel.alpha = 0
         replayButton.alpha = 0
-
+        
     }
     
     
     // MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
-        
+    
         resetAnimationStartPositions()
         
     }
@@ -195,15 +195,25 @@ class ViewController: UIViewController {
     func increaseQuoteOpacity() {
         if baseTime == 0 {
             quoteLabel.alpha = 0
-        } else if seconds >= 9 {
-            quoteLabel.alpha = 0
+        } else if baseTime >= 10 {
+            quoteLabel.alpha = 1
+            print("Your quote has arrived!")
         } else {
-            quoteLabel.alpha += 0.10
+            UIView.animate(withDuration: 0.8, delay: 0, options: [], animations: {
+                self.quoteLabel.alpha += 0.1
+            }, completion: nil)
+            print("Your quote is fading in!")
+            
         }
     }
     
     func resetQuoteOpacity() {
-        quoteLabel.alpha = 0
+        UIView.animate(withDuration: 0.4, delay: 0.2, options: [], animations: {
+            let quoteLabelTransform = CGAffineTransform.init(translationX: 0, y: -30)
+            self.quoteLabel.transform = quoteLabelTransform
+            self.quoteLabel.alpha = 0
+        }, completion: nil)
+        print("Your quote has been hidden.")
     }
     
     
