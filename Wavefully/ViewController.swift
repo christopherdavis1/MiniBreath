@@ -199,7 +199,7 @@ class ViewController: UIViewController {
             quoteLabel.alpha = 1
             print("Your quote has arrived!")
         } else {
-            UIView.animate(withDuration: 0.8, delay: 0, options: [], animations: {
+            UIView.animate(withDuration: 0.4, delay: 0, options: [], animations: {
                 self.quoteLabel.alpha += 0.1
             }, completion: nil)
             print("Your quote is fading in!")
