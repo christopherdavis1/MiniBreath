@@ -72,6 +72,15 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var quoteAttributionLabel: UILabel! {
+        didSet {
+            quoteAttributionLabel.text = defaultAttributionText
+            quoteAttributionLabel.numberOfLines = 1
+            quoteAttributionLabel.alpha = 0
+        }
+    }
+    
+    
     @IBOutlet weak var timerLabel: UILabel! {
         didSet {
             timerLabel.text = blankCountdown
@@ -85,6 +94,7 @@ class ViewController: UIViewController {
     
     // MARK: - VARIABLES
     var defaultQuote = "The only way to make sense out of change is to plunge into it, move with it, and join the dance."
+    var defaultAttributionText = "Alan Watts"
     var quoteIsHidden = true
     var blankCountdown = "10"
     var countdownSuccessMessage = "Namaste"
@@ -157,22 +167,21 @@ class ViewController: UIViewController {
         isRunning = false
         isPaused = false
         
-        UIView.animate(withDuration: 0.4, delay: 0.1, options: [], animations: {
+        UIView.animate(withDuration: 0.4, delay: 0.1, options: [.curveEaseOut], animations: {
             
             let replayButtonTransformInto = CGAffineTransform.init(translationX: 0, y: -10)
             self.replayButton.transform = replayButtonTransformInto
             self.replayButton.alpha = 1
-            
             self.playButton.alpha = 0
-            
         }, completion: nil)
         
         timer.invalidate()
-        timerLabel.text = countdownSuccessMessage
         countdownFinishedSound()
         impact.impactOccurred()
-        
+        timerLabel.text = countdownSuccessMessage
+        timerLabel.alpha = 0.25
         quoteLabel.alpha = 1
+        moveCompletedQuote()
         
         print("Your countdown has finished.")
     }
@@ -182,6 +191,7 @@ class ViewController: UIViewController {
         timerLabel.text = blankCountdown
         resetAnimationStartPositions()
         resetQuoteOpacity()
+        hideQuoteAttribution()
         isRunning = false
         isPaused = false
         seconds = 10
@@ -197,6 +207,7 @@ class ViewController: UIViewController {
             quoteLabel.alpha = 0
         } else if baseTime >= 10 {
             quoteLabel.alpha = 1
+            showQuoteAttribution()
             print("Your quote has arrived!")
         } else {
             UIView.animate(withDuration: 0.4, delay: 0, options: [], animations: {
@@ -208,7 +219,7 @@ class ViewController: UIViewController {
     }
     
     func resetQuoteOpacity() {
-        UIView.animate(withDuration: 0.4, delay: 0.2, options: [], animations: {
+        UIView.animate(withDuration: 0.4, delay: 0.2, options: [.curveEaseOut], animations: {
             let quoteLabelTransform = CGAffineTransform.init(translationX: 0, y: -30)
             self.quoteLabel.transform = quoteLabelTransform
             self.quoteLabel.alpha = 0
@@ -216,9 +227,33 @@ class ViewController: UIViewController {
         print("Your quote has been hidden.")
     }
     
+    func showQuoteAttribution() {
+        UIView.animate(withDuration: 0.8, delay: 1.5, options: [.curveEaseIn], animations: {
+            self.quoteAttributionLabel.alpha = 1
+        }, completion: nil)
+    }
+    
+    func hideQuoteAttribution() {
+        UIView.animate(withDuration: 0.4, delay: 0.2, options: [.curveEaseOut], animations: {
+            let quoteAttributionTransform = CGAffineTransform.init(translationX: 0, y: -26)
+            self.quoteAttributionLabel.transform = quoteAttributionTransform
+            self.quoteAttributionLabel.alpha = 0
+        }, completion: nil)
+    }
+    
+    func moveCompletedQuote() {
+        UIView.animate(withDuration: 0.8, delay: 0.4, options: [.curveEaseInOut], animations: {
+            let completedQuoteLabelTransform = CGAffineTransform.init(translationX: 0, y: 40)
+            self.quoteLabel.transform = completedQuoteLabelTransform
+            
+            let completedAttributionLabelTransform = CGAffineTransform.init(translationX: 0, y: 50)
+            self.quoteAttributionLabel.transform = completedAttributionLabelTransform
+        }, completion: nil)
+    }
+    
     
     func resetAnimationStartPositions() {
-        UIView.animate(withDuration: 0.4, delay: 0.1, options: [], animations: {
+        UIView.animate(withDuration: 0.4, delay: 0.1, options: [.curveEaseOut], animations: {
             let timerLabelTransform = CGAffineTransform.init(translationX: 0, y: 30)
             self.timerLabel.transform = timerLabelTransform
             self.timerLabel.alpha = 0
