@@ -35,6 +35,7 @@ class ViewController: UIViewController {
         if gestureRecognizer.state == .changed {
             if isRunning == false {
                 runTimer()
+                hideOnboarding()
                 playButton.isHighlighted = true
                 gestureRecognizer.minimumPressDuration = 0
                 timerLabel.isHidden = false
@@ -87,8 +88,13 @@ class ViewController: UIViewController {
         }
     }
     
+    
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var replayButton: UIButton!
+    @IBOutlet weak var onboardingLabel: UILabel!
+    @IBOutlet weak var onboardingRightLabel: UILabel!
+    @IBOutlet weak var onboardingDownArrow: UIImageView!
+    @IBOutlet weak var onboardingRightArrow: UIImageView!
     
     
     
@@ -118,6 +124,12 @@ class ViewController: UIViewController {
         playButton.isHidden = false
         timerLabel.alpha = 0
         replayButton.alpha = 0
+        onboardingLabel.alpha = 0
+        onboardingDownArrow.alpha = 0
+        onboardingRightLabel.alpha = 0
+        onboardingRightArrow.alpha = 0
+        showOnboarding()
+        bounceOnboarding()
         
     }
     
@@ -133,9 +145,67 @@ class ViewController: UIViewController {
     
     // MARK: - MISC FUNCTIONS
     
+    
+    // Onboarding Functions
+    
+    func showOnboarding() {
+        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseIn], animations: {
+            let onboardingLabelTransform = CGAffineTransform.init(translationX: 0, y: 6)
+            self.onboardingLabel.transform = onboardingLabelTransform
+            self.onboardingLabel.alpha = 1
+            
+            let onboardingArrowTransform = CGAffineTransform.init(translationX: 0, y: 8)
+            self.onboardingDownArrow.transform = onboardingArrowTransform
+            self.onboardingDownArrow.alpha = 1
+            
+            let bounceRightOnboardingLabel = CGAffineTransform.init(translationX: 6, y: 0)
+            self.onboardingRightLabel.transform = bounceRightOnboardingLabel
+            self.onboardingRightLabel.alpha = 1
+            
+            let bounceRightOnboardingArrow = CGAffineTransform.init(translationX: 8, y: 0)
+            self.onboardingRightArrow.transform = bounceRightOnboardingArrow
+            self.onboardingRightArrow.alpha = 1
+        }, completion: nil)
+    }
+    
+    func hideOnboarding() {
+        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
+            self.onboardingLabel.alpha = 0
+            self.onboardingDownArrow.alpha = 0
+            self.onboardingRightLabel.alpha = 0
+            self.onboardingRightArrow.alpha = 0
+        }, completion: nil)
+    }
+    
+    func bounceOnboarding() {
+        UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
+            let bounceOnboardingLabel = CGAffineTransform.init(translationX: 0, y: -10)
+            self.onboardingLabel.transform = bounceOnboardingLabel
+            
+            let bounceOnboardingDownArrow = CGAffineTransform.init(translationX: 0, y: -16)
+            self.onboardingDownArrow.transform = bounceOnboardingDownArrow
+            
+            let bounceRightOnboardingLabel = CGAffineTransform.init(translationX: -10, y: 0)
+            self.onboardingRightLabel.transform = bounceRightOnboardingLabel
+            
+            let bounceRightOnboardingArrow = CGAffineTransform.init(translationX: -16, y: 0)
+            self.onboardingRightArrow.transform = bounceRightOnboardingArrow
+        }, completion: nil)
+    }
+    
+    
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
         isRunning = true
+        
+        // Hide onboarding UI
+        UIView.animate(withDuration: 0, delay: 0.5, options: [], animations: {
+            self.onboardingLabel.isHidden = true
+            self.onboardingDownArrow.isHidden = true
+            self.onboardingRightLabel.isHidden = true
+            self.onboardingRightArrow.isHidden = true
+        }, completion: nil)
+        
         print("Your timer is running.")
     }
     
@@ -179,7 +249,6 @@ class ViewController: UIViewController {
         countdownFinishedSound()
         impact.impactOccurred()
         timerLabel.text = countdownSuccessMessage
-        timerLabel.alpha = 0.25
         quoteLabel.alpha = 1
         moveCompletedQuote()
         
