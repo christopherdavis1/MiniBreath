@@ -92,9 +92,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var replayButton: UIButton!
     @IBOutlet weak var onboardingLabel: UILabel!
-    @IBOutlet weak var onboardingRightLabel: UILabel!
     @IBOutlet weak var onboardingDownArrow: UIImageView!
-    @IBOutlet weak var onboardingRightArrow: UIImageView!
     
     
     
@@ -126,8 +124,6 @@ class ViewController: UIViewController {
         replayButton.alpha = 0
         onboardingLabel.alpha = 0
         onboardingDownArrow.alpha = 0
-        onboardingRightLabel.alpha = 0
-        onboardingRightArrow.alpha = 0
         showOnboarding()
         bounceOnboarding()
         
@@ -157,14 +153,6 @@ class ViewController: UIViewController {
             let onboardingArrowTransform = CGAffineTransform.init(translationX: 0, y: 8)
             self.onboardingDownArrow.transform = onboardingArrowTransform
             self.onboardingDownArrow.alpha = 1
-            
-            let bounceRightOnboardingLabel = CGAffineTransform.init(translationX: 6, y: 0)
-            self.onboardingRightLabel.transform = bounceRightOnboardingLabel
-            self.onboardingRightLabel.alpha = 1
-            
-            let bounceRightOnboardingArrow = CGAffineTransform.init(translationX: 8, y: 0)
-            self.onboardingRightArrow.transform = bounceRightOnboardingArrow
-            self.onboardingRightArrow.alpha = 1
         }, completion: nil)
     }
     
@@ -172,8 +160,6 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
             self.onboardingLabel.alpha = 0
             self.onboardingDownArrow.alpha = 0
-            self.onboardingRightLabel.alpha = 0
-            self.onboardingRightArrow.alpha = 0
         }, completion: nil)
     }
     
@@ -184,12 +170,6 @@ class ViewController: UIViewController {
             
             let bounceOnboardingDownArrow = CGAffineTransform.init(translationX: 0, y: -16)
             self.onboardingDownArrow.transform = bounceOnboardingDownArrow
-            
-            let bounceRightOnboardingLabel = CGAffineTransform.init(translationX: -10, y: 0)
-            self.onboardingRightLabel.transform = bounceRightOnboardingLabel
-            
-            let bounceRightOnboardingArrow = CGAffineTransform.init(translationX: -16, y: 0)
-            self.onboardingRightArrow.transform = bounceRightOnboardingArrow
         }, completion: nil)
     }
     
@@ -202,8 +182,6 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0, delay: 0.5, options: [], animations: {
             self.onboardingLabel.isHidden = true
             self.onboardingDownArrow.isHidden = true
-            self.onboardingRightLabel.isHidden = true
-            self.onboardingRightArrow.isHidden = true
         }, completion: nil)
         
         print("Your timer is running.")
