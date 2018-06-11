@@ -12,6 +12,40 @@ import AVFoundation
 class ViewController: UIViewController {
 
     
+    // MARK: - Sample Quotes
+    
+    var quotes:[Quote] = [
+        
+        Quote(
+            quoteText: "The only way to make sense out of change is to plunge into it, move with it, and join the dance.",
+            quoteAttribution: "Alan Watts",
+            hasSeen: false,
+            hasSaved: false),
+        Quote(
+            quoteText: "Luck is what happens when preparation meets opportunity.",
+            quoteAttribution: "Seneca",
+            hasSeen: false,
+            hasSaved: false),
+        Quote(
+            quoteText: "As long as we wish to be happier, we are no longer happy. ",
+            quoteAttribution: "Walter Landor",
+            hasSeen: false,
+            hasSaved: false),
+        Quote(
+            quoteText: "If we learn to open our hearts, anyone, including the people who drive us crazy, can be our teacher. ",
+            quoteAttribution: "Pema Chödrön",
+            hasSeen: false,
+            hasSaved: false),
+        Quote(
+            quoteText: "Everything is created twice, first in the mind and then in reality.",
+            quoteAttribution: "Robin Sharma",
+            hasSeen: false,
+            hasSaved: false)
+    ]
+    
+    
+    
+    
     // MARK: - ACTIONS
     
     @IBAction func replayButtonTapped(_ sender: UIButton) {
@@ -28,6 +62,8 @@ class ViewController: UIViewController {
                 isPaused = false
                 playButton.isHighlighted = true
                 gestureRecognizer.minimumPressDuration = 0
+            } else {
+                serveQuote()
             }
         }
         
@@ -97,8 +133,9 @@ class ViewController: UIViewController {
     
     
     // MARK: - VARIABLES
-    var defaultQuote = "The only way to make sense out of change is to plunge into it, move with it, and join the dance."
-    var defaultAttributionText = "Alan Watts"
+    var quote: Quote = Quote()
+    var defaultQuote = "Test"
+    var defaultAttributionText = "Test"
     var quoteIsHidden = true
     var blankCountdown = "10"
     var countdownSuccessMessage = "Namaste"
@@ -177,7 +214,6 @@ class ViewController: UIViewController {
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
         isRunning = true
-        
         // Hide onboarding UI
         UIView.animate(withDuration: 0, delay: 0.5, options: [], animations: {
             self.onboardingLabel.isHidden = true
@@ -194,7 +230,8 @@ class ViewController: UIViewController {
             print(baseTime)
             increaseQuoteOpacity()
             timerLabel.text = timeString(time: TimeInterval(seconds))
-        } else {
+        }
+        else {
             countdownFinished()
         }
     }
@@ -260,7 +297,6 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseIn], animations: {
                 self.quoteLabel.alpha += 0.1
             }, completion: nil)
-            print("Your quote is fading in!")
             
         }
     }
@@ -314,6 +350,30 @@ class ViewController: UIViewController {
         }, completion: nil)
         
     }
+    
+    
+    
+    // MARK: - GET A RANDOM QUOTE
+    
+    func serveQuote() {
+        let randomQuote = quotes.randomItem()!
+        
+        if randomQuote.hasSeen == false {
+            quoteLabel.text = randomQuote.quoteText
+            quoteAttributionLabel.text = randomQuote.quoteAttribution
+            randomQuote.hasSeen = true
+            
+            print(randomQuote.quoteText)
+            print(randomQuote.quoteAttribution)
+        } else {
+            serveQuote()
+            print("Skipped Quote")
+        }
+    }
+
+    
+    
+    
     
 
     // MARK: — UI SOUNDS
