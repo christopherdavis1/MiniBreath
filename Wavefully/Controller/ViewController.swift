@@ -8,41 +8,17 @@
 
 import UIKit
 import AVFoundation
+import FirebaseDatabase
+import RealmSwift
+
+
 
 class ViewController: UIViewController {
 
     
     // MARK: - Sample Quotes
     
-    var quotes:[Quote] = [
-        
-        Quote(
-            quoteText: "The only way to make sense out of change is to plunge into it, move with it, and join the dance.",
-            quoteAttribution: "Alan Watts",
-            hasSeen: false,
-            hasSaved: false),
-        Quote(
-            quoteText: "Luck is what happens when preparation meets opportunity.",
-            quoteAttribution: "Seneca",
-            hasSeen: false,
-            hasSaved: false),
-        Quote(
-            quoteText: "As long as we wish to be happier, we are no longer happy. ",
-            quoteAttribution: "Walter Landor",
-            hasSeen: false,
-            hasSaved: false),
-        Quote(
-            quoteText: "If we learn to open our hearts, anyone, including the people who drive us crazy, can be our teacher. ",
-            quoteAttribution: "Pema Chödrön",
-            hasSeen: false,
-            hasSaved: false),
-        Quote(
-            quoteText: "Everything is created twice, first in the mind and then in reality.",
-            quoteAttribution: "Robin Sharma",
-            hasSeen: false,
-            hasSaved: false)
-    ]
-    
+    var quotes: [QuoteMO] = []
     
     
     
@@ -351,9 +327,7 @@ class ViewController: UIViewController {
         
     }
     
-    
-    
-    // MARK: - GET A RANDOM QUOTE
+
     
     func serveQuote() {
         let randomQuote = quotes.randomItem()!
@@ -362,17 +336,11 @@ class ViewController: UIViewController {
             quoteLabel.text = randomQuote.quoteText
             quoteAttributionLabel.text = randomQuote.quoteAttribution
             randomQuote.hasSeen = true
-            
-            print(randomQuote.quoteText)
-            print(randomQuote.quoteAttribution)
         } else {
             serveQuote()
             print("Skipped Quote")
         }
     }
-
-    
-    
     
     
 

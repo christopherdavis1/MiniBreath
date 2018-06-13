@@ -16,3 +16,8 @@ extension Array {
     }
 }
 
+extension Array where Element: Hashable {
+    var occurrences: [Element:Int] {
+        return reduce(into: [:]) { $0[$1, default: 0] += 1 }
+    }
+}
