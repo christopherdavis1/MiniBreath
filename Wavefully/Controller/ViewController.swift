@@ -8,8 +8,6 @@
 
 import UIKit
 import AVFoundation
-import FirebaseDatabase
-import RealmSwift
 
 
 
