@@ -18,8 +18,8 @@
 		8387FF7820A52E370082CA78 /* resetButtonSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8387FF7520A52E370082CA78 /* resetButtonSound.m4a */; };
 		8387FF7920A52E370082CA78 /* countdownFinishedSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8387FF7620A52E370082CA78 /* countdownFinishedSound.m4a */; };
 		8394714520D0D06B001EEADC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8394714420D0D06B001EEADC /* GoogleService-Info.plist */; };
-		83CBD2EB20CDCE980056F07B /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CBD2EA20CDCE980056F07B /* Quote.swift */; };
 		83CBD2EF20CE0E7D0056F07B /* Arrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CBD2EE20CE0E7D0056F07B /* Arrays.swift */; };
+		83E81AF02117B2C70026DF76 /* QuoteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E81AEF2117B2C70026DF76 /* QuoteObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +36,8 @@
 		8387FF7520A52E370082CA78 /* resetButtonSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = resetButtonSound.m4a; sourceTree = "<group>"; };
 		8387FF7620A52E370082CA78 /* countdownFinishedSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = countdownFinishedSound.m4a; sourceTree = "<group>"; };
 		8394714420D0D06B001EEADC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		83CBD2EA20CDCE980056F07B /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		83CBD2EE20CE0E7D0056F07B /* Arrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrays.swift; sourceTree = "<group>"; };
+		83E81AEF2117B2C70026DF76 /* QuoteObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteObject.swift; sourceTree = "<group>"; };
 		9EB6A000ADFD8DE51A7AB378 /* Pods_Wavefully.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wavefully.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCBA6601A1A8A966E7E4A90F /* Pods-Wavefully.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wavefully.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wavefully/Pods-Wavefully.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,7 +119,7 @@
 		83CBD2EC20CDD43A0056F07B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				83CBD2EA20CDCE980056F07B /* Quote.swift */,
+				83E81AEF2117B2C70026DF76 /* QuoteObject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -282,9 +282,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83CBD2EB20CDCE980056F07B /* Quote.swift in Sources */,
 				8387FF6020A529980082CA78 /* ViewController.swift in Sources */,
 				8387FF5E20A529980082CA78 /* AppDelegate.swift in Sources */,
+				83E81AF02117B2C70026DF76 /* QuoteObject.swift in Sources */,
 				8387FF6620A529980082CA78 /* Wavefully.xcdatamodeld in Sources */,
 				83CBD2EF20CE0E7D0056F07B /* Arrays.swift in Sources */,
 			);

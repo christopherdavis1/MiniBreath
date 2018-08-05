@@ -8,44 +8,12 @@
 
 import UIKit
 import AVFoundation
+import FirebaseDatabase
+import RealmSwift
 
 
 
 class ViewController: UIViewController {
-
-    
-    // MARK: - Sample Quotes
-    
-    var quotes:[Quote] = [
-        
-        Quote(
-            quoteText: "The only way to make sense out of change is to plunge into it, move with it, and join the dance.",
-            quoteAttribution: "Alan Watts",
-            hasSeen: false,
-            hasSaved: false),
-        Quote(
-            quoteText: "Luck is what happens when preparation meets opportunity.",
-            quoteAttribution: "Seneca",
-            hasSeen: false,
-            hasSaved: false),
-        Quote(
-            quoteText: "As long as we wish to be happier, we are no longer happy. ",
-            quoteAttribution: "Walter Landor",
-            hasSeen: false,
-            hasSaved: false),
-        Quote(
-            quoteText: "If we learn to open our hearts, anyone, including the people who drive us crazy, can be our teacher. ",
-            quoteAttribution: "Pema Chödrön",
-            hasSeen: false,
-            hasSaved: false),
-        Quote(
-            quoteText: "Everything is created twice, first in the mind and then in reality.",
-            quoteAttribution: "Robin Sharma",
-            hasSeen: false,
-            hasSaved: false)
-    ]
-    
-    
     
     // MARK: - ACTIONS
     
@@ -64,7 +32,7 @@ class ViewController: UIViewController {
                 playButton.isHighlighted = true
                 gestureRecognizer.minimumPressDuration = 0
             } else {
-                serveQuote()
+                randomQuote()
             }
         }
         
@@ -134,7 +102,6 @@ class ViewController: UIViewController {
     
     
     // MARK: - VARIABLES
-    var quote: Quote = Quote()
     var defaultQuote = "Test"
     var defaultAttributionText = "Test"
     var quoteIsHidden = true
@@ -147,6 +114,10 @@ class ViewController: UIViewController {
     var isPaused = false
     var isRunning = false
     var audioPlayer: AVAudioPlayer?
+    var databaseRef: DatabaseReference!
+    var quotes: Results<QuoteObject>!
+    var allQuotes = uiRealm.objects(QuoteObject.self)
+    var unseenQuotes = uiRealm.objects(QuoteObject.self).filter("hasSeen = false")
     
     
     // MARK: - CONSTANTS
@@ -157,6 +128,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Connect to Firebase
+        databaseRef = Database.database().reference()
+        
+        grabData()
+        
+        quoteLabel.text = ""
+        quoteAttributionLabel.text = ""
+        
         playButton.isHidden = false
         timerLabel.alpha = 0
         replayButton.alpha = 0
@@ -164,6 +143,8 @@ class ViewController: UIViewController {
         onboardingDownArrow.alpha = 0
         showOnboarding()
         bounceOnboarding()
+        
+        print(allQuotes.count)
         
     }
     
@@ -351,21 +332,104 @@ class ViewController: UIViewController {
         }, completion: nil)
         
     }
+
+    // Get data from Firebase
+    func grabData() {
+        databaseRef.child("quotes").observe(.value, with: {
+            snapshot in
+            
+            for snap in snapshot.children.allObjects as! [DataSnapshot] {
+                
+                guard let dictionary = snap.value as? NSDictionary else {
+                    return
+                }
+                
+                let quote = dictionary["quoteText"] as? String
+                let author = dictionary["quoteAttribution"] as? String
+                let hasSeen = dictionary["hasSeen"] as? Bool
+                let id = dictionary["quoteID"] as? String
+                
+                let quoteToAdd = QuoteObject()
+                
+                quoteToAdd.quoteText = quote
+                quoteToAdd.quoteAttribution = author
+                quoteToAdd.hasSeen = hasSeen!
+                quoteToAdd.quoteID = id
+                
+                quoteToAdd.writeToRealm()
+                
+                self.reloadData()
+            }
+        })
+    }
     
+    
+    func reloadData() {
+        quotes = uiRealm.objects(QuoteObject.self)
+    }
 
     
-    func serveQuote() {
-        let randomQuote = quotes.randomItem()!
+    // Grabs a random quote from Realm
+    func randomQuote() {
         
-        if randomQuote.hasSeen == false {
-            quoteLabel.text = randomQuote.quoteText
-            quoteAttributionLabel.text = randomQuote.quoteAttribution
-            randomQuote.hasSeen = true
+        resetHasSeen()
+        
+        let singleQuote = allQuotes.randomElement()!
+        let singleQuoteText = singleQuote.quoteText
+        let singleQuoteAttribution = singleQuote.quoteAttribution
+        let singleQuoteSeen = singleQuote.hasSeen
+        let singleQuoteID = singleQuote.quoteID
+        
+        // If a quote has not been seen, display it.
+        if singleQuoteSeen == false {
+            quoteLabel.text = singleQuoteText
+            quoteAttributionLabel.text = singleQuoteAttribution
+            
+            try! uiRealm.write {
+                singleQuote.hasSeen = true
+                print(singleQuoteID as Any)
+                print(singleQuoteText as Any)
+                print("Wrote to Realm")
+                print(unseenQuotes.count)
+            }
         } else {
-            serveQuote()
-            print("Skipped Quote")
+            // if it has been seen, skip it.
+            print("Skipped quote")
+            randomQuote()
         }
     }
+    
+    
+    // If all quotes have been seen, reset all of them to unseen.
+    func resetHasSeen() {
+        let seenQuotesCount = unseenQuotes.count
+        
+        if seenQuotesCount == 0 {
+            for quote in allQuotes {
+                
+                try! uiRealm.write {
+                    quote.hasSeen = false
+                }
+            }
+            print("Reset all quotes to unseen.")
+        }
+    }
+    
+    
+    
+    
+//    func serveQuote() {
+//        let randomQuote = quotes.randomItem()!
+//
+//        if randomQuote.hasSeen == false {
+//            quoteLabel.text = randomQuote.quoteText
+//            quoteAttributionLabel.text = randomQuote.quoteAttribution
+//            randomQuote.hasSeen = true
+//        } else {
+//            serveQuote()
+//            print("Skipped Quote")
+//        }
+//    }
     
     
 
