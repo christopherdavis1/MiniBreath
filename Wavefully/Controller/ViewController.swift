@@ -254,6 +254,8 @@ class ViewController: UIViewController {
     
     // The function that resets everything back to normal
     func resetCountdown() {
+        showOnboarding()
+        bounceOnboarding()
         timerLabel.text = blankCountdown
         resetAnimationStartPositions()
         resetQuoteOpacity()
@@ -414,23 +416,6 @@ class ViewController: UIViewController {
             print("Reset all quotes to unseen.")
         }
     }
-    
-    
-    
-    
-//    func serveQuote() {
-//        let randomQuote = quotes.randomItem()!
-//
-//        if randomQuote.hasSeen == false {
-//            quoteLabel.text = randomQuote.quoteText
-//            quoteAttributionLabel.text = randomQuote.quoteAttribution
-//            randomQuote.hasSeen = true
-//        } else {
-//            serveQuote()
-//            print("Skipped Quote")
-//        }
-//    }
-    
     
 
     // MARK: — UI SOUNDS
