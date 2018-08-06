@@ -254,8 +254,6 @@ class ViewController: UIViewController {
     
     // The function that resets everything back to normal
     func resetCountdown() {
-        showOnboarding()
-        bounceOnboarding()
         timerLabel.text = blankCountdown
         resetAnimationStartPositions()
         resetQuoteOpacity()
