@@ -333,8 +333,12 @@ class ViewController: UIViewController {
         
     }
 
+    
+    // MARK: — Database Stuff
+    
     // Get data from Firebase
     func grabData() {
+        
         databaseRef.child("quotes").observe(.value, with: {
             snapshot in
             
