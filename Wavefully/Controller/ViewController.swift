@@ -21,37 +21,67 @@ class ViewController: UIViewController {
         resetCountdown()
     }
     
+    @IBAction func playButtonTouched(_ sender: Any) {
+        playButton.isHighlighted = true
+        if isPaused == false {
+            isPaused = true
+            isRunning = true
+            hideOnboarding()
+            timerLabel.isHidden = false
+        } else {
+            print("Paused on touch")
+        }
+    }
+    
+    
     // The Long press!
     @IBAction func startButtonPressed(_ gestureRecognizer: UILongPressGestureRecognizer) {
        
         // Start the long press
         if gestureRecognizer.state == .began {
+            playButton.isHighlighted = true
             if isRunning == true {
                 runTimer()
-                isPaused = false
-                playButton.isHighlighted = true
-                gestureRecognizer.minimumPressDuration = 0
-            } else {
-                randomQuote()
-            }
-        }
-        
-        // If your finger moves at all during the long press...
-        if gestureRecognizer.state == .changed {
-            if isRunning == false {
-                runTimer()
-                hideOnboarding()
-                playButton.isHighlighted = true
-                gestureRecognizer.minimumPressDuration = 0
-                timerLabel.isHidden = false
                 countdownStartSound()
+                playButton.isHighlighted = true
+                timerLabel.isHidden = false
+                isPaused = false
                 UIView.animate(withDuration: 0.4, delay: 0, options: [], animations: {
                     
                     self.timerLabel.transform = .identity
                     self.timerLabel.alpha = 1
                     
                 }, completion: nil)
+                print("isRunning = true on .began")
+            } else {
+                print("randomQuote on .began")
             }
+        }
+        
+        // If your finger moves at all during the long press...
+        if gestureRecognizer.state == .changed {
+            playButton.isHighlighted = true
+            gestureRecognizer.minimumPressDuration = 0
+            if isRunning == true {
+                playButton.isHighlighted = true
+            } else {
+                randomQuote()
+            }
+            
+//            if isRunning == false {
+//                runTimer()
+//                playButton.isHighlighted = true
+//                gestureRecognizer.minimumPressDuration = 0
+//                timerLabel.isHidden = false
+//                countdownStartSound()
+//                UIView.animate(withDuration: 0.4, delay: 0, options: [], animations: {
+//
+//                    self.timerLabel.transform = .identity
+//                    self.timerLabel.alpha = 1
+//
+//                }, completion: nil)
+//                print(".changed")
+//            }
         }
         
         // When the user lifts a finger off of the long press...
@@ -61,6 +91,7 @@ class ViewController: UIViewController {
                 timer.invalidate()
                 print("Your paused your timer.")
                 playButton.isHighlighted = false
+                print(".ended")
             } else {
                 runTimer()
                 isPaused = false

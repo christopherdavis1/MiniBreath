@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_5" orientation="landscape">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,20 +14,20 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Wavefully" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradientBackground" translatesAutoresizingMaskIntoConstraints="NO" id="aUF-z1-YyW">
-                                <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gby-HU-feK" userLabel="Countdown Label">
-                                <rect key="frame" x="306.66666666666669" y="327.66666666666669" width="122.66666666666669" height="33.666666666666686"/>
+                                <rect key="frame" x="48" y="551.33333333333337" width="318" height="33.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.25490196079999999" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2o-2Z-gN1" userLabel="Quote Label">
-                                <rect key="frame" x="64" y="64" width="608" height="31.333333333333329"/>
+                                <rect key="frame" x="32" y="84" width="350" height="26.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.25490196079999999" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -40,7 +39,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulm-Vq-Kpp" userLabel="Play Button">
-                                <rect key="frame" x="609" y="297" width="95" height="95"/>
+                                <rect key="frame" x="159.66666666666663" y="601" width="95" height="95"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="95" id="LOd-s9-xcL"/>
@@ -48,11 +47,12 @@
                                 </constraints>
                                 <state key="normal" image="playButton"/>
                                 <connections>
+                                    <action selector="playButtonTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="USd-ec-tAG"/>
                                     <outletCollection property="gestureRecognizers" destination="O0d-aB-x1P" appends="YES" id="wYs-8f-Wlu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Z3-rA-3k6" userLabel="Replay Button">
-                                <rect key="frame" x="24" y="324.66666666666669" width="40" height="40"/>
+                                <rect key="frame" x="187" y="503.33333333333326" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="7mu-8o-Lk6"/>
                                     <constraint firstAttribute="height" constant="40" id="k4C-QE-ih3"/>
@@ -75,22 +75,22 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attribution" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uio-2u-vgG">
-                                <rect key="frame" x="332" y="103.33333333333333" width="72.333333333333314" height="18"/>
+                                <rect key="frame" x="171" y="118.33333333333333" width="72.333333333333314" height="17.999999999999986"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.25490196079999999" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="A0A-dh-IVn" userLabel="onboardingStack">
-                                <rect key="frame" x="424" y="229" width="240" height="48"/>
+                                <rect key="frame" x="87" y="501" width="240" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold for a moment of mindfulness." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIZ-Ey-eDG" userLabel="onboardingLabel">
-                                        <rect key="frame" x="0.0" y="0.0" width="213" height="48"/>
+                                        <rect key="frame" x="19.333333333333329" y="0.0" width="201.66666666666669" height="48"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" red="0.30196078430000001" green="0.25490196079999999" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="j5Q-xS-OAM" userLabel="onboardingArrow">
-                                        <rect key="frame" x="221" y="24" width="19" height="24"/>
+                                        <rect key="frame" x="110.66666666666666" y="56" width="19" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="LnT-B7-sNo"/>
                                             <constraint firstAttribute="width" constant="19" id="MPB-Vz-eZS"/>
@@ -169,13 +169,13 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="dsc-Si-bR3"/>
+                                <exclude reference="ePP-TK-BQZ"/>
                                 <exclude reference="erN-IG-dft"/>
                                 <exclude reference="va0-fg-BMH"/>
-                                <exclude reference="Yps-Xw-ccM"/>
-                                <exclude reference="Rnp-aS-lJo"/>
                                 <exclude reference="wFO-1R-jc2"/>
+                                <exclude reference="Yps-Xw-ccM"/>
                                 <exclude reference="Bfj-ha-LFn"/>
-                                <exclude reference="ePP-TK-BQZ"/>
+                                <exclude reference="Rnp-aS-lJo"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -186,18 +186,18 @@
                                 <exclude reference="EBN-qZ-6K8"/>
                                 <exclude reference="FO3-4m-ilQ"/>
                                 <include reference="dsc-Si-bR3"/>
+                                <include reference="ePP-TK-BQZ"/>
                                 <include reference="erN-IG-dft"/>
                                 <include reference="va0-fg-BMH"/>
-                                <exclude reference="Q99-XM-Bgb"/>
-                                <include reference="Yps-Xw-ccM"/>
-                                <exclude reference="F13-vd-4Ts"/>
-                                <include reference="Rnp-aS-lJo"/>
                                 <exclude reference="a2P-mL-tkG"/>
                                 <include reference="wFO-1R-jc2"/>
+                                <exclude reference="F13-vd-4Ts"/>
+                                <exclude reference="Q99-XM-Bgb"/>
+                                <include reference="Yps-Xw-ccM"/>
                                 <exclude reference="2UE-fY-0tQ"/>
                                 <exclude reference="Bfj-ha-LFn"/>
+                                <include reference="Rnp-aS-lJo"/>
                                 <exclude reference="Ubq-qd-BgE"/>
-                                <include reference="ePP-TK-BQZ"/>
                                 <exclude reference="ewR-qJ-UOl"/>
                             </mask>
                         </variation>
