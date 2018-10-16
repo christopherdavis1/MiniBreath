@@ -36,7 +36,9 @@ class ViewController: UIViewController {
     
     // The Long press!
     @IBAction func startButtonPressed(_ gestureRecognizer: UILongPressGestureRecognizer) {
-       
+        
+        gestureRecognizer.numberOfTouchesRequired = 1
+        
         // Start the long press
         if gestureRecognizer.state == .began {
             playButton.isHighlighted = true
