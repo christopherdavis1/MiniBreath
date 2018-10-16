@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     // The Long press!
     @IBAction func startButtonPressed(_ gestureRecognizer: UILongPressGestureRecognizer) {
-       
+        
         // Start the long press
         if gestureRecognizer.state == .began {
             if isRunning == true {
