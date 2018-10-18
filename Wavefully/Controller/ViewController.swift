@@ -49,6 +49,7 @@ class ViewController: UIViewController {
             }
         }
         
+        
         // If your finger moves at all during the long press...
         if gestureRecognizer.state == .changed {
             if isRunning == false {
