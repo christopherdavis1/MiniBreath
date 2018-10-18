@@ -21,11 +21,19 @@ class ViewController: UIViewController {
         resetCountdown()
     }
     
+    
+    @IBAction func playButtonTapped(_ sender: UIButton) {
+        playButton.isHighlighted = true
+        countdownStartSound()
+        hideOnboarding()
+        print("Initial press!")
+    }
+    
+    
     // The Long press!
     @IBAction func startButtonPressed(_ gestureRecognizer: UILongPressGestureRecognizer) {
         
         gestureRecognizer.numberOfTouchesRequired = 1
-        gestureRecognizer.numberOfTapsRequired = 0
         
         // Start the long press
         if gestureRecognizer.state == .began {
@@ -43,11 +51,9 @@ class ViewController: UIViewController {
         if gestureRecognizer.state == .changed {
             if isRunning == false {
                 runTimer()
-                hideOnboarding()
                 gestureRecognizer.minimumPressDuration = 0
                 playButton.isHighlighted = true
                 timerLabel.isHidden = false
-                countdownStartSound()
                 UIView.animate(withDuration: 0.4, delay: 0, options: [], animations: {
                     
                     self.timerLabel.transform = .identity
@@ -116,6 +122,7 @@ class ViewController: UIViewController {
     var baseTime = 0
     var isPaused = false
     var isRunning = false
+    var playButtonIsHighlighted = false
     var audioPlayer: AVAudioPlayer?
     var databaseRef: DatabaseReference!
     var quotes: Results<QuoteObject>!
@@ -164,6 +171,10 @@ class ViewController: UIViewController {
     // MARK: - MISC FUNCTIONS
     
     
+    // Highlighting the play button
+    
+    
+    
     // Onboarding Functions
     
     func showOnboarding() {
@@ -176,6 +187,7 @@ class ViewController: UIViewController {
             self.onboardingDownArrow.transform = onboardingArrowTransform
             self.onboardingDownArrow.alpha = 1
         }, completion: nil)
+        print("Onboarding is visible again.")
     }
     
     func hideOnboarding() {
@@ -259,6 +271,8 @@ class ViewController: UIViewController {
     func resetCountdown() {
         timerLabel.text = blankCountdown
         resetAnimationStartPositions()
+        showOnboarding()
+        bounceOnboarding()
         resetQuoteOpacity()
         hideQuoteAttribution()
         isRunning = false
@@ -292,7 +306,7 @@ class ViewController: UIViewController {
             self.quoteLabel.transform = quoteLabelTransform
             self.quoteLabel.alpha = 0
         }, completion: nil)
-        print("Your quote has been hidden.")
+        print("Your quote text has been hidden.")
     }
     
     func showQuoteAttribution() {
