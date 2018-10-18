@@ -13,7 +13,6 @@ import RealmSwift
 
 
 
-
 class ViewController: UIViewController {
     
     // MARK: - ACTIONS
@@ -48,7 +47,6 @@ class ViewController: UIViewController {
                 randomQuote()
             }
         }
-        
         
         // If your finger moves at all during the long press...
         if gestureRecognizer.state == .changed {
