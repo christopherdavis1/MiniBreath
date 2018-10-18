@@ -43,6 +43,7 @@ class ViewController: UIViewController {
                 gestureRecognizer.minimumPressDuration = 0
                 playButton.isHighlighted = true
             } else {
+                playButton.isHighlighted = true
                 randomQuote()
             }
         }
@@ -122,7 +123,6 @@ class ViewController: UIViewController {
     var baseTime = 0
     var isPaused = false
     var isRunning = false
-    var playButtonIsHighlighted = false
     var audioPlayer: AVAudioPlayer?
     var databaseRef: DatabaseReference!
     var quotes: Results<QuoteObject>!
@@ -147,6 +147,7 @@ class ViewController: UIViewController {
         quoteAttributionLabel.text = ""
         
         playButton.isHidden = false
+        playButton.isHighlighted = false
         timerLabel.alpha = 0
         replayButton.alpha = 0
         onboardingLabel.alpha = 0
@@ -169,10 +170,6 @@ class ViewController: UIViewController {
     
     
     // MARK: - MISC FUNCTIONS
-    
-    
-    // Highlighting the play button
-    
     
     
     // Onboarding Functions
