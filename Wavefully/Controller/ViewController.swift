@@ -26,15 +26,14 @@ class ViewController: UIViewController {
         
         gestureRecognizer.numberOfTouchesRequired = 1
         gestureRecognizer.numberOfTapsRequired = 0
-        gestureRecognizer.minimumPressDuration = 0
         
         // Start the long press
         if gestureRecognizer.state == .began {
             if isRunning == true {
                 runTimer()
                 isPaused = false
-                playButton.isHighlighted = true
                 gestureRecognizer.minimumPressDuration = 0
+                playButton.isHighlighted = true
             } else {
                 randomQuote()
             }
@@ -45,8 +44,8 @@ class ViewController: UIViewController {
             if isRunning == false {
                 runTimer()
                 hideOnboarding()
-                playButton.isHighlighted = true
                 gestureRecognizer.minimumPressDuration = 0
+                playButton.isHighlighted = true
                 timerLabel.isHidden = false
                 countdownStartSound()
                 UIView.animate(withDuration: 0.4, delay: 0, options: [], animations: {
