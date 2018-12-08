@@ -71,6 +71,7 @@ class ViewController: UIViewController {
                 timer.invalidate()
                 print("Your paused your timer.")
                 playButton.isHighlighted = false
+                pulsateRipples()
             } else {
                 runTimer()
                 isPaused = false
@@ -108,7 +109,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var replayButton: UIButton!
     @IBOutlet weak var onboardingLabel: UILabel!
     @IBOutlet weak var onboardingDownArrow: UIImageView!
-    
+    @IBOutlet weak var circleView4: UIView!
+    @IBOutlet weak var circleView3: UIView!
+    @IBOutlet weak var circleView2: UIView!
+    @IBOutlet weak var circleView1: UIView!
     
     
     // MARK: - VARIABLES
@@ -123,6 +127,7 @@ class ViewController: UIViewController {
     var baseTime = 0
     var isPaused = false
     var isRunning = false
+    var isReset = false
     var audioPlayer: AVAudioPlayer?
     var databaseRef: DatabaseReference!
     var quotes: Results<QuoteObject>!
@@ -137,6 +142,16 @@ class ViewController: UIViewController {
     // MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set the rounded corners for the ripples
+        circleView4.layer.cornerRadius = circleView4.frame.size.width / 2
+        circleView3.layer.cornerRadius = circleView3.frame.size.width / 2
+        circleView2.layer.cornerRadius = circleView2.frame.size.width / 2
+        circleView1.layer.cornerRadius = circleView1.frame.size.width / 2
+        
+        setBaseColors()
+        pulsateRipples()
+        
         
         // Connect to Firebase
         databaseRef = Database.database().reference()
@@ -170,6 +185,24 @@ class ViewController: UIViewController {
     
     
     // MARK: - MISC FUNCTIONS
+    
+    
+    // MARK: - Functions to set UI:
+    // Set starting colors and opacities
+    
+    func setBaseColors() {
+        view.setGradientBackground(colorOne: Colors.darkBackground, colorTwo: Colors.lightBackground)
+        circleView4.setRoundedGradientBackground(colorOne: Colors.baseRed, colorTwo: Colors.lightBackground)
+        circleView4.layer.opacity = 0.06
+        circleView3.setRoundedGradientBackground(colorOne: Colors.baseRed, colorTwo: Colors.lightBackground)
+        circleView3.layer.opacity = 0.10
+        circleView2.setRoundedGradientBackground(colorOne: Colors.baseRed, colorTwo: Colors.lightBackground)
+        circleView2.layer.opacity = 0.25
+        circleView1.setRoundedGradientBackground(colorOne: Colors.baseRed, colorTwo: Colors.lightBackground)
+        circleView1.layer.opacity = 0.90
+    }
+    
+    
     
     
     // Onboarding Functions
@@ -224,6 +257,7 @@ class ViewController: UIViewController {
             print(baseTime)
             increaseQuoteOpacity()
             timerLabel.text = timeString(time: TimeInterval(seconds))
+            transfromShapes()
         }
         else {
             countdownFinished()
@@ -241,8 +275,89 @@ class ViewController: UIViewController {
     }
     
     
+    
+    // MARK: - Functions for transforming and pulsing the circles
+    // Grow the circles
+    func transfromShapes() {
+        let circles = [circleView4, circleView3, circleView2, circleView1]
+        
+        for circle in circles {
+            let currentShapeHeight = circle?.frame.size.height
+            
+            // Let's start by setting constants for the variables that we'll be incrimenting by
+            let incrimentXBy: CGFloat = 0.38
+            let incrimentYBy: CGFloat = 0.38
+            
+            // Get the current scale of the X and Y axis
+            let currentXScale = circle?.transform.a
+            let currentYScale = circle?.transform.d
+            
+            // Pass the new scale
+            let newXScale = currentXScale! + incrimentXBy
+            let newYScale = currentYScale! + incrimentYBy
+            print(currentShapeHeight as Any)
+            
+            // transform the width and height of the shape with these numbers
+            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+                circle?.transform = CGAffineTransform(scaleX: newXScale, y: newYScale)
+            }, completion: nil)
+
+            if isRunning != true {
+                pulsateRipples()
+            }
+        }
+    }
+    
+    
+    // When the countdown is finished, finish the fill
+    func finishFill() {
+        let circles = [circleView4, circleView3, circleView2, circleView1]
+        
+        for circle in circles {
+            // Get the heights of the two views
+            let heightOfView = view.frame.height
+            let currentCircleSize = circle!.frame.size.height
+            
+            // If we're about at the end of our time
+            if currentCircleSize != heightOfView {
+                UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
+                    circle!.transform = CGAffineTransform(scaleX: 25, y: 25)
+                }, completion: nil)
+            }
+        }
+    }
+    
+    
+    // Pulsate the circles
+    func pulsateRipples() {
+        let circles = [circleView4, circleView3, circleView2, circleView1]
+        
+        let defaultRippleOptions = [0.05, 0.08, 0.06, 0.07]
+        let randomRippleOption = defaultRippleOptions.randomElement()
+        
+        for circle in circles {
+            // get the height of the shape in the moment
+            let animateSizeBy = randomRippleOption
+            
+            let currentScaleX = circle?.transform.a
+            let currentScaleY = circle?.transform.d
+            let newScaleX = currentScaleX! + CGFloat(animateSizeBy!)
+            let newScaleY = currentScaleY! + CGFloat(animateSizeBy!)
+            
+            UIView.animate(withDuration: 1.0, delay: 0.25, options: [.repeat, .autoreverse, .curveEaseInOut], animations: {
+                circle?.transform = CGAffineTransform(scaleX: newScaleX, y: newScaleY)
+            }, completion: nil)
+        }
+    }
+    
+    
+    
+    
+    
+    // MARK: - Functions for finishing and resetting the countdown.
     // The function that dictates what happens when the countdown ends
     func countdownFinished() {
+        finishFill()
         isRunning = false
         isPaused = false
         
@@ -259,6 +374,7 @@ class ViewController: UIViewController {
         impact.impactOccurred()
         timerLabel.text = countdownSuccessMessage
         quoteLabel.alpha = 1
+        circleView1.layer.opacity = 1.0
         moveCompletedQuote()
         
         print("Your countdown has finished.")
@@ -274,23 +390,42 @@ class ViewController: UIViewController {
         hideQuoteAttribution()
         isRunning = false
         isPaused = false
+        isReset = true
         seconds = 10
         baseTime = 0
         resetButtonSound()
         impact.impactOccurred()
         print("You reset your timer.")
+        
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0.25, options: .curveEaseOut, animations: {
+            self.circleView1.transform = CGAffineTransform.identity
+            self.circleView2.transform = CGAffineTransform.identity
+            self.circleView3.transform = CGAffineTransform.identity
+            self.circleView4.transform = CGAffineTransform.identity
+            self.setBaseColors()
+        }, completion: { _ in
+            if self.circleView1.frame.size.width <= 172 {
+                self.pulsateRipples()
+            }
+        })
+        
     }
+    
+    
+    
     
     // This function is for changing the opacity of the quote
     func increaseQuoteOpacity() {
-        if baseTime == 0 {
+        if baseTime <= 6 {
             quoteLabel.alpha = 0
         } else if baseTime >= 10 {
-            quoteLabel.alpha = 1
+            UIView.animate(withDuration: 0.6, delay: 0, options: [.curveEaseIn], animations: {
+                self.quoteLabel.alpha = 1
+            }, completion: nil)
             showQuoteAttribution()
             print("Your quote has arrived!")
         } else {
-            UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseIn], animations: {
+            UIView.animate(withDuration: 0.6, delay: 0, options: [.curveEaseIn], animations: {
                 self.quoteLabel.alpha += 0.1
             }, completion: nil)
             

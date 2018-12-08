@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		43F5A73992EFF5014F3AB8A6 /* Pods_Wavefully.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB6A000ADFD8DE51A7AB378 /* Pods_Wavefully.framework */; };
+		8370ACC921BC3A53009B2F39 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8370ACC821BC3A53009B2F39 /* Constants.swift */; };
+		8370ACCB21BC3A89009B2F39 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8370ACCA21BC3A89009B2F39 /* UIView+Extensions.swift */; };
 		8387FF5E20A529980082CA78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387FF5D20A529980082CA78 /* AppDelegate.swift */; };
 		8387FF6020A529980082CA78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387FF5F20A529980082CA78 /* ViewController.swift */; };
 		8387FF6320A529980082CA78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8387FF6120A529980082CA78 /* Main.storyboard */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		77EC6452AA45A06DCC1F259A /* Pods-Wavefully.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wavefully.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wavefully/Pods-Wavefully.release.xcconfig"; sourceTree = "<group>"; };
+		8370ACC821BC3A53009B2F39 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8370ACCA21BC3A89009B2F39 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		8387FF5A20A529980082CA78 /* Wavefully.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wavefully.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8387FF5D20A529980082CA78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8387FF5F20A529980082CA78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,15 +79,15 @@
 		8387FF5C20A529980082CA78 /* Wavefully */ = {
 			isa = PBXGroup;
 			children = (
-				8387FF7220A52DB00082CA78 /* Music */,
-				8387FF6720A529990082CA78 /* Assets.xcassets */,
 				8387FF7320A52DD60082CA78 /* Storyboards */,
 				83CBD2EC20CDD43A0056F07B /* Model */,
 				83CBD2ED20CDD4430056F07B /* Controller */,
-				8387FF5D20A529980082CA78 /* AppDelegate.swift */,
-				8387FF6420A529980082CA78 /* Wavefully.xcdatamodeld */,
-				83CBD2F020CE0E810056F07B /* Extensions */,
+				83CBD2F020CE0E810056F07B /* Constants & Extensions */,
+				8387FF6720A529990082CA78 /* Assets.xcassets */,
+				8387FF7220A52DB00082CA78 /* Music */,
 				8394714620D0D40E001EEADC /* plists */,
+				8387FF6420A529980082CA78 /* Wavefully.xcdatamodeld */,
+				8387FF5D20A529980082CA78 /* AppDelegate.swift */,
 			);
 			path = Wavefully;
 			sourceTree = "<group>";
@@ -132,12 +136,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		83CBD2F020CE0E810056F07B /* Extensions */ = {
+		83CBD2F020CE0E810056F07B /* Constants & Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				83CBD2EE20CE0E7D0056F07B /* Arrays.swift */,
+				8370ACCA21BC3A89009B2F39 /* UIView+Extensions.swift */,
+				8370ACC821BC3A53009B2F39 /* Constants.swift */,
 			);
-			path = Extensions;
+			path = "Constants & Extensions";
 			sourceTree = "<group>";
 		};
 		B5B445C7B3C5D15B89B1B35F /* Pods */ = {
@@ -282,11 +288,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8370ACCB21BC3A89009B2F39 /* UIView+Extensions.swift in Sources */,
 				8387FF6020A529980082CA78 /* ViewController.swift in Sources */,
 				8387FF5E20A529980082CA78 /* AppDelegate.swift in Sources */,
 				83E81AF02117B2C70026DF76 /* QuoteObject.swift in Sources */,
 				8387FF6620A529980082CA78 /* Wavefully.xcdatamodeld in Sources */,
 				83CBD2EF20CE0E7D0056F07B /* Arrays.swift in Sources */,
+				8370ACC921BC3A53009B2F39 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
