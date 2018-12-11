@@ -37,32 +37,40 @@ class ViewController: UIViewController {
         
         // Start the long press
         if gestureRecognizer.state == .began {
+            
+            gestureRecognizer.minimumPressDuration = 0.5
+            playButton.isHighlighted = true
+
             if isRunning == true {
                 runTimer()
                 isPaused = false
-                gestureRecognizer.minimumPressDuration = 0
-                playButton.isHighlighted = true
             } else {
-                playButton.isHighlighted = true
                 randomQuote()
             }
         }
         
         // If your finger moves at all during the long press...
         if gestureRecognizer.state == .changed {
+
+            gestureRecognizer.minimumPressDuration = 0.5
+            playButton.isHighlighted = true
+
+            print("Your press changed")
+            
             if isRunning == false {
                 runTimer()
-                gestureRecognizer.minimumPressDuration = 0
-                playButton.isHighlighted = true
                 timerLabel.isHidden = false
                 UIView.animate(withDuration: 0.4, delay: 0, options: [], animations: {
-                    
+
                     self.timerLabel.transform = .identity
                     self.timerLabel.alpha = 1
-                    
+
                 }, completion: nil)
+            } else {
+                randomQuote()
             }
         }
+        
         
         // When the user lifts a finger off of the long press...
         if gestureRecognizer.state == .ended {
