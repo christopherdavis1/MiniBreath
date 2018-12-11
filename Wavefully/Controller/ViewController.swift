@@ -34,35 +34,52 @@ class ViewController: UIViewController {
     @IBAction func startButtonPressed(_ gestureRecognizer: UILongPressGestureRecognizer) {
         
         gestureRecognizer.numberOfTouchesRequired = 1
+        gestureRecognizer.minimumPressDuration = 0
         
         // Start the long press
         if gestureRecognizer.state == .began {
+            playButton.isHighlighted = true
+            
             if isRunning == true {
                 runTimer()
                 isPaused = false
-                gestureRecognizer.minimumPressDuration = 0
-                playButton.isHighlighted = true
+                
+                UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+                    self.transfromShapeSmall()
+                }, completion: nil)
+                
             } else {
-                playButton.isHighlighted = true
                 randomQuote()
             }
         }
         
         // If your finger moves at all during the long press...
         if gestureRecognizer.state == .changed {
+            playButton.isHighlighted = true
+
+            print("Your press changed")
+            
             if isRunning == false {
                 runTimer()
-                gestureRecognizer.minimumPressDuration = 0
-                playButton.isHighlighted = true
                 timerLabel.isHidden = false
                 UIView.animate(withDuration: 0.4, delay: 0, options: [], animations: {
-                    
+
                     self.timerLabel.transform = .identity
                     self.timerLabel.alpha = 1
-                    
+
                 }, completion: nil)
             }
         }
+        
+        
+        if gestureRecognizer.state == .cancelled {
+            if isRunning == true {
+                isPaused = true
+                isRunning = false
+                pulsateRipples()
+            }
+        }
+        
         
         // When the user lifts a finger off of the long press...
         if gestureRecognizer.state == .ended {
@@ -129,6 +146,7 @@ class ViewController: UIViewController {
     var isPaused = false
     var isRunning = false
     var isReset = false
+    var countdownTimerChimed = false
     var audioPlayer: AVAudioPlayer?
     var databaseRef: DatabaseReference!
     var quotes: Results<QuoteObject>!
@@ -168,8 +186,6 @@ class ViewController: UIViewController {
         replayButton.alpha = 0
         onboardingLabel.alpha = 0
         onboardingDownArrow.alpha = 0
-        showOnboarding()
-        bounceOnboarding()
         
         print(allQuotes.count)
         
@@ -178,9 +194,9 @@ class ViewController: UIViewController {
     
     // MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
-    
         resetAnimationStartPositions()
-        
+        showOnboarding()
+        bounceOnboarding()
     }
     
     
@@ -210,12 +226,10 @@ class ViewController: UIViewController {
     
     func showOnboarding() {
         UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseIn], animations: {
-            let onboardingLabelTransform = CGAffineTransform.init(translationX: 0, y: 6)
-            self.onboardingLabel.transform = onboardingLabelTransform
+            self.onboardingLabel.transform = .identity
             self.onboardingLabel.alpha = 1
             
-            let onboardingArrowTransform = CGAffineTransform.init(translationX: 0, y: 8)
-            self.onboardingDownArrow.transform = onboardingArrowTransform
+            self.onboardingDownArrow.transform = .identity
             self.onboardingDownArrow.alpha = 1
         }, completion: nil)
         print("Onboarding is visible again.")
@@ -223,7 +237,12 @@ class ViewController: UIViewController {
     
     func hideOnboarding() {
         UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
+            let onboardingLabelTransform = CGAffineTransform.init(translationX: 0, y: 6)
+            self.onboardingLabel.transform = onboardingLabelTransform
             self.onboardingLabel.alpha = 0
+            
+            let onboardingArrowTransform = CGAffineTransform.init(translationX: 0, y: 8)
+            self.onboardingDownArrow.transform = onboardingArrowTransform
             self.onboardingDownArrow.alpha = 0
         }, completion: nil)
     }
@@ -309,6 +328,36 @@ class ViewController: UIViewController {
         }
     }
     
+    func transfromShapeSmall() {
+        let circles = [circleView4, circleView3, circleView2, circleView1]
+        
+        for circle in circles {
+            let currentShapeHeight = circle?.frame.size.height
+            
+            // Let's start by setting constants for the variables that we'll be incrimenting by
+            let incrimentXBy: CGFloat = 0.16
+            let incrimentYBy: CGFloat = 0.16
+            
+            // Get the current scale of the X and Y axis
+            let currentXScale = circle?.transform.a
+            let currentYScale = circle?.transform.d
+            
+            // Pass the new scale
+            let newXScale = currentXScale! + incrimentXBy
+            let newYScale = currentYScale! + incrimentYBy
+            print(currentShapeHeight as Any)
+            
+            // transform the width and height of the shape with these numbers
+            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+                circle?.transform = CGAffineTransform(scaleX: newXScale, y: newYScale)
+            }, completion: nil)
+            
+            if isRunning != true {
+                pulsateRipples()
+            }
+        }
+    }
+    
     
     // When the countdown is finished, finish the fill
     func finishFill() {
@@ -370,9 +419,13 @@ class ViewController: UIViewController {
             self.playButton.alpha = 0
         }, completion: nil)
         
+        if seconds < 1 && countdownTimerChimed == false {
+            countdownFinishedSound()
+            impact.impactOccurred()
+            countdownTimerChimed = true
+        }
+        
         timer.invalidate()
-        countdownFinishedSound()
-        impact.impactOccurred()
         timerLabel.text = countdownSuccessMessage
         quoteLabel.alpha = 1
         circleView1.layer.opacity = 1.0
@@ -385,13 +438,12 @@ class ViewController: UIViewController {
     func resetCountdown() {
         timerLabel.text = blankCountdown
         resetAnimationStartPositions()
-        showOnboarding()
-        bounceOnboarding()
         resetQuoteOpacity()
         hideQuoteAttribution()
         isRunning = false
         isPaused = false
         isReset = true
+        countdownTimerChimed = false
         seconds = 10
         baseTime = 0
         resetButtonSound()
@@ -480,7 +532,6 @@ class ViewController: UIViewController {
             // self.playButton.transform = .identity
             self.playButton.alpha = 1
         }, completion: nil)
-        
     }
 
     
