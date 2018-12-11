@@ -80,6 +80,7 @@ class ViewController: UIViewController {
     }
     
     
+    
     // MARK: - OUTLETS
     @IBOutlet weak var quoteLabel: UILabel! {
         didSet {
