@@ -144,7 +144,7 @@ class ViewController: UIViewController {
     var defaultAttributionText = "Test"
     var quoteIsHidden = true
     var blankCountdown = "10"
-    var countdownSuccessMessage = "Namaste"
+    var countdownSuccessMessage = "Reset"
     var timer = Timer()
     var seconds = 10
     var zero = "0"
@@ -221,6 +221,8 @@ class ViewController: UIViewController {
         circleView2.layer.opacity = 0.25
         circleView1.setRoundedGradientBackground(colorOne: Colors.baseRed, colorTwo: Colors.lightBackground)
         circleView1.layer.opacity = 0.90
+        namasteText.textColor = Colors.lightGreyText
+        namasteText.layer.opacity = 1.0
     }
     
     
@@ -390,6 +392,9 @@ class ViewController: UIViewController {
                 }, completion: nil)
             }
         }
+        
+        namasteText.textColor = .white
+        
     }
     
     
@@ -475,6 +480,10 @@ class ViewController: UIViewController {
             if self.circleView1.frame.size.width <= 172 {
                 self.pulsateRipples()
             }
+        })
+        
+        UIView.animate(withDuration: 0.5, delay: 1.5, animations: {
+            self.namasteText.textColor = Colors.lightGreyText
         })
         
     }
