@@ -8,7 +8,7 @@ target 'Wavefully' do
   use_frameworks!
 
   # Pods for Wavefully
-
+  
   pod 'RealmSwift'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
