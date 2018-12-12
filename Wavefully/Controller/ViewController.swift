@@ -497,6 +497,7 @@ class ViewController: UIViewController {
         }
     }
     
+    
     func resetQuoteOpacity() {
         UIView.animate(withDuration: 0.4, delay: 0.2, options: [.curveEaseOut], animations: {
             let quoteLabelTransform = CGAffineTransform.init(translationX: 0, y: -30)
