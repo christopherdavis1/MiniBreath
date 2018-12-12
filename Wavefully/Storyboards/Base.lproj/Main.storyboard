@@ -114,29 +114,6 @@
                                     <outletCollection property="gestureRecognizers" destination="O0d-aB-x1P" appends="YES" id="wYs-8f-Wlu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Z3-rA-3k6" userLabel="Replay Button">
-                                <rect key="frame" x="167.5" y="432.5" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="7mu-8o-Lk6"/>
-                                    <constraint firstAttribute="height" constant="40" id="k4C-QE-ih3"/>
-                                </constraints>
-                                <state key="normal" image="replayButton"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="7mu-8o-Lk6"/>
-                                        <exclude reference="k4C-QE-ih3"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=compact">
-                                    <mask key="constraints">
-                                        <exclude reference="7mu-8o-Lk6"/>
-                                        <exclude reference="k4C-QE-ih3"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="replayButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LU2-P4-hvg"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYP-T1-A2c" userLabel="resetButtonContainer">
                                 <rect key="frame" x="158.5" y="414.5" width="58" height="58"/>
                                 <subviews>
@@ -227,24 +204,16 @@
                             <constraint firstItem="hYP-T1-A2c" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MGo-o8-WVi"/>
                             <constraint firstItem="W9F-LE-LAi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ofp-Oe-leV"/>
                             <constraint firstItem="PIt-Yl-go5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PTl-e6-Bra"/>
-                            <constraint firstItem="8Z3-rA-3k6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Q99-XM-Bgb"/>
                             <constraint firstItem="ulm-Vq-Kpp" firstAttribute="top" secondItem="A0A-dh-IVn" secondAttribute="bottom" constant="20" id="Rnp-aS-lJo">
                                 <variation key="heightClass=compact" constant="125"/>
                             </constraint>
                             <constraint firstItem="W9F-LE-LAi" firstAttribute="top" secondItem="A0A-dh-IVn" secondAttribute="bottom" constant="48" id="Ubq-qd-BgE"/>
-                            <constraint firstItem="8Z3-rA-3k6" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Yps-Xw-ccM">
-                                <variation key="heightClass=compact" constant="-20"/>
-                            </constraint>
-                            <constraint firstItem="gby-HU-feK" firstAttribute="top" secondItem="8Z3-rA-3k6" secondAttribute="bottom" constant="8" id="a2P-mL-tkG"/>
                             <constraint firstItem="ulm-Vq-Kpp" firstAttribute="top" secondItem="gby-HU-feK" secondAttribute="bottom" constant="16" id="b5D-id-QgQ">
                                 <variation key="heightClass=compact" constant="16"/>
                             </constraint>
                             <constraint firstItem="j2o-2Z-gN1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="bqp-Zh-2kn">
                                 <variation key="heightClass=compact" constant="64"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="80"/>
-                            </constraint>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="8Z3-rA-3k6" secondAttribute="leading" id="dsc-Si-bR3">
-                                <variation key="heightClass=compact" constant="-24"/>
                             </constraint>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="centerX" secondItem="A0A-dh-IVn" secondAttribute="centerX" id="ePP-TK-BQZ">
                                 <variation key="heightClass=compact" constant="0.0"/>
@@ -263,11 +232,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="dsc-Si-bR3"/>
                                 <exclude reference="ePP-TK-BQZ"/>
                                 <exclude reference="erN-IG-dft"/>
                                 <exclude reference="va0-fg-BMH"/>
-                                <exclude reference="Yps-Xw-ccM"/>
                                 <exclude reference="wFO-1R-jc2"/>
                                 <exclude reference="Bfj-ha-LFn"/>
                                 <exclude reference="Rnp-aS-lJo"/>
@@ -281,15 +248,11 @@
                             <mask key="constraints">
                                 <exclude reference="EBN-qZ-6K8"/>
                                 <exclude reference="FO3-4m-ilQ"/>
-                                <include reference="dsc-Si-bR3"/>
                                 <include reference="ePP-TK-BQZ"/>
                                 <include reference="erN-IG-dft"/>
                                 <include reference="va0-fg-BMH"/>
                                 <exclude reference="F13-vd-4Ts"/>
                                 <exclude reference="Ubq-qd-BgE"/>
-                                <exclude reference="Q99-XM-Bgb"/>
-                                <include reference="Yps-Xw-ccM"/>
-                                <exclude reference="a2P-mL-tkG"/>
                                 <exclude reference="wFO-1R-jc2"/>
                                 <exclude reference="2UE-fY-0tQ"/>
                                 <exclude reference="Bfj-ha-LFn"/>
@@ -311,7 +274,6 @@
                         <outlet property="playButton" destination="ulm-Vq-Kpp" id="AVx-UE-1f9"/>
                         <outlet property="quoteAttributionLabel" destination="Uio-2u-vgG" id="hfw-sY-RxV"/>
                         <outlet property="quoteLabel" destination="j2o-2Z-gN1" id="Jqk-br-4yB"/>
-                        <outlet property="replayButton" destination="8Z3-rA-3k6" id="jZC-1y-oyS"/>
                         <outlet property="resetButtonContainer" destination="hYP-T1-A2c" id="Gne-Ng-U7u"/>
                         <outlet property="resetIcon" destination="RC1-30-uTs" id="uld-yL-pcG"/>
                         <outlet property="timerLabel" destination="gby-HU-feK" id="R8W-ME-D0f"/>
@@ -331,7 +293,6 @@
     <resources>
         <image name="RedArrow" width="28" height="28"/>
         <image name="bubble" width="96" height="96"/>
-        <image name="replayButton" width="40" height="40"/>
         <image name="resetIcon" width="36" height="37"/>
     </resources>
 </document>

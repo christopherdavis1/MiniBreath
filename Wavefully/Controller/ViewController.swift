@@ -22,12 +22,6 @@ class ViewController: UIViewController {
         resetCountdown()
     }
     
-    
-//    @IBAction func replayButtonTapped(_ sender: UIButton) {
-//        resetCountdown()
-//    }
-    
-    
     @IBAction func playButtonTapped(_ sender: UIButton) {
         playButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         playButton.isHighlighted = true
@@ -134,7 +128,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var namasteText: UILabel!
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var replayButton: UIButton!
     @IBOutlet weak var resetButtonContainer: UIView!
     @IBOutlet weak var resetIcon: UIImageView!
     @IBOutlet weak var onboardingWelcomeLabel: UILabel!
@@ -197,7 +190,6 @@ class ViewController: UIViewController {
         playButton.isHidden = false
         playButton.isHighlighted = false
         timerLabel.alpha = 0
-        replayButton.alpha = 0
         resetButtonContainer.alpha = 0
         onboardingLabel.alpha = 0
         onboardingWelcomeLabel.alpha = 0
