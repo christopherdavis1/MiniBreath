@@ -389,7 +389,13 @@ class ViewController: UIViewController {
             if currentCircleSize != heightOfView {
                 UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
                     circle!.transform = CGAffineTransform(scaleX: 25, y: 25)
-                }, completion: nil)
+                }, completion: { _ in
+                    UIView.animate(withDuration: 0.6, delay: 0, options: [.curveEaseIn], animations: {
+                        self.quoteLabel.alpha = 1
+                    }, completion: nil)
+                    self.showQuoteAttribution()
+                    self.moveCompletedQuote()
+                })
             }
         }
         
@@ -449,7 +455,7 @@ class ViewController: UIViewController {
         timerLabel.text = countdownSuccessMessage
         quoteLabel.alpha = 1
         circleView1.layer.opacity = 1.0
-        moveCompletedQuote()
+        //moveCompletedQuote()
         
         print("Your countdown has finished.")
     }
@@ -488,26 +494,6 @@ class ViewController: UIViewController {
         
     }
     
-    
-    
-    
-    // This function is for changing the opacity of the quote
-    func increaseQuoteOpacity() {
-        if baseTime < 10 {
-            quoteLabel.alpha = 0
-        } else if baseTime >= 10 {
-            UIView.animate(withDuration: 0.6, delay: 0, options: [.curveEaseIn], animations: {
-                self.quoteLabel.alpha = 1
-            }, completion: nil)
-            showQuoteAttribution()
-            print("Your quote has arrived!")
-        } else {
-            UIView.animate(withDuration: 0.6, delay: 0, options: [.curveEaseIn], animations: {
-                self.quoteLabel.alpha += 0.1
-            }, completion: nil)
-            
-        }
-    }
     
     
     func resetQuoteOpacity() {
