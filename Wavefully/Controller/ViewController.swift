@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
+        playButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         playButton.isHighlighted = true
         countdownStartSound()
         hideOnboarding()
@@ -34,7 +35,8 @@ class ViewController: UIViewController {
     @IBAction func startButtonPressed(_ gestureRecognizer: UILongPressGestureRecognizer) {
         
         gestureRecognizer.numberOfTouchesRequired = 1
-        gestureRecognizer.minimumPressDuration = 0
+        gestureRecognizer.minimumPressDuration = 0.5
+        playButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         
         // Start the long press
         if gestureRecognizer.state == .began {
@@ -84,6 +86,7 @@ class ViewController: UIViewController {
         // When the user lifts a finger off of the long press...
         if gestureRecognizer.state == .ended {
             if isPaused == false {
+                playButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 isPaused = true
                 timer.invalidate()
                 print("Your paused your timer.")
@@ -125,6 +128,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var replayButton: UIButton!
+    @IBOutlet weak var onboardingWelcomeLabel: UILabel!
     @IBOutlet weak var onboardingLabel: UILabel!
     @IBOutlet weak var onboardingDownArrow: UIImageView!
     @IBOutlet weak var circleView4: UIView!
@@ -185,18 +189,15 @@ class ViewController: UIViewController {
         timerLabel.alpha = 0
         replayButton.alpha = 0
         onboardingLabel.alpha = 0
+        onboardingWelcomeLabel.alpha = 0
         onboardingDownArrow.alpha = 0
         
-        print(allQuotes.count)
-        
-    }
-    
-    
-    // MARK: - VIEW WILL APPEAR
-    override func viewWillAppear(_ animated: Bool) {
         resetAnimationStartPositions()
         showOnboarding()
         bounceOnboarding()
+        
+        print(allQuotes.count)
+        
     }
     
     
@@ -226,6 +227,9 @@ class ViewController: UIViewController {
     
     func showOnboarding() {
         UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseIn], animations: {
+            self.onboardingWelcomeLabel.transform = .identity
+            self.onboardingWelcomeLabel.alpha = 1
+            
             self.onboardingLabel.transform = .identity
             self.onboardingLabel.alpha = 1
             
@@ -237,6 +241,10 @@ class ViewController: UIViewController {
     
     func hideOnboarding() {
         UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
+            let onboardingWelcomeLabelTransform = CGAffineTransform.init(translationX: 0, y: 4)
+            self.onboardingWelcomeLabel.transform = onboardingWelcomeLabelTransform
+            self.onboardingWelcomeLabel.alpha = 0
+            
             let onboardingLabelTransform = CGAffineTransform.init(translationX: 0, y: 6)
             self.onboardingLabel.transform = onboardingLabelTransform
             self.onboardingLabel.alpha = 0
@@ -249,6 +257,9 @@ class ViewController: UIViewController {
     
     func bounceOnboarding() {
         UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
+            let bounceOnboardingWelcomeLabel = CGAffineTransform.init(translationX: 0, y: -12)
+            self.onboardingWelcomeLabel.transform = bounceOnboardingWelcomeLabel
+            
             let bounceOnboardingLabel = CGAffineTransform.init(translationX: 0, y: -10)
             self.onboardingLabel.transform = bounceOnboardingLabel
             
@@ -263,6 +274,7 @@ class ViewController: UIViewController {
         isRunning = true
         // Hide onboarding UI
         UIView.animate(withDuration: 0, delay: 0.5, options: [], animations: {
+            self.onboardingWelcomeLabel.isHidden = true
             self.onboardingLabel.isHidden = true
             self.onboardingDownArrow.isHidden = true
         }, completion: nil)
@@ -469,7 +481,7 @@ class ViewController: UIViewController {
     
     // This function is for changing the opacity of the quote
     func increaseQuoteOpacity() {
-        if baseTime <= 6 {
+        if baseTime < 10 {
             quoteLabel.alpha = 0
         } else if baseTime >= 10 {
             UIView.animate(withDuration: 0.6, delay: 0, options: [.curveEaseIn], animations: {
