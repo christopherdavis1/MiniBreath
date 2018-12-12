@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		43F5A73992EFF5014F3AB8A6 /* Pods_Wavefully.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB6A000ADFD8DE51A7AB378 /* Pods_Wavefully.framework */; };
+		19359105A1D1367B8D988596 /* Pods_Wavefully.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CBA94CFD262A483C9BFB5B /* Pods_Wavefully.framework */; };
 		8370ACC921BC3A53009B2F39 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8370ACC821BC3A53009B2F39 /* Constants.swift */; };
 		8370ACCB21BC3A89009B2F39 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8370ACCA21BC3A89009B2F39 /* UIView+Extensions.swift */; };
 		837DB08821BC4F51003EF5A6 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 837DB07E21BC4F50003EF5A6 /* Rubik-Light.ttf */; };
@@ -35,7 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		77EC6452AA45A06DCC1F259A /* Pods-Wavefully.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wavefully.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wavefully/Pods-Wavefully.release.xcconfig"; sourceTree = "<group>"; };
+		73F8F83391427D843E40BC79 /* Pods-Wavefully.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wavefully.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wavefully/Pods-Wavefully.release.xcconfig"; sourceTree = "<group>"; };
+		77CBA94CFD262A483C9BFB5B /* Pods_Wavefully.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wavefully.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8370ACC821BC3A53009B2F39 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8370ACCA21BC3A89009B2F39 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		837DB07E21BC4F50003EF5A6 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
@@ -62,8 +63,7 @@
 		8394714420D0D06B001EEADC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		83CBD2EE20CE0E7D0056F07B /* Arrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrays.swift; sourceTree = "<group>"; };
 		83E81AEF2117B2C70026DF76 /* QuoteObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteObject.swift; sourceTree = "<group>"; };
-		9EB6A000ADFD8DE51A7AB378 /* Pods_Wavefully.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wavefully.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DCBA6601A1A8A966E7E4A90F /* Pods-Wavefully.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wavefully.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wavefully/Pods-Wavefully.debug.xcconfig"; sourceTree = "<group>"; };
+		F713BFC066FD274EC461F7B9 /* Pods-Wavefully.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wavefully.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wavefully/Pods-Wavefully.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,13 +71,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43F5A73992EFF5014F3AB8A6 /* Pods_Wavefully.framework in Frameworks */,
+				19359105A1D1367B8D988596 /* Pods_Wavefully.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E2EF0AD81D11583616D39C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77CBA94CFD262A483C9BFB5B /* Pods_Wavefully.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		837DB07D21BC4F36003EF5A6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,8 +109,8 @@
 			children = (
 				8387FF5C20A529980082CA78 /* Wavefully */,
 				8387FF5B20A529980082CA78 /* Products */,
-				B5B445C7B3C5D15B89B1B35F /* Pods */,
-				DA570EFEE67EC3CC82B98555 /* Frameworks */,
+				C65203D33D77347351D0B479 /* Pods */,
+				7E2EF0AD81D11583616D39C2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -185,21 +193,13 @@
 			path = "Constants & Extensions";
 			sourceTree = "<group>";
 		};
-		B5B445C7B3C5D15B89B1B35F /* Pods */ = {
+		C65203D33D77347351D0B479 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DCBA6601A1A8A966E7E4A90F /* Pods-Wavefully.debug.xcconfig */,
-				77EC6452AA45A06DCC1F259A /* Pods-Wavefully.release.xcconfig */,
+				F713BFC066FD274EC461F7B9 /* Pods-Wavefully.debug.xcconfig */,
+				73F8F83391427D843E40BC79 /* Pods-Wavefully.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		DA570EFEE67EC3CC82B98555 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9EB6A000ADFD8DE51A7AB378 /* Pods_Wavefully.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,11 +209,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8387FF6F20A529990082CA78 /* Build configuration list for PBXNativeTarget "Wavefully" */;
 			buildPhases = (
-				FB83C273FC69F9A37A3D4DB1 /* [CP] Check Pods Manifest.lock */,
+				796E6AF523CA1D092A1A8D07 /* [CP] Check Pods Manifest.lock */,
 				8387FF5620A529980082CA78 /* Sources */,
 				8387FF5720A529980082CA78 /* Frameworks */,
 				8387FF5820A529980082CA78 /* Resources */,
-				5AC41A5C97E9BA6F0ABDBAE3 /* [CP] Embed Pods Frameworks */,
+				F3D1E87CB2071CB259B4B8E4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -286,7 +286,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5AC41A5C97E9BA6F0ABDBAE3 /* [CP] Embed Pods Frameworks */ = {
+		796E6AF523CA1D092A1A8D07 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wavefully-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3D1E87CB2071CB259B4B8E4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -310,24 +328,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wavefully/Pods-Wavefully-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FB83C273FC69F9A37A3D4DB1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Wavefully-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -485,7 +485,7 @@
 		};
 		8387FF7020A529990082CA78 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DCBA6601A1A8A966E7E4A90F /* Pods-Wavefully.debug.xcconfig */;
+			baseConfigurationReference = F713BFC066FD274EC461F7B9 /* Pods-Wavefully.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -505,7 +505,7 @@
 		};
 		8387FF7120A529990082CA78 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77EC6452AA45A06DCC1F259A /* Pods-Wavefully.release.xcconfig */;
+			baseConfigurationReference = 73F8F83391427D843E40BC79 /* Pods-Wavefully.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
