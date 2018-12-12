@@ -292,7 +292,6 @@ class ViewController: UIViewController {
             seconds -= 1
             baseTime += 1
             print(baseTime)
-            increaseQuoteOpacity()
             timerLabel.text = timeString(time: TimeInterval(seconds))
             transfromShapes()
         }
