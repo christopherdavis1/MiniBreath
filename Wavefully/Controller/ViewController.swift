@@ -17,9 +17,15 @@ class ViewController: UIViewController {
     
     // MARK: - ACTIONS
     
-    @IBAction func replayButtonTapped(_ sender: UIButton) {
+    
+    @IBAction func resetButtonTapped(_ sender: UIButton) {
         resetCountdown()
     }
+    
+    
+//    @IBAction func replayButtonTapped(_ sender: UIButton) {
+//        resetCountdown()
+//    }
     
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
@@ -126,8 +132,11 @@ class ViewController: UIViewController {
     }
     
     
+    @IBOutlet weak var namasteText: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var replayButton: UIButton!
+    @IBOutlet weak var resetButtonContainer: UIView!
+    @IBOutlet weak var resetIcon: UIImageView!
     @IBOutlet weak var onboardingWelcomeLabel: UILabel!
     @IBOutlet weak var onboardingLabel: UILabel!
     @IBOutlet weak var onboardingDownArrow: UIImageView!
@@ -171,6 +180,7 @@ class ViewController: UIViewController {
         circleView3.layer.cornerRadius = circleView3.frame.size.width / 2
         circleView2.layer.cornerRadius = circleView2.frame.size.width / 2
         circleView1.layer.cornerRadius = circleView1.frame.size.width / 2
+        resetButtonContainer.layer.cornerRadius = resetButtonContainer.frame.size.width / 2
         
         setBaseColors()
         pulsateRipples()
@@ -188,6 +198,7 @@ class ViewController: UIViewController {
         playButton.isHighlighted = false
         timerLabel.alpha = 0
         replayButton.alpha = 0
+        resetButtonContainer.alpha = 0
         onboardingLabel.alpha = 0
         onboardingWelcomeLabel.alpha = 0
         onboardingDownArrow.alpha = 0
@@ -426,8 +437,8 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.4, delay: 0.1, options: [.curveEaseOut], animations: {
             
             let replayButtonTransformInto = CGAffineTransform.init(translationX: 0, y: -10)
-            self.replayButton.transform = replayButtonTransformInto
-            self.replayButton.alpha = 1
+            self.resetButtonContainer.transform = replayButtonTransformInto
+            self.resetButtonContainer.alpha = 1
             self.playButton.alpha = 0
         }, completion: nil)
         
@@ -539,8 +550,8 @@ class ViewController: UIViewController {
             self.timerLabel.alpha = 0
             
             let replayButtonTransformAway = CGAffineTransform.init(translationX: 0, y: 10)
-            self.replayButton.transform = replayButtonTransformAway
-            self.replayButton.alpha = 0
+            self.resetButtonContainer.transform = replayButtonTransformAway
+            self.resetButtonContainer.alpha = 0
             
             // self.playButton.transform = .identity
             self.playButton.alpha = 1
