@@ -169,6 +169,7 @@ class ViewController: UIViewController {
          backgroundGradientView.setGradientBackground(colorOne: Colors.darkBackground, colorTwo: Colors.lightBackground)
     }
     
+    
     // MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
