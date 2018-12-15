@@ -126,6 +126,7 @@ class ViewController: UIViewController {
     }
     
     
+    @IBOutlet weak var backgroundGradientView: UIView!
     @IBOutlet weak var namasteText: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var resetButtonContainer: UIView!
@@ -163,6 +164,10 @@ class ViewController: UIViewController {
     // MARK: - CONSTANTS
     let impact = UIImpactFeedbackGenerator()
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+         backgroundGradientView.setGradientBackground(colorOne: Colors.darkBackground, colorTwo: Colors.lightBackground)
+    }
     
     // MARK: - VIEW DID LOAD
     override func viewDidLoad() {
@@ -212,7 +217,6 @@ class ViewController: UIViewController {
     // Set starting colors and opacities
     
     func setBaseColors() {
-        view.setGradientBackground(colorOne: Colors.darkBackground, colorTwo: Colors.lightBackground)
         circleView4.setRoundedGradientBackground(colorOne: Colors.baseRed, colorTwo: Colors.lightBackground)
         circleView4.layer.opacity = 0.06
         circleView3.setRoundedGradientBackground(colorOne: Colors.baseRed, colorTwo: Colors.lightBackground)
