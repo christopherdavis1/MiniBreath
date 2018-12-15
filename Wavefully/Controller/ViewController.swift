@@ -343,6 +343,8 @@ class ViewController: UIViewController {
                 circle?.transform = CGAffineTransform(scaleX: newXScale, y: newYScale)
             }, completion: nil)
 
+            rippleSound()
+            
             if isRunning != true {
                 pulsateRipples()
             }
@@ -666,6 +668,16 @@ class ViewController: UIViewController {
     func resetButtonSound() {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "resetButtonSound", ofType: "m4a")!))
+            audioPlayer?.play()
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    func rippleSound() {
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "rippleSound", ofType: "m4a")!))
             audioPlayer?.play()
         }
         catch {

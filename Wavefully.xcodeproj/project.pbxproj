@@ -32,6 +32,8 @@
 		8394714520D0D06B001EEADC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8394714420D0D06B001EEADC /* GoogleService-Info.plist */; };
 		83CBD2EF20CE0E7D0056F07B /* Arrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CBD2EE20CE0E7D0056F07B /* Arrays.swift */; };
 		83E81AF02117B2C70026DF76 /* QuoteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E81AEF2117B2C70026DF76 /* QuoteObject.swift */; };
+		83EF6E5421C4BDEE00D4197F /* rippleSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 83EF6E5321C4BDEE00D4197F /* rippleSound.m4a */; };
+		83EF6E5621C4BF1D00D4197F /* poppingSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 83EF6E5521C4BF1D00D4197F /* poppingSound.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		8394714420D0D06B001EEADC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		83CBD2EE20CE0E7D0056F07B /* Arrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrays.swift; sourceTree = "<group>"; };
 		83E81AEF2117B2C70026DF76 /* QuoteObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteObject.swift; sourceTree = "<group>"; };
+		83EF6E5321C4BDEE00D4197F /* rippleSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = rippleSound.m4a; sourceTree = "<group>"; };
+		83EF6E5521C4BF1D00D4197F /* poppingSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = poppingSound.m4a; sourceTree = "<group>"; };
 		E65E097BFFA0EF0CC1E18489 /* Pods_Wavefully.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wavefully.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E97E03CFE471491CED14EE7D /* Pods-Wavefully.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wavefully.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wavefully/Pods-Wavefully.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +146,8 @@
 		8387FF7220A52DB00082CA78 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				83EF6E5521C4BF1D00D4197F /* poppingSound.m4a */,
+				83EF6E5321C4BDEE00D4197F /* rippleSound.m4a */,
 				8387FF7620A52E370082CA78 /* countdownFinishedSound.m4a */,
 				8387FF7420A52E370082CA78 /* playStartSound.m4a */,
 				8387FF7520A52E370082CA78 /* resetButtonSound.m4a */,
@@ -272,7 +278,9 @@
 				8387FF7920A52E370082CA78 /* countdownFinishedSound.m4a in Resources */,
 				837DB08F21BC4F51003EF5A6 /* Rubik-LightItalic.ttf in Resources */,
 				8387FF6820A529990082CA78 /* Assets.xcassets in Resources */,
+				83EF6E5421C4BDEE00D4197F /* rippleSound.m4a in Resources */,
 				8387FF6320A529980082CA78 /* Main.storyboard in Resources */,
+				83EF6E5621C4BF1D00D4197F /* poppingSound.m4a in Resources */,
 				837DB08C21BC4F51003EF5A6 /* Rubik-MediumItalic.ttf in Resources */,
 				837DB08821BC4F51003EF5A6 /* Rubik-Light.ttf in Resources */,
 				837DB08D21BC4F51003EF5A6 /* Rubik-Medium.ttf in Resources */,
