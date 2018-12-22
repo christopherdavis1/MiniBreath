@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     // The Long press!
     @IBAction func startButtonPressed(_ gestureRecognizer: UILongPressGestureRecognizer) {
         
-        gestureRecognizer.numberOfTouchesRequired = 1
+        gestureRecognizer.numberOfTapsRequired = 0
         gestureRecognizer.minimumPressDuration = 0.5
         playButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         
@@ -512,7 +512,7 @@ class ViewController: UIViewController {
     }
     
     func showQuoteAttribution() {
-        UIView.animate(withDuration: 0.8, delay: 1.5, options: [.curveEaseIn], animations: {
+        UIView.animate(withDuration: 0.8, delay: 0.5, options: [.curveEaseIn], animations: {
             self.quoteAttributionLabel.alpha = 1
         }, completion: nil)
     }
