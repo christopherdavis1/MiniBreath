@@ -159,6 +159,7 @@ class ViewController: UIViewController {
     var quotes: Results<QuoteObject>!
     var allQuotes = uiRealm.objects(QuoteObject.self)
     var unseenQuotes = uiRealm.objects(QuoteObject.self).filter("hasSeen = false")
+    var numberOfPlayTaps = 0
     
     
     // MARK: - CONSTANTS
