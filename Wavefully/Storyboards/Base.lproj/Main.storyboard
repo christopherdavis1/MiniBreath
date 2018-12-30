@@ -106,13 +106,14 @@
                                     <constraint firstAttribute="width" constant="172" id="ofF-fk-77N"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulm-Vq-Kpp" userLabel="Play Button">
+                            <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulm-Vq-Kpp" userLabel="Play Button">
                                 <rect key="frame" x="159" y="726" width="96" height="96"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="96" id="LOd-s9-xcL"/>
-                                    <constraint firstAttribute="width" constant="96" id="RQr-l8-KYf"/>
+                                    <constraint firstAttribute="width" constant="96" id="a9u-C6-j8y"/>
+                                    <constraint firstAttribute="height" constant="96" id="cTv-2q-giQ"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="bubble"/>
                                 <connections>
                                     <action selector="playButtonTapped:" destination="BYZ-38-t0r" eventType="touchDown" id="7Ex-DU-4de"/>
