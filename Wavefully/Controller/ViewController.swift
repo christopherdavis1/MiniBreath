@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
-        playButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        playButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         playButton.isHighlighted = true
         countdownStartSound()
         hideOnboarding()
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         
         gestureRecognizer.numberOfTapsRequired = 0
         gestureRecognizer.minimumPressDuration = 0.5
-        playButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        playButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         
         // Start the long press
         if gestureRecognizer.state == .began {
