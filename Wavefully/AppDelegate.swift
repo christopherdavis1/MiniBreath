@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Firebase
 import RealmSwift
+import Instabug
 
 var uiRealm = try! Realm()
 
@@ -20,9 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Configure Firebase:
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
+        
+        // Configure Instabug:
+        Instabug.start(withToken: "4776535c70bd1b7eaeeb4fa6fc79fa3a", invocationEvents: [.shake, .screenshot])
+        
+        // Return options:
         return true
     }
 
