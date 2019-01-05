@@ -18,6 +18,10 @@ class ViewController: UIViewController {
     // MARK: - ACTIONS
     
     
+    @IBAction func settingButtonTapped(_ sender: UIButton) {
+    }
+    
+    
     @IBAction func resetButtonTapped(_ sender: UIButton) {
         resetCountdown()
     }
@@ -138,6 +142,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var circleView3: UIView!
     @IBOutlet weak var circleView2: UIView!
     @IBOutlet weak var circleView1: UIView!
+    @IBOutlet weak var settingsButton: UIButton!
+    
+    
     
     
     // MARK: - VARIABLES
@@ -166,33 +173,13 @@ class ViewController: UIViewController {
     let impact = UIImpactFeedbackGenerator()
     
     
-    override func viewDidAppear(_ animated: Bool) {
-         backgroundGradientView.setGradientBackground(colorOne: Colors.darkBackground, colorTwo: Colors.lightBackground)
-    }
-    
-    
-    // MARK: - VIEW DID LOAD
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewWillAppear(_ animated: Bool) {
         // Set the rounded corners for the ripples
         circleView4.layer.cornerRadius = circleView4.frame.size.width / 2
         circleView3.layer.cornerRadius = circleView3.frame.size.width / 2
         circleView2.layer.cornerRadius = circleView2.frame.size.width / 2
         circleView1.layer.cornerRadius = circleView1.frame.size.width / 2
         resetButtonContainer.layer.cornerRadius = resetButtonContainer.frame.size.width / 2
-        
-        setBaseColors()
-        pulsateRipples()
-        
-        
-        // Connect to Firebase
-        databaseRef = Database.database().reference()
-        
-        grabData()
-        
-        quoteLabel.text = ""
-        quoteAttributionLabel.text = ""
         
         playButton.isHidden = false
         playButton.isHighlighted = false
@@ -201,11 +188,31 @@ class ViewController: UIViewController {
         onboardingLabel.alpha = 0
         onboardingWelcomeLabel.alpha = 0
         onboardingDownArrow.alpha = 0
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+         backgroundGradientView.setGradientBackground(colorOne: Colors.darkBackground, colorTwo: Colors.lightBackground)
         
+        quoteLabel.text = ""
+        quoteAttributionLabel.text = ""
+        
+        pulsateRipples()
         resetAnimationStartPositions()
         showOnboarding()
         bounceOnboarding()
+    
+    }
+    
+    
+    // MARK: - VIEW DID LOAD
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        setBaseColors()
+        
+        // Connect to Firebase
+        databaseRef = Database.database().reference()
+        grabData()
         print(allQuotes.count)
         
     }
@@ -232,6 +239,42 @@ class ViewController: UIViewController {
         namasteText.layer.opacity = 1.0
     }
     
+    
+    // Function to show the text in the header throughout the exercise
+    
+    func changeHeaderText() {
+        
+        if baseTime == 0 {
+            namasteText.text = " "
+        }
+        // If seconds is between 1 & 9, show "Breathe"
+        else if baseTime >= 1 && baseTime <= 9 {
+            namasteText.text = "Breathe"
+        }
+        // If seconds is 0, show nothing.
+        else if baseTime == 10 {
+            namasteText.text = "Reflect"
+        }
+    }
+    
+    
+    // Hide settings button on during exercise and bring it back when it's done.
+    
+    func hideAndShowSettingsButton() {
+        if baseTime >= 1 && baseTime <= 9 {
+            UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut], animations: {
+                self.settingsButton.layer.opacity = 0
+            }, completion: nil)
+        } else if baseTime == 10 {
+            UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut], animations: {
+                self.settingsButton.layer.opacity = 1
+            }, completion: nil)
+        } else if baseTime == 0 {
+            UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut], animations: {
+                self.settingsButton.layer.opacity = 0
+            }, completion: nil)
+        }
+    }
     
     
     

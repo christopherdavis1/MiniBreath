@@ -30,6 +30,7 @@
 		8387FF7820A52E370082CA78 /* resetButtonSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8387FF7520A52E370082CA78 /* resetButtonSound.m4a */; };
 		8387FF7920A52E370082CA78 /* countdownFinishedSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8387FF7620A52E370082CA78 /* countdownFinishedSound.m4a */; };
 		8394714520D0D06B001EEADC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8394714420D0D06B001EEADC /* GoogleService-Info.plist */; };
+		8397DA2721E12C7F00116662 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8397DA2621E12C7F00116662 /* SettingsViewController.swift */; };
 		83CBD2EF20CE0E7D0056F07B /* Arrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CBD2EE20CE0E7D0056F07B /* Arrays.swift */; };
 		83E81AF02117B2C70026DF76 /* QuoteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E81AEF2117B2C70026DF76 /* QuoteObject.swift */; };
 		83EF6E5421C4BDEE00D4197F /* rippleSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 83EF6E5321C4BDEE00D4197F /* rippleSound.m4a */; };
@@ -62,6 +63,7 @@
 		8387FF7520A52E370082CA78 /* resetButtonSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = resetButtonSound.m4a; sourceTree = "<group>"; };
 		8387FF7620A52E370082CA78 /* countdownFinishedSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = countdownFinishedSound.m4a; sourceTree = "<group>"; };
 		8394714420D0D06B001EEADC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8397DA2621E12C7F00116662 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		83CBD2EE20CE0E7D0056F07B /* Arrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrays.swift; sourceTree = "<group>"; };
 		83E81AEF2117B2C70026DF76 /* QuoteObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteObject.swift; sourceTree = "<group>"; };
 		83EF6E5321C4BDEE00D4197F /* rippleSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = rippleSound.m4a; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				8387FF5F20A529980082CA78 /* ViewController.swift */,
+				8397DA2621E12C7F00116662 /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				8387FF6620A529980082CA78 /* Wavefully.xcdatamodeld in Sources */,
 				83CBD2EF20CE0E7D0056F07B /* Arrays.swift in Sources */,
 				8370ACC921BC3A53009B2F39 /* Constants.swift in Sources */,
+				8397DA2721E12C7F00116662 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
