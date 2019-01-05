@@ -18,9 +18,7 @@ class ViewController: UIViewController {
     // MARK: - ACTIONS
     
     
-    @IBAction func settingButtonTapped(_ sender: UIButton) {
-    }
-    
+    @IBAction func settingButtonTapped(_ sender: UIButton) {}
     
     @IBAction func resetButtonTapped(_ sender: UIButton) {
         resetCountdown()
