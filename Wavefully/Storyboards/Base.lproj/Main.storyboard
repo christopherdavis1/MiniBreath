@@ -349,6 +349,7 @@
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="backButton"/>
                                         <connections>
+                                            <action selector="backButtonPressed:" destination="5aC-Ui-zhP" eventType="touchUpInside" id="FgZ-0j-6Kf"/>
                                             <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="xtZ-Ue-tJU"/>
                                         </connections>
                                     </button>
@@ -383,10 +384,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="U2W-hZ-bcy"/>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="rD8-yY-cZK" id="0Co-Xr-TOw"/>
+                        <outlet property="settingsBackgroundSheet" destination="j7C-LP-0G9" id="yzZ-8R-fXd"/>
+                        <outlet property="settingsHeaderLabel" destination="HKU-5u-QeS" id="ZFM-IW-F1j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOR-0g-RRy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1075" y="134"/>
+            <point key="canvasLocation" x="1073.913043478261" y="133.92857142857142"/>
         </scene>
     </scenes>
     <resources>
