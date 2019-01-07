@@ -7,18 +7,25 @@
 //
 
 import UIKit
+import Instabug
 
 
 class SettingsViewController: UIViewController {
 
     // MARK: - Actions
     @IBAction func backButtonPressed(_ sender: UIButton) {}
-    
+    @IBAction func placeholderSettingsButtonTapped(_ sender: UIButton) {
+        BugReporting.invoke()
+    }
     
     // MARK: - Outlets
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var settingsHeaderLabel: UILabel!
     @IBOutlet weak var settingsBackgroundSheet: UIView!
+    @IBOutlet weak var placeholderContentStackView: UIStackView!
+    @IBOutlet weak var placeholderSettingsLabel: UILabel!
+    @IBOutlet weak var placeholderSettingsButton: UIButton!
+    
     
     
     // MARK: - Variables

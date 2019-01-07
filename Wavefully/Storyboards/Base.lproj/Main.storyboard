@@ -16,6 +16,9 @@
         <array key="Nunito-ExtraBold.ttf">
             <string>Nunito-ExtraBold</string>
         </array>
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
         <array key="Nunito-SemiBold.ttf">
             <string>Nunito-SemiBold</string>
         </array>
@@ -348,14 +351,36 @@
                                             <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="xtZ-Ue-tJU"/>
                                         </connections>
                                     </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="vJS-t4-coI">
+                                        <rect key="frame" x="40" y="242" width="302" height="59"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More settings coming soon!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5c7-TY-XSW">
+                                                <rect key="frame" x="0.0" y="0.0" width="302" height="25"/>
+                                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ro1-mc-dK1">
+                                                <rect key="frame" x="0.0" y="29" width="302" height="30"/>
+                                                <state key="normal" title="Until then, leave feedback..."/>
+                                                <connections>
+                                                    <action selector="placeholderSettingsButtonTapped:" destination="5aC-Ui-zhP" eventType="touchUpInside" id="d6I-VC-b3Z"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="vJS-t4-coI" firstAttribute="centerY" secondItem="j7C-LP-0G9" secondAttribute="centerY" id="2dP-Eh-Phh"/>
                                     <constraint firstItem="rD8-yY-cZK" firstAttribute="top" secondItem="j7C-LP-0G9" secondAttribute="top" constant="16" id="6X2-Uw-NCY"/>
                                     <constraint firstAttribute="height" constant="543" id="HGj-ua-4w4"/>
                                     <constraint firstItem="rD8-yY-cZK" firstAttribute="leading" secondItem="j7C-LP-0G9" secondAttribute="leading" constant="16" id="WMD-PG-YDe"/>
                                     <constraint firstItem="HKU-5u-QeS" firstAttribute="centerY" secondItem="rD8-yY-cZK" secondAttribute="centerY" id="WMj-dl-USD"/>
+                                    <constraint firstItem="vJS-t4-coI" firstAttribute="centerX" secondItem="j7C-LP-0G9" secondAttribute="centerX" id="ar2-Cg-tMi"/>
                                     <constraint firstItem="HKU-5u-QeS" firstAttribute="centerX" secondItem="j7C-LP-0G9" secondAttribute="centerX" id="bSL-BW-ciU"/>
+                                    <constraint firstAttribute="trailing" secondItem="vJS-t4-coI" secondAttribute="trailing" constant="40" id="dzE-OC-mb5"/>
+                                    <constraint firstItem="vJS-t4-coI" firstAttribute="leading" secondItem="j7C-LP-0G9" secondAttribute="leading" constant="40" id="szW-xc-P8e"/>
                                     <constraint firstItem="HKU-5u-QeS" firstAttribute="leading" secondItem="rD8-yY-cZK" secondAttribute="trailing" constant="8" id="tcV-2K-sN8"/>
                                     <constraint firstItem="HKU-5u-QeS" firstAttribute="top" secondItem="j7C-LP-0G9" secondAttribute="top" constant="16" id="xoa-A2-XCM"/>
                                 </constraints>
@@ -381,6 +406,9 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="rD8-yY-cZK" id="0Co-Xr-TOw"/>
+                        <outlet property="placeholderContentStackView" destination="vJS-t4-coI" id="Q4X-Vz-dpO"/>
+                        <outlet property="placeholderSettingsButton" destination="Ro1-mc-dK1" id="J8I-qB-ykx"/>
+                        <outlet property="placeholderSettingsLabel" destination="5c7-TY-XSW" id="Mon-Yx-yyv"/>
                         <outlet property="settingsBackgroundSheet" destination="j7C-LP-0G9" id="yzZ-8R-fXd"/>
                         <outlet property="settingsHeaderLabel" destination="HKU-5u-QeS" id="ZFM-IW-F1j"/>
                     </connections>
