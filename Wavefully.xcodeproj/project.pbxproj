@@ -31,6 +31,10 @@
 		8387FF7920A52E370082CA78 /* countdownFinishedSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8387FF7620A52E370082CA78 /* countdownFinishedSound.m4a */; };
 		8394714520D0D06B001EEADC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8394714420D0D06B001EEADC /* GoogleService-Info.plist */; };
 		8397DA2721E12C7F00116662 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8397DA2621E12C7F00116662 /* SettingsViewController.swift */; };
+		8397DA4721E3218600116662 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8397DA4421E3218500116662 /* Nunito-Regular.ttf */; };
+		8397DA4821E3218600116662 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8397DA4521E3218500116662 /* Nunito-Bold.ttf */; };
+		8397DA4921E3218600116662 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8397DA4621E3218600116662 /* Nunito-SemiBold.ttf */; };
+		8397DA4B21E3220A00116662 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8397DA4A21E3220A00116662 /* Nunito-ExtraBold.ttf */; };
 		83CBD2EF20CE0E7D0056F07B /* Arrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CBD2EE20CE0E7D0056F07B /* Arrays.swift */; };
 		83E81AF02117B2C70026DF76 /* QuoteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E81AEF2117B2C70026DF76 /* QuoteObject.swift */; };
 		83EF6E5421C4BDEE00D4197F /* rippleSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 83EF6E5321C4BDEE00D4197F /* rippleSound.m4a */; };
@@ -64,6 +68,10 @@
 		8387FF7620A52E370082CA78 /* countdownFinishedSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = countdownFinishedSound.m4a; sourceTree = "<group>"; };
 		8394714420D0D06B001EEADC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8397DA2621E12C7F00116662 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8397DA4421E3218500116662 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		8397DA4521E3218500116662 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		8397DA4621E3218600116662 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		8397DA4A21E3220A00116662 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
 		83CBD2EE20CE0E7D0056F07B /* Arrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrays.swift; sourceTree = "<group>"; };
 		83E81AEF2117B2C70026DF76 /* QuoteObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteObject.swift; sourceTree = "<group>"; };
 		83EF6E5321C4BDEE00D4197F /* rippleSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = rippleSound.m4a; sourceTree = "<group>"; };
@@ -95,6 +103,10 @@
 		837DB07D21BC4F36003EF5A6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				8397DA4521E3218500116662 /* Nunito-Bold.ttf */,
+				8397DA4421E3218500116662 /* Nunito-Regular.ttf */,
+				8397DA4621E3218600116662 /* Nunito-SemiBold.ttf */,
+				8397DA4A21E3220A00116662 /* Nunito-ExtraBold.ttf */,
 				837DB08021BC4F50003EF5A6 /* Rubik-Black.ttf */,
 				837DB07F21BC4F50003EF5A6 /* Rubik-BlackItalic.ttf */,
 				837DB08121BC4F50003EF5A6 /* Rubik-Bold.ttf */,
@@ -278,14 +290,18 @@
 				8387FF6B20A529990082CA78 /* LaunchScreen.storyboard in Resources */,
 				837DB08921BC4F51003EF5A6 /* Rubik-BlackItalic.ttf in Resources */,
 				837DB08E21BC4F51003EF5A6 /* Rubik-Italic.ttf in Resources */,
+				8397DA4B21E3220A00116662 /* Nunito-ExtraBold.ttf in Resources */,
 				8387FF7920A52E370082CA78 /* countdownFinishedSound.m4a in Resources */,
+				8397DA4821E3218600116662 /* Nunito-Bold.ttf in Resources */,
 				837DB08F21BC4F51003EF5A6 /* Rubik-LightItalic.ttf in Resources */,
 				8387FF6820A529990082CA78 /* Assets.xcassets in Resources */,
 				83EF6E5421C4BDEE00D4197F /* rippleSound.m4a in Resources */,
+				8397DA4721E3218600116662 /* Nunito-Regular.ttf in Resources */,
 				8387FF6320A529980082CA78 /* Main.storyboard in Resources */,
 				83EF6E5621C4BF1D00D4197F /* poppingSound.m4a in Resources */,
 				837DB08C21BC4F51003EF5A6 /* Rubik-MediumItalic.ttf in Resources */,
 				837DB08821BC4F51003EF5A6 /* Rubik-Light.ttf in Resources */,
+				8397DA4921E3218600116662 /* Nunito-SemiBold.ttf in Resources */,
 				837DB08D21BC4F51003EF5A6 /* Rubik-Medium.ttf in Resources */,
 				837DB09121BC4F51003EF5A6 /* Rubik-Regular.ttf in Resources */,
 				8387FF7720A52E370082CA78 /* playStartSound.m4a in Resources */,
