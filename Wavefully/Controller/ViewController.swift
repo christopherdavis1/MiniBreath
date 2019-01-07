@@ -51,10 +51,17 @@ class ViewController: UIViewController {
                 // Functions
                 runTimer()
                 
-                // If/then statements
-                if baseTime == 0 {
-                    randomQuote()
+                if baseTime >= 0 && baseTime < 10 {
+                    UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
+                        self.settingsButton.layer.opacity = 0
+                    }, completion: { _ in
+                        UIView.animate(withDuration: 0.5, animations: {
+                            self.namasteText.text = "Breathe"
+                            self.namasteText.textColor = Colors.lightGreyText
+                        })
+                    })
                 }
+                
                 
                 // Animations
                 // Ripple the waves
@@ -115,9 +122,14 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var namasteText: UILabel! {
+        didSet {
+            namasteText.text = startingNamasteTextMessage
+        }
+    }
+    
     
     @IBOutlet weak var backgroundGradientView: UIView!
-    @IBOutlet weak var namasteText: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var resetButtonContainer: UIView!
     @IBOutlet weak var resetIcon: UIImageView!
@@ -139,6 +151,7 @@ class ViewController: UIViewController {
     var quoteIsHidden = true
     var blankCountdown = "10"
     var countdownSuccessMessage = "Reset"
+    var startingNamasteTextMessage = " "
     var timer = Timer()
     var seconds = 10
     var zero = "0"
@@ -226,24 +239,6 @@ class ViewController: UIViewController {
     }
     
     
-    // Function to show the text in the header throughout the exercise
-    
-    func changeHeaderText() {
-        
-        if baseTime == 0 {
-            namasteText.text = " "
-        }
-        // If seconds is between 1 & 9, show "Breathe"
-        else if baseTime >= 1 && baseTime <= 9 {
-            namasteText.text = "Breathe"
-        }
-        // If seconds is 0, show nothing.
-        else if baseTime == 10 {
-            namasteText.text = "Reflect"
-        }
-    }
-    
-    
     // Hide settings button on during exercise and bring it back when it's done.
     
     func hideAndShowSettingsButton() {
@@ -254,6 +249,7 @@ class ViewController: UIViewController {
         } else if baseTime == 10 {
             UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut], animations: {
                 self.settingsButton.layer.opacity = 1
+                self.settingsButton.tintColor = .white
             }, completion: nil)
         } else if baseTime == 0 {
             UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut], animations: {
@@ -337,12 +333,7 @@ class ViewController: UIViewController {
     }
     
     func timeString(time:TimeInterval) -> String {
-        
-        // let hours = Int(time) / 3600
-        // let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
-        
-        // return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
         return String(format: "%2i", seconds)
     }
     
@@ -354,7 +345,6 @@ class ViewController: UIViewController {
         let circles = [circleView4, circleView3, circleView2, circleView1]
         
         for circle in circles {
-            let currentShapeHeight = circle?.frame.size.height
             
             // Let's start by setting constants for the variables that we'll be incrimenting by
             let incrimentXBy: CGFloat = 0.38
@@ -367,7 +357,6 @@ class ViewController: UIViewController {
             // Pass the new scale
             let newXScale = currentXScale! + incrimentXBy
             let newYScale = currentYScale! + incrimentYBy
-            print(currentShapeHeight as Any)
             
             // transform the width and height of the shape with these numbers
             UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
@@ -386,7 +375,6 @@ class ViewController: UIViewController {
         let circles = [circleView4, circleView3, circleView2, circleView1]
         
         for circle in circles {
-            let currentShapeHeight = circle?.frame.size.height
             
             // Let's start by setting constants for the variables that we'll be incrimenting by
             let incrimentXBy: CGFloat = 0.16
@@ -399,7 +387,6 @@ class ViewController: UIViewController {
             // Pass the new scale
             let newXScale = currentXScale! + incrimentXBy
             let newYScale = currentYScale! + incrimentYBy
-            print(currentShapeHeight as Any)
             
             // transform the width and height of the shape with these numbers
             UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
@@ -470,6 +457,7 @@ class ViewController: UIViewController {
     // MARK: - Functions for finishing and resetting the countdown.
     // The function that dictates what happens when the countdown ends
     func countdownFinished() {
+        randomQuote()
         finishFill()
         isRunning = false
         isPaused = false
@@ -490,9 +478,15 @@ class ViewController: UIViewController {
         
         timer.invalidate()
         timerLabel.text = countdownSuccessMessage
+        namasteText.text = "Reflect"
         quoteLabel.alpha = 1
         circleView1.layer.opacity = 1.0
-        //moveCompletedQuote()
+        namasteText.textColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.72)
+        
+        UIView.animate(withDuration: 0.4, delay: 2, options: [.curveEaseInOut],animations: {
+            self.settingsButton.tintColor = .white
+            self.settingsButton.layer.opacity = 1
+        })
         
         print("Your countdown has finished.")
     }
@@ -500,6 +494,7 @@ class ViewController: UIViewController {
     // The function that resets everything back to normal
     func resetCountdown() {
         timerLabel.text = blankCountdown
+        namasteText.text = " "
         resetAnimationStartPositions()
         resetQuoteOpacity()
         hideQuoteAttribution()
@@ -519,6 +514,7 @@ class ViewController: UIViewController {
             self.circleView3.transform = CGAffineTransform.identity
             self.circleView4.transform = CGAffineTransform.identity
             self.setBaseColors()
+            self.settingsButton.tintColor = .lightGray
         }, completion: { _ in
             if self.circleView1.frame.size.width <= 172 {
                 self.pulsateRipples()
@@ -577,7 +573,6 @@ class ViewController: UIViewController {
             self.resetButtonContainer.transform = replayButtonTransformAway
             self.resetButtonContainer.alpha = 0
             
-            // self.playButton.transform = .identity
             self.playButton.alpha = 1
         }, completion: nil)
     }
@@ -642,8 +637,8 @@ class ViewController: UIViewController {
                 singleQuote.hasSeen = true
                 print(singleQuoteID as Any)
                 print(singleQuoteText as Any)
-                print("Wrote to Realm")
                 print(unseenQuotes.count)
+                print("Wrote to Realm")
             }
         } else {
             // if it has been seen, skip it.
