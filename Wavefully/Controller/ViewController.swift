@@ -30,73 +30,61 @@ class ViewController: UIViewController {
         countdownStartSound()
         hideOnboarding()
         print("Initial press!")
+        
+        if isRunning != true {
+            isRunning = true
+        }
     }
     
     
     // The Long press!
     @IBAction func startButtonPressed(_ gestureRecognizer: UILongPressGestureRecognizer) {
         
-        gestureRecognizer.numberOfTapsRequired = 0
+        gestureRecognizer.numberOfTouchesRequired = 1
         gestureRecognizer.minimumPressDuration = 0.5
         playButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         
         // Start the long press
         if gestureRecognizer.state == .began {
-            playButton.isHighlighted = true
-            
             if isRunning == true {
-                runTimer()
-                isPaused = false
                 
+                // Functions
+                runTimer()
+                
+                // If/then statements
+                if baseTime == 0 {
+                    randomQuote()
+                }
+                
+                // Animations
+                // Ripple the waves
                 UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
                     self.transfromShapeSmall()
                 }, completion: nil)
                 
-            } else {
-                randomQuote()
-            }
-        }
-        
-        // If your finger moves at all during the long press...
-        if gestureRecognizer.state == .changed {
-            playButton.isHighlighted = true
-
-            print("Your press changed")
-            
-            if isRunning == false {
-                runTimer()
-                timerLabel.isHidden = false
+                // Hide the timer label text
                 UIView.animate(withDuration: 0.4, delay: 0, options: [], animations: {
-
                     self.timerLabel.transform = .identity
                     self.timerLabel.alpha = 1
-
                 }, completion: nil)
+             
+                // Other actions:
+                print("You're pressing the timer.")
+                
             }
         }
-        
-        
-        if gestureRecognizer.state == .cancelled {
-            if isRunning == true {
-                isPaused = true
-                isRunning = false
-                pulsateRipples()
-            }
-        }
-        
+
         
         // When the user lifts a finger off of the long press...
         if gestureRecognizer.state == .ended {
-            if isPaused == false {
-                playButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                isPaused = true
+            if isRunning == true {
+                isRunning = false
                 timer.invalidate()
-                print("Your paused your timer.")
-                playButton.isHighlighted = false
                 pulsateRipples()
-            } else {
-                runTimer()
-                isPaused = false
+                
+                playButton.isHighlighted = false
+                playButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                print("Your paused your timer.")
             }
         }
     }
