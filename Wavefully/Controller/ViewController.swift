@@ -178,7 +178,7 @@ class ViewController: UIViewController {
         circleView3.layer.cornerRadius = circleView3.frame.size.width / 2
         circleView2.layer.cornerRadius = circleView2.frame.size.width / 2
         circleView1.layer.cornerRadius = circleView1.frame.size.width / 2
-        resetButtonContainer.layer.cornerRadius = resetButtonContainer.frame.size.width / 2
+        backgroundGradientView.setGradientBackground(colorOne: Colors.darkBackground, colorTwo: Colors.lightBackground)
         
         playButton.isHidden = false
         playButton.isHighlighted = false
@@ -190,7 +190,6 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-         backgroundGradientView.setGradientBackground(colorOne: Colors.darkBackground, colorTwo: Colors.lightBackground)
         
         quoteLabel.text = ""
         quoteAttributionLabel.text = ""
@@ -208,6 +207,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setBaseColors()
+        backgroundGradientView.setGradientBackground(colorOne: Colors.darkBackground, colorTwo: Colors.lightBackground)
         
         // Connect to Firebase
         databaseRef = Database.database().reference()
