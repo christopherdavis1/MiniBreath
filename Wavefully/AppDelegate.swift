@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Database.database().isPersistenceEnabled = true
         
         // Configure Instabug:
-        Instabug.start(withToken: "4776535c70bd1b7eaeeb4fa6fc79fa3a", invocationEvents: [.shake, .screenshot])
+        Instabug.start(withToken: "4776535c70bd1b7eaeeb4fa6fc79fa3a", invocationEvents: [.none])
         
         // Return options:
         return true
