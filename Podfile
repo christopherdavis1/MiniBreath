@@ -12,6 +12,7 @@ target 'Wavefully' do
   pod 'RealmSwift'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Performance'
   pod 'Instabug'
 
 end
