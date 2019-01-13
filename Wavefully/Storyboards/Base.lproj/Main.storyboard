@@ -24,10 +24,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Ripple View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Wavefully" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Ripple View Controller" id="BYZ-38-t0r" customClass="ViewController" customModule="Wavefully" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -320,7 +320,7 @@
         <!--Settings View Controller-->
         <scene sceneID="fhp-MU-lF2">
             <objects>
-                <viewController id="5aC-Ui-zhP" userLabel="Settings View Controller" customClass="SettingsViewController" customModule="Wavefully" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Settings View Controller" id="5aC-Ui-zhP" userLabel="Settings View Controller" customClass="SettingsViewController" customModule="Wavefully" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ix4-ZK-JL3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
