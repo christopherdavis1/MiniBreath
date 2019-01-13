@@ -162,6 +162,12 @@ class ViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
         // Set the rounded corners for the ripples
         circleView4.layer.cornerRadius = circleView4.frame.size.width / 2
         circleView3.layer.cornerRadius = circleView3.frame.size.width / 2
@@ -177,6 +183,15 @@ class ViewController: UIViewController {
         onboardingWelcomeLabel.alpha = 0
         onboardingDownArrow.alpha = 0
     }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Show the navigation bar on all other view controllers
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         
