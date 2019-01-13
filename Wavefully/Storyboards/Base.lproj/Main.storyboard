@@ -227,6 +227,7 @@
                             </constraint>
                             <constraint firstAttribute="trailing" secondItem="rQP-Aa-Bvi" secondAttribute="trailing" id="TU6-Bg-VNz"/>
                             <constraint firstItem="W9F-LE-LAi" firstAttribute="top" secondItem="A0A-dh-IVn" secondAttribute="bottom" constant="32" id="Ubq-qd-BgE"/>
+                            <constraint firstItem="gby-HU-feK" firstAttribute="centerX" secondItem="ulm-Vq-Kpp" secondAttribute="centerX" id="V5d-PF-R7B"/>
                             <constraint firstItem="rQP-Aa-Bvi" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="ZsN-PI-6ZY"/>
                             <constraint firstItem="ulm-Vq-Kpp" firstAttribute="top" secondItem="gby-HU-feK" secondAttribute="bottom" constant="16" id="b5D-id-QgQ">
                                 <variation key="heightClass=compact" constant="16"/>
@@ -281,6 +282,11 @@
                                 <include reference="Rnp-aS-lJo"/>
                                 <include reference="b5D-id-QgQ"/>
                                 <exclude reference="ewR-qJ-UOl"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="9NX-xE-B5z"/>
                             </mask>
                         </variation>
                     </view>
