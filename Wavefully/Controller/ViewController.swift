@@ -154,6 +154,8 @@ class ViewController: UIViewController {
     var allQuotes = uiRealm.objects(QuoteObject.self)
     var unseenQuotes = uiRealm.objects(QuoteObject.self).filter("hasSeen = false")
     var numberOfPlayTaps = 0
+    var numberOfMeditations = 0
+    var secondsOfMeditation = 0
     
     
     // MARK: - CONSTANTS
@@ -442,6 +444,7 @@ class ViewController: UIViewController {
     func countdownFinished() {
         randomQuote()
         finishFill()
+        countOfMeditations()
         isRunning = false
         isPaused = false
         
@@ -471,6 +474,22 @@ class ViewController: UIViewController {
         
         print("Your countdown has finished.")
     }
+    
+    
+    // Count the number of meditations, and total time meditated
+    
+    func countOfMeditations() {
+        
+        // Increase total number of meditations
+        numberOfMeditations = numberOfMeditations + 1
+        print("\(numberOfMeditations)\(" meditation completed.")")
+        
+        // Total seconds meditated
+        secondsOfMeditation = numberOfMeditations * 10
+        print("\(secondsOfMeditation)\(" seconds meditated.")")
+        
+    }
+    
     
     // The function that resets everything back to normal
     func resetCountdown() {
