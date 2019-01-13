@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7BE65D8D1C83D2AC4A62EE91 /* Pods_Wavefully.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E65E097BFFA0EF0CC1E18489 /* Pods_Wavefully.framework */; };
+		833EF95E21EBEB5E000EB7CE /* ThanksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833EF95D21EBEB5E000EB7CE /* ThanksViewController.swift */; };
 		8370ACC921BC3A53009B2F39 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8370ACC821BC3A53009B2F39 /* Constants.swift */; };
 		8370ACCB21BC3A89009B2F39 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8370ACCA21BC3A89009B2F39 /* UIView+Extensions.swift */; };
 		8387FF5E20A529980082CA78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387FF5D20A529980082CA78 /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		41481402F08271BB431C1947 /* Pods-Wavefully.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wavefully.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wavefully/Pods-Wavefully.release.xcconfig"; sourceTree = "<group>"; };
+		833EF95D21EBEB5E000EB7CE /* ThanksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksViewController.swift; sourceTree = "<group>"; };
 		8370ACC821BC3A53009B2F39 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8370ACCA21BC3A89009B2F39 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		8387FF5A20A529980082CA78 /* Wavefully.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wavefully.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +172,7 @@
 			children = (
 				8387FF5F20A529980082CA78 /* ViewController.swift */,
 				8397DA2621E12C7F00116662 /* SettingsViewController.swift */,
+				833EF95D21EBEB5E000EB7CE /* ThanksViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				83CBD2EF20CE0E7D0056F07B /* Arrays.swift in Sources */,
 				8370ACC921BC3A53009B2F39 /* Constants.swift in Sources */,
 				8397DA2721E12C7F00116662 /* SettingsViewController.swift in Sources */,
+				833EF95E21EBEB5E000EB7CE /* ThanksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
