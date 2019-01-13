@@ -27,6 +27,8 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var RateAppCell: UITableViewCell!
     @IBOutlet weak var FollowCreatorCell: UITableViewCell!
     @IBOutlet weak var ThanksCell: UITableViewCell!
+    @IBOutlet weak var AllowNotificationsSwitch: UISwitch!
+    @IBOutlet weak var SetCustomTimeSwitch: UISwitch!
     
     
     
@@ -55,6 +57,15 @@ class SettingsViewController: UITableViewController {
         
         if indexPath.section == 0 && indexPath.row == 0 {
             print("You want to allow notifications.")
+            
+            if AllowNotificationsSwitch.isOn {
+                print("Notifications are not allowed")
+                AllowNotificationsSwitch.setOn(false, animated: true)
+            } else {
+                print("Notifications are allowed")
+                AllowNotificationsSwitch.setOn(true, animated: true)
+            }
+            
         }
         else if indexPath.section == 0 && indexPath.row == 1 {
             print("You want to set a custom time.")

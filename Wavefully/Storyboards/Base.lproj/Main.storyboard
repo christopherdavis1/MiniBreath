@@ -606,11 +606,13 @@
                     </tableView>
                     <connections>
                         <outlet property="AllowNotificationsCell" destination="5Cn-xa-Mjc" id="LUm-WH-3iG"/>
+                        <outlet property="AllowNotificationsSwitch" destination="6Oo-v8-Xfo" id="lKd-Qq-Dt7"/>
                         <outlet property="CustomNotficationSetCell" destination="nbX-h9-8EX" id="BST-m2-6Ht"/>
                         <outlet property="CustomNotificationTimeCell" destination="aBh-my-Y68" id="Rrb-Ox-7Eq"/>
                         <outlet property="FollowCreatorCell" destination="wyi-u8-3HA" id="ycR-pf-fXa"/>
                         <outlet property="LeaveFeedbackCell" destination="5kH-8D-ioq" id="b3R-af-3ix"/>
                         <outlet property="RateAppCell" destination="vI9-ms-7PJ" id="Arl-xH-8HL"/>
+                        <outlet property="SetCustomTimeSwitch" destination="EWP-F7-Q3o" id="Zie-nU-zvq"/>
                         <outlet property="ThanksCell" destination="pa4-ri-4DU" id="0ff-at-dER"/>
                         <outlet property="TweetAppCell" destination="qst-2b-KRS" id="Qrs-5x-DJu"/>
                     </connections>
