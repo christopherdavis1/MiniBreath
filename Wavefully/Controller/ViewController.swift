@@ -157,7 +157,6 @@ class ViewController: UIViewController {
     var numberOfMeditations = 0
     var secondsOfMeditation = 0
     
-    
     // MARK: - CONSTANTS
     let impact = UIImpactFeedbackGenerator()
     
