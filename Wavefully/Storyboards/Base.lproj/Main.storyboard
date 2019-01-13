@@ -172,12 +172,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Namaste" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fry-8v-GLU">
-                                <rect key="frame" x="170.5" y="52" width="73" height="50"/>
-                                <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="18"/>
-                                <color key="textColor" white="0.67000000000000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpj-4d-mdK" userLabel="settingsButton">
                                 <rect key="frame" x="16" y="52" width="50" height="50"/>
                                 <constraints>
@@ -213,7 +207,6 @@
                                 <variation key="heightClass=regular-widthClass=regular" constant="20"/>
                             </constraint>
                             <constraint firstItem="A0A-dh-IVn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F13-vd-4Ts"/>
-                            <constraint firstItem="Fry-8v-GLU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FKh-S4-uYJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gby-HU-feK" secondAttribute="trailing" constant="48" id="FO3-4m-ilQ">
                                 <variation key="heightClass=compact" constant="120"/>
                             </constraint>
@@ -226,7 +219,6 @@
                                 <variation key="heightClass=compact-widthClass=regular" constant="2"/>
                             </constraint>
                             <constraint firstItem="hYP-T1-A2c" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MGo-o8-WVi"/>
-                            <constraint firstItem="Fry-8v-GLU" firstAttribute="centerY" secondItem="xpj-4d-mdK" secondAttribute="centerY" id="N9x-T9-PVZ"/>
                             <constraint firstItem="W9F-LE-LAi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ofp-Oe-leV"/>
                             <constraint firstItem="PIt-Yl-go5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PTl-e6-Bra"/>
                             <constraint firstItem="xpj-4d-mdK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="QTp-ND-y1t"/>
@@ -253,7 +245,6 @@
                             <constraint firstItem="ulm-Vq-Kpp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ewR-qJ-UOl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="N1k-Fa-xmb" secondAttribute="bottom" constant="15" id="fHZ-EK-igl"/>
                             <constraint firstItem="RRn-OG-xH5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fXb-ha-ZgU"/>
-                            <constraint firstItem="Fry-8v-GLU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="fgb-sO-AH1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RRn-OG-xH5" secondAttribute="bottom" constant="32" id="lLl-Zo-T8f"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="PIt-Yl-go5" secondAttribute="bottom" constant="4" id="nmr-ib-PTD"/>
                             <constraint firstItem="rQP-Aa-Bvi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="suX-81-dSX"/>
@@ -299,7 +290,6 @@
                         <outlet property="circleView2" destination="N1k-Fa-xmb" id="n4O-WF-UKH"/>
                         <outlet property="circleView3" destination="PIt-Yl-go5" id="6xz-Zo-hsc"/>
                         <outlet property="circleView4" destination="W9F-LE-LAi" id="ez1-Ju-vXQ"/>
-                        <outlet property="namasteText" destination="Fry-8v-GLU" id="0Ar-Iy-6WN"/>
                         <outlet property="onboardingDownArrow" destination="j5Q-xS-OAM" id="Hmp-r9-pC5"/>
                         <outlet property="onboardingLabel" destination="fIZ-Ey-eDG" id="jST-qr-Nfs"/>
                         <outlet property="onboardingWelcomeLabel" destination="wga-Nq-Esd" id="dL7-R9-noG"/>

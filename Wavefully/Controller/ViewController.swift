@@ -54,12 +54,7 @@ class ViewController: UIViewController {
                 if baseTime >= 0 && baseTime < 10 {
                     UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
                         self.settingsButton.layer.opacity = 0
-                    }, completion: { _ in
-                        UIView.animate(withDuration: 0.5, animations: {
-                            self.namasteText.text = "Breathe"
-                            self.namasteText.textColor = Colors.lightGreyText
-                        })
-                    })
+                    }, completion: nil)
                 }
                 
                 
@@ -122,12 +117,6 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var namasteText: UILabel! {
-        didSet {
-            namasteText.text = startingNamasteTextMessage
-        }
-    }
-    
     
     @IBOutlet weak var backgroundGradientView: UIView!
     @IBOutlet weak var playButton: UIButton!
@@ -151,7 +140,6 @@ class ViewController: UIViewController {
     var quoteIsHidden = true
     var blankCountdown = "10"
     var countdownSuccessMessage = "Reset"
-    var startingNamasteTextMessage = " "
     var timer = Timer()
     var seconds = 10
     var zero = "0"
@@ -234,8 +222,6 @@ class ViewController: UIViewController {
         circleView2.layer.opacity = 0.25
         circleView1.setRoundedGradientBackground(colorOne: Colors.baseRed, colorTwo: Colors.lightBackground)
         circleView1.layer.opacity = 0.90
-        namasteText.textColor = Colors.lightGreyText
-        namasteText.layer.opacity = 1.0
     }
     
     
@@ -422,9 +408,6 @@ class ViewController: UIViewController {
                 })
             }
         }
-        
-        namasteText.textColor = .white
-        
     }
     
     
@@ -478,10 +461,8 @@ class ViewController: UIViewController {
         
         timer.invalidate()
         timerLabel.text = countdownSuccessMessage
-        namasteText.text = "Reflect"
         quoteLabel.alpha = 1
         circleView1.layer.opacity = 1.0
-        namasteText.textColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.72)
         
         UIView.animate(withDuration: 0.4, delay: 2, options: [.curveEaseInOut],animations: {
             self.settingsButton.tintColor = .white
@@ -494,7 +475,6 @@ class ViewController: UIViewController {
     // The function that resets everything back to normal
     func resetCountdown() {
         timerLabel.text = blankCountdown
-        namasteText.text = " "
         resetAnimationStartPositions()
         resetQuoteOpacity()
         hideQuoteAttribution()
@@ -520,11 +500,6 @@ class ViewController: UIViewController {
                 self.pulsateRipples()
             }
         })
-        
-        UIView.animate(withDuration: 0.5, delay: 1.5, animations: {
-            self.namasteText.textColor = Colors.lightGreyText
-        })
-        
     }
     
     
