@@ -10,13 +10,14 @@ import UIKit
 import Instabug
 
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UITableViewController {
+    
 
     // MARK: - Actions
     
     
     // MARK: - Outlets
-    
+
     
     
     
@@ -29,12 +30,18 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // If the content doesn't fall offscreen, don't scroll
+        tableView.alwaysBounceVertical = false
         
     }
+    
     
     
     // MARK: - FUNCTIONS
     
     
     
+    
+    
+    // MARK: - Closing Bracket
 }
