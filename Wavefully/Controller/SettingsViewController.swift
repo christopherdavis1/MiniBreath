@@ -14,7 +14,13 @@ class SettingsViewController: UITableViewController {
     
 
     // MARK: - Actions
+    @IBAction func AllowNotificationsSwitchToggled(_ sender: UISwitch) {
+        AllowNotificationsSwitchChanged()
+    }
     
+    @IBAction func SetCustomTimeSwitchToggled(_ sender: UISwitch) {
+        setCustomTimeSwitchChanged()
+    }
     
     
     
@@ -45,6 +51,11 @@ class SettingsViewController: UITableViewController {
         // If the content doesn't fall offscreen, don't scroll
         tableView.alwaysBounceVertical = false
         
+        // Watch for changes of the Switch states
+        AllowNotificationsSwitch.addTarget(self, action: #selector(AllowNotificationsSwitchToggled(_:)), for: .valueChanged)
+        
+        SetCustomTimeSwitch.addTarget(self, action: #selector(SetCustomTimeSwitchToggled(_:)), for: .valueChanged)
+        
     }
     
     
@@ -56,19 +67,10 @@ class SettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 && indexPath.row == 0 {
-            print("You want to allow notifications.")
-            
-            if AllowNotificationsSwitch.isOn {
-                print("Notifications are not allowed")
-                AllowNotificationsSwitch.setOn(false, animated: true)
-            } else {
-                print("Notifications are allowed")
-                AllowNotificationsSwitch.setOn(true, animated: true)
-            }
-            
+            // Actions are in AllowNotificationsSwitch
         }
         else if indexPath.section == 0 && indexPath.row == 1 {
-            print("You want to set a custom time.")
+            // Actions are in SetCustomTimeSwitch
         }
 
 
@@ -89,7 +91,9 @@ class SettingsViewController: UITableViewController {
             launchMyTwitter()
         }
         else if indexPath.section == 3 && indexPath.row == 1 {
-            print("Opened")
+            
+            // Pushes to the Thanks and Acknowledgements Page
+            performSegue(withIdentifier: "ThanksToThanksDetail", sender: nil)
         }
 
     }
@@ -128,6 +132,24 @@ class SettingsViewController: UITableViewController {
     }
     
     
+    // Mark: - Functions for handling notifications switches
+    // Allow Notifications Switch
+    func AllowNotificationsSwitchChanged() {
+        if AllowNotificationsSwitch.isOn {
+            print("Notifications are allowed.")
+        } else {
+            print("Notifications are not allowed.")
+        }
+    }
+    
+    // Allow Custom Time Switch
+    func setCustomTimeSwitchChanged() {
+        if SetCustomTimeSwitch.isOn {
+            print("You set a new custom time.")
+        } else {
+            print("You are using the standard time.")
+        }
+    }
     
     
     // MARK: - Closing Bracket

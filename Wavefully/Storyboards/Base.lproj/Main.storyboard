@@ -353,6 +353,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6Oo-v8-Xfo">
                                                     <rect key="frame" x="349" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="AllowNotificationsSwitchToggled:" destination="lzo-Wd-wqq" eventType="valueChanged" id="Sk8-bX-G4H"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -389,6 +392,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EWP-F7-Q3o">
                                                     <rect key="frame" x="349" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="SetCustomTimeSwitchToggled:" destination="lzo-Wd-wqq" eventType="valueChanged" id="4l8-MO-ZUg"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -593,7 +599,7 @@
                                         </tableViewCellContentView>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <segue destination="czI-Be-JGy" kind="show" id="oLa-T2-Fwk"/>
+                                            <segue destination="czI-Be-JGy" kind="show" identifier="ThanksToThanksDetail" trigger="accessoryAction" id="w96-dL-x4g"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -606,13 +612,13 @@
                     </tableView>
                     <connections>
                         <outlet property="AllowNotificationsCell" destination="5Cn-xa-Mjc" id="LUm-WH-3iG"/>
-                        <outlet property="AllowNotificationsSwitch" destination="6Oo-v8-Xfo" id="lKd-Qq-Dt7"/>
+                        <outlet property="AllowNotificationsSwitch" destination="6Oo-v8-Xfo" id="iPV-98-deH"/>
                         <outlet property="CustomNotficationSetCell" destination="nbX-h9-8EX" id="BST-m2-6Ht"/>
                         <outlet property="CustomNotificationTimeCell" destination="aBh-my-Y68" id="Rrb-Ox-7Eq"/>
                         <outlet property="FollowCreatorCell" destination="wyi-u8-3HA" id="ycR-pf-fXa"/>
                         <outlet property="LeaveFeedbackCell" destination="5kH-8D-ioq" id="b3R-af-3ix"/>
                         <outlet property="RateAppCell" destination="vI9-ms-7PJ" id="Arl-xH-8HL"/>
-                        <outlet property="SetCustomTimeSwitch" destination="EWP-F7-Q3o" id="Zie-nU-zvq"/>
+                        <outlet property="SetCustomTimeSwitch" destination="EWP-F7-Q3o" id="hFQ-4r-Gpy"/>
                         <outlet property="ThanksCell" destination="pa4-ri-4DU" id="0ff-at-dER"/>
                         <outlet property="TweetAppCell" destination="qst-2b-KRS" id="Qrs-5x-DJu"/>
                     </connections>
@@ -644,10 +650,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MG7-0a-CtI"/>
                     </view>
+                    <connections>
+                        <outlet property="PlaceholderThanksLabel" destination="T47-To-pGX" id="ajo-dF-vk2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X2O-m1-X5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3162" y="134"/>
+            <point key="canvasLocation" x="3070" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VPs-Xw-Ps7">
