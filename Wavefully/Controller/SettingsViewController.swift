@@ -8,6 +8,7 @@
 
 import UIKit
 import Instabug
+import UserNotifications
 
 
 class SettingsViewController: UITableViewController {
@@ -132,13 +133,17 @@ class SettingsViewController: UITableViewController {
     }
     
     
-    // Mark: - Functions for handling notifications switches
+    // MARK: - Functions for handling notifications switches
     // Allow Notifications Switch
     func AllowNotificationsSwitchChanged() {
+        
+        checkNotificationSettings()
+        
         if AllowNotificationsSwitch.isOn {
             print("Notifications are allowed.")
         } else {
             print("Notifications are not allowed.")
+            
         }
     }
     
@@ -150,6 +155,58 @@ class SettingsViewController: UITableViewController {
             print("You are using the standard time.")
         }
     }
+    
+    
+    
+    // MARK: - Ask for and managing notifications
+    
+    // Ask for the ability to send notifications
+    // If the user has turned it off, we'll know.
+    
+    // TO-DO: - Notifications needs a lot of work!
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            [weak self] granted, error in
+
+            print("Permission granted: \(granted)")
+            guard granted else {return}
+            self?.getNotificationSettings()
+        }
+    }
+
+    // Check to see whether or not notifications are allowed
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            print("Notification Settings: \(settings)")
+
+            guard settings.authorizationStatus == .authorized else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+
+    
+    func checkNotificationSettings() {
+        
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+         
+            if settings.authorizationStatus == .notDetermined {
+                print("Notification permission hasn't been asked yet!")
+                self.registerForPushNotifications()
+            } else if settings.authorizationStatus == .authorized {
+                print("The user has authorized notifications.")
+            } else if settings.authorizationStatus == .denied {
+                print("The user has denied notifications.")
+            }
+            
+        }
+    }
+    
+
+    
+    
     
     
     // MARK: - Closing Bracket

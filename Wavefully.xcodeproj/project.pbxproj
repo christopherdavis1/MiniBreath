@@ -35,6 +35,7 @@
 /* Begin PBXFileReference section */
 		41481402F08271BB431C1947 /* Pods-Wavefully.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wavefully.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wavefully/Pods-Wavefully.release.xcconfig"; sourceTree = "<group>"; };
 		833EF95D21EBEB5E000EB7CE /* ThanksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksViewController.swift; sourceTree = "<group>"; };
+		833EF95F21ED8F8B000EB7CE /* Wavefully.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wavefully.entitlements; sourceTree = "<group>"; };
 		8370ACC821BC3A53009B2F39 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8370ACCA21BC3A89009B2F39 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		8387FF5A20A529980082CA78 /* Wavefully.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wavefully.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +116,7 @@
 		8387FF5C20A529980082CA78 /* Wavefully */ = {
 			isa = PBXGroup;
 			children = (
+				833EF95F21ED8F8B000EB7CE /* Wavefully.entitlements */,
 				8387FF7320A52DD60082CA78 /* Storyboards */,
 				83CBD2EC20CDD43A0056F07B /* Model */,
 				83CBD2ED20CDD4430056F07B /* Controller */,
@@ -231,6 +233,11 @@
 					8387FF5920A529980082CA78 = {
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -490,6 +497,7 @@
 			baseConfigurationReference = E97E03CFE471491CED14EE7D /* Pods-Wavefully.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Wavefully/Wavefully.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SGPBBYXGYR;
 				INFOPLIST_FILE = "$(SRCROOT)/Wavefully/plists/Info.plist";
@@ -510,6 +518,7 @@
 			baseConfigurationReference = 41481402F08271BB431C1947 /* Pods-Wavefully.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Wavefully/Wavefully.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SGPBBYXGYR;
 				INFOPLIST_FILE = "$(SRCROOT)/Wavefully/plists/Info.plist";
