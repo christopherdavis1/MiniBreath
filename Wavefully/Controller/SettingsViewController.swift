@@ -22,6 +22,9 @@ class SettingsViewController: UITableViewController {
     @IBAction func SetCustomTimeSwitchToggled(_ sender: UISwitch) {
         setCustomTimeSwitchChanged()
     }
+    @IBAction func morningQuoteSwitchToggled(_ sender: UISwitch) {
+        setMorningQuotes()
+    }
     
     
     
@@ -37,6 +40,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var AllowNotificationsSwitch: UISwitch!
     @IBOutlet weak var SetCustomTimeSwitch: UISwitch!
     @IBOutlet weak var notificationsTimingLabel: UILabel!
+    @IBOutlet weak var morningQuoteSwitch: UISwitch!
     
     
     
@@ -61,6 +65,8 @@ class SettingsViewController: UITableViewController {
         AllowNotificationsSwitch.addTarget(self, action: #selector(AllowNotificationsSwitchToggled(_:)), for: .valueChanged)
         
         SetCustomTimeSwitch.addTarget(self, action: #selector(SetCustomTimeSwitchToggled(_:)), for: .valueChanged)
+        
+        morningQuoteSwitch.addTarget(self, action: #selector(morningQuoteSwitchToggled(_:)), for: .valueChanged)
         
     }
     
@@ -177,6 +183,9 @@ class SettingsViewController: UITableViewController {
     // Allow Custom Time Switch
     func setCustomTimeSwitchChanged() {}
     
+    
+    // Get morning quotes
+    func setMorningQuotes() {}
     
     
     

@@ -24,10 +24,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Ripple View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Ripple View Controller" id="BYZ-38-t0r" customClass="ViewController" customModule="Wavefully" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Main View Controller" id="BYZ-38-t0r" customClass="ViewController" customModule="Wavefully" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -369,8 +369,48 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CustomNotificationTimeCell" id="aBh-my-Y68">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MorningQuotesCell" id="ovj-Re-4so">
                                         <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ovj-Re-4so" id="qdd-f2-Pxg">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mr8-Hi-a5D">
+                                                    <rect key="frame" x="16" y="6" width="32" height="32"/>
+                                                    <color key="backgroundColor" red="0.96078431369999995" green="0.039215686270000001" blue="0.039215686270000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="32" id="UQa-ST-DTe"/>
+                                                        <constraint firstAttribute="height" constant="32" id="j4z-sa-dYp"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get a Quote Every Morning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C21-qJ-Prj">
+                                                    <rect key="frame" x="56" y="10" width="269" height="23.5"/>
+                                                    <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wez-9J-PMr">
+                                                    <rect key="frame" x="349" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="AllowNotificationsSwitchToggled:" destination="lzo-Wd-wqq" eventType="valueChanged" id="EyU-82-CGr"/>
+                                                        <action selector="morningQuoteSwitchToggled:" destination="lzo-Wd-wqq" eventType="valueChanged" id="Dgb-DH-juc"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Wez-9J-PMr" firstAttribute="centerY" secondItem="Mr8-Hi-a5D" secondAttribute="centerY" id="7kf-di-4qB"/>
+                                                <constraint firstItem="C21-qJ-Prj" firstAttribute="leading" secondItem="Mr8-Hi-a5D" secondAttribute="trailing" constant="8" id="9cs-9H-lLa"/>
+                                                <constraint firstItem="Mr8-Hi-a5D" firstAttribute="centerY" secondItem="qdd-f2-Pxg" secondAttribute="centerY" id="JhA-md-Y7Q"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wez-9J-PMr" secondAttribute="trailing" constant="16" id="QWd-1d-NSp"/>
+                                                <constraint firstItem="Mr8-Hi-a5D" firstAttribute="leading" secondItem="qdd-f2-Pxg" secondAttribute="leading" constant="16" id="eeq-dn-5Du"/>
+                                                <constraint firstItem="Wez-9J-PMr" firstAttribute="leading" secondItem="C21-qJ-Prj" secondAttribute="trailing" constant="24" id="uLc-xh-DLw"/>
+                                                <constraint firstItem="C21-qJ-Prj" firstAttribute="centerY" secondItem="Mr8-Hi-a5D" secondAttribute="centerY" id="xcx-ES-xgv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CustomNotificationTimeCell" id="aBh-my-Y68">
+                                        <rect key="frame" x="0.0" y="143.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aBh-my-Y68" id="Bcy-mt-KR4">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -409,7 +449,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CustomTimeSetCell" textLabel="z2k-Vw-H4F" style="IBUITableViewCellStyleDefault" id="nbX-h9-8EX">
-                                        <rect key="frame" x="0.0" y="143.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="187.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nbX-h9-8EX" id="a0v-Tl-uxg">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -431,7 +471,7 @@
                             <tableViewSection headerTitle="Get help, ask a question, or leave feedback..." id="bur-fK-Mu3">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LeaveFeedbackCell" id="5kH-8D-ioq">
-                                        <rect key="frame" x="0.0" y="243.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="287.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5kH-8D-ioq" id="RkS-5f-rtF">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
@@ -463,7 +503,7 @@
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TweetAppCell" id="qst-2b-KRS">
-                                        <rect key="frame" x="0.0" y="287.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="331.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qst-2b-KRS" id="f8W-Ia-DdO">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
@@ -499,7 +539,7 @@
                             <tableViewSection headerTitle="If you’re liking the app, please share!" id="ktV-EU-4Va">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RateAppCell" id="vI9-ms-7PJ">
-                                        <rect key="frame" x="0.0" y="387.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="431.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vI9-ms-7PJ" id="hkk-8L-Nm8">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -536,7 +576,7 @@
                             <tableViewSection headerTitle="Other things..." id="haj-8t-ab3">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FollowCreatorCell" id="wyi-u8-3HA">
-                                        <rect key="frame" x="0.0" y="487.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="531.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wyi-u8-3HA" id="R7x-35-God">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
@@ -568,7 +608,7 @@
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ThanksCell" id="pa4-ri-4DU">
-                                        <rect key="frame" x="0.0" y="531.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="575.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pa4-ri-4DU" id="uWI-jY-AsD">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
@@ -621,6 +661,7 @@
                         <outlet property="SetCustomTimeSwitch" destination="EWP-F7-Q3o" id="hFQ-4r-Gpy"/>
                         <outlet property="ThanksCell" destination="pa4-ri-4DU" id="0ff-at-dER"/>
                         <outlet property="TweetAppCell" destination="qst-2b-KRS" id="Qrs-5x-DJu"/>
+                        <outlet property="morningQuoteSwitch" destination="Wez-9J-PMr" id="SBz-vu-RQ2"/>
                         <outlet property="notificationsTimingLabel" destination="z2k-Vw-H4F" id="QTl-go-lyg"/>
                     </connections>
                 </tableViewController>
