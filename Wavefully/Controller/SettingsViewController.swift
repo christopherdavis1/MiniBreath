@@ -214,18 +214,22 @@ class SettingsViewController: UITableViewController {
         let content = UNMutableNotificationContent()
         content.title = "Mindful Moment Reminder"
         content.body = "Take a 10 second pause, and reflect on something inspiring."
-        content.categoryIdentifier = "reminder"
+        content.categoryIdentifier = "mindfulnessReminder"
         content.sound = UNNotificationSound.default
         
         // The timing:
         
-        // Un-Comment to show the notification every day at 2:00pm EST
-        //        let dateComponents = DateComponents()
-        //        dateComponents.hour = 14
-        //        dateComponents.minute = 00
-        //        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-        notificationsTimingLabel.text = "\("Notifications are set for") \(trigger.timeInterval) \("seconds from now.")"
+        var dateComponents = DateComponents()
+        dateComponents.hour = 14
+        dateComponents.minute = 00
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        notificationsTimingLabel.text = "Notifications are set for 2:00PM."
+        
+        
+        // Un-Comment to show the time in seconds.
+        //        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        //        notificationsTimingLabel.text = "\("Notifications are set for") \(trigger.timeInterval) \("seconds from now.")"
+        
         
         // Show the notification content at the time assigned!
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
