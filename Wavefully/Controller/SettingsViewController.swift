@@ -41,7 +41,11 @@ class SettingsViewController: UITableViewController {
     
     
     // MARK: - Variables
-    
+    let center = UNUserNotificationCenter.current()
+    var onOffLabelDefault = "Notifications are off."
+    var hintTimingLabelDefault = "Tap to turn on."
+    var notificationsAllowed = false
+    var notificationsOn = false
     
     
     
