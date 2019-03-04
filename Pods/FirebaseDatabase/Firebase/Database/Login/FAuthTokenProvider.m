@@ -16,7 +16,7 @@
 
 #import "FAuthTokenProvider.h"
 
-#import <FirebaseAuthInterop/firauthinterop.h>
+#import <FirebaseAuthInterop/FIRAuthInterop.h>
 #import <FirebaseCore/FIRAppInternal.h>
 #import <FirebaseCore/FIRComponentContainer.h>
 #import <FirebaseCore/FIRLogger.h>
