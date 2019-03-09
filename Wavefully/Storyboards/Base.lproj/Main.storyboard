@@ -714,10 +714,10 @@
             </objects>
             <point key="canvasLocation" x="3070" y="134"/>
         </scene>
-        <!--Quote View Controller-->
+        <!--Reflect-->
         <scene sceneID="h7Q-37-IBV">
             <objects>
-                <viewController id="Frb-yz-uZA" customClass="QuoteViewController" customModule="Wavefully" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Reflect" id="Frb-yz-uZA" customClass="QuoteViewController" customModule="Wavefully" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qgo-Cj-Mt1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -740,7 +740,7 @@
                                 </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Zj-bw-ToC" userLabel="quoteContainerView">
-                                <rect key="frame" x="24" y="128" width="366" height="400"/>
+                                <rect key="frame" x="24" y="112" width="366" height="400"/>
                                 <subviews>
                                     <view alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czr-K1-VSQ" userLabel="bgQuoteImageContainer">
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="400"/>
@@ -822,7 +822,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="z1m-AH-Yeg">
-                                <rect key="frame" x="24" y="544" width="366" height="146"/>
+                                <rect key="frame" x="24" y="528" width="366" height="146"/>
                                 <subviews>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNB-gc-mPT">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="146"/>
@@ -904,7 +904,7 @@
                             <constraint firstItem="yRF-kR-Jaq" firstAttribute="top" secondItem="qgo-Cj-Mt1" secondAttribute="top" id="eH5-ra-duF"/>
                             <constraint firstItem="yRF-kR-Jaq" firstAttribute="leading" secondItem="qgo-Cj-Mt1" secondAttribute="leading" id="lqs-bI-uMs"/>
                             <constraint firstItem="z1m-AH-Yeg" firstAttribute="top" secondItem="7Zj-bw-ToC" secondAttribute="bottom" constant="16" id="spG-Z8-SnD"/>
-                            <constraint firstItem="7Zj-bw-ToC" firstAttribute="top" secondItem="M1t-X1-9lr" secondAttribute="top" constant="40" id="v18-1q-6z0"/>
+                            <constraint firstItem="7Zj-bw-ToC" firstAttribute="top" secondItem="M1t-X1-9lr" secondAttribute="top" constant="24" id="v18-1q-6z0"/>
                             <constraint firstItem="BRD-8L-y3b" firstAttribute="leading" secondItem="M1t-X1-9lr" secondAttribute="leading" constant="16" id="xVL-VS-kne"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="M1t-X1-9lr"/>
@@ -940,6 +940,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="045-S0-dBh">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

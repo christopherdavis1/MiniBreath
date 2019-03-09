@@ -38,11 +38,6 @@ class QuoteViewController: UIViewController {
     @IBOutlet weak var settingButton: UIButton!
     
     
-    
-    
-    
-    
-    
     // MARK: - VARIABLES
     
     
@@ -51,7 +46,10 @@ class QuoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        
     }
     
 
