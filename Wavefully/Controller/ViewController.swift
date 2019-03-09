@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     
     // MARK: - ACTIONS
     
+    @IBAction func seeNewPageButtonTapped(_ sender: UIButton) {}
+    
     
     @IBAction func settingButtonTapped(_ sender: UIButton) {}
     
@@ -501,7 +503,6 @@ class ViewController: UIViewController {
         // Total seconds meditated
         secondsOfMeditation = numberOfMeditations * 10
         print("\(secondsOfMeditation)\(" seconds meditated.")")
-        
     }
     
     

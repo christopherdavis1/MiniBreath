@@ -74,7 +74,6 @@ class SettingsViewController: UITableViewController {
     
     // MARK: - FUNCTIONS
     
-    
     // Functions for acting on whatever row you tap.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -87,7 +86,7 @@ class SettingsViewController: UITableViewController {
 
 
         if indexPath.section == 1 && indexPath.row == 0 {
-            BugReporting.invoke()
+            Instabug.show()
         }
         else if indexPath.section == 1 && indexPath.row == 1 {
             launchAppTwitter()
