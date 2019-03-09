@@ -162,7 +162,6 @@ class ViewController: UIViewController {
     // MARK: - CONSTANTS
     let impact = UIImpactFeedbackGenerator()
     
-    
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)

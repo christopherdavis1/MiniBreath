@@ -27,7 +27,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Main View Controller" id="BYZ-38-t0r" customClass="ViewController" customModule="Wavefully" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="countdownView" title="Main View Controller" id="BYZ-38-t0r" customClass="ViewController" customModule="Wavefully" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -717,7 +717,7 @@
         <!--Reflect-->
         <scene sceneID="h7Q-37-IBV">
             <objects>
-                <viewController title="Reflect" id="Frb-yz-uZA" customClass="QuoteViewController" customModule="Wavefully" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="quoteView" title="Reflect" id="Frb-yz-uZA" customClass="QuoteViewController" customModule="Wavefully" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qgo-Cj-Mt1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
