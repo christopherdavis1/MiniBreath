@@ -65,12 +65,6 @@ class ViewController: UIViewController {
                 UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
                     self.transfromShapeSmall()
                 }, completion: nil)
-                
-                // Hide the timer label text
-                UIView.animate(withDuration: 0.4, delay: 0, options: [], animations: {
-                    self.timerLabel.transform = .identity
-                    self.timerLabel.alpha = 1
-                }, completion: nil)
              
                 // Other actions:
                 print("You're pressing the timer.")
@@ -95,31 +89,9 @@ class ViewController: UIViewController {
     
     
     
+    
     // MARK: - OUTLETS
-    @IBOutlet weak var quoteLabel: UILabel! {
-        didSet {
-            quoteLabel.text = defaultQuote
-            quoteLabel.numberOfLines = 5
-            quoteLabel.alpha = 0
-        }
-    }
-    
-    @IBOutlet weak var quoteAttributionLabel: UILabel! {
-        didSet {
-            quoteAttributionLabel.text = defaultAttributionText
-            quoteAttributionLabel.numberOfLines = 1
-            quoteAttributionLabel.alpha = 0
-        }
-    }
-    
-    
-    @IBOutlet weak var timerLabel: UILabel! {
-        didSet {
-            timerLabel.text = blankCountdown
-        }
-    }
-    
-    
+
     @IBOutlet weak var backgroundGradientView: UIView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var resetButtonContainer: UIView!
@@ -132,15 +104,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var circleView2: UIView!
     @IBOutlet weak var circleView1: UIView!
     @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var headerTextLabel: UILabel!
+    @IBOutlet weak var subheaderTextLabel: UILabel!
+    @IBOutlet weak var countdownStackView: UIStackView!
+    @IBOutlet weak var step1View: UIView!
+    @IBOutlet weak var step2View: UIView!
+    @IBOutlet weak var step3View: UIView!
+    @IBOutlet weak var step4View: UIView!
     
     
     
     
     // MARK: - VARIABLES
-    var defaultQuote = "Test"
-    var defaultAttributionText = "Test"
-    var quoteIsHidden = true
-    var blankCountdown = "10"
     var countdownSuccessMessage = "Reset"
     var timer = Timer()
     var seconds = 10
@@ -151,9 +126,13 @@ class ViewController: UIViewController {
     var isReset = false
     var countdownTimerChimed = false
     var audioPlayer: AVAudioPlayer?
-    var numberOfPlayTaps = 0
     var numberOfSessions = 0
     var numberOfSeconds = 0
+    var firstCycleDone = false
+    var secondCycleDone = false
+    var step1StartingWidth: Int = 18
+    var step1CurrentWidth: Int = 18
+    var step1UpdatedWidth: Int = 0
     
     // MARK: - CONSTANTS
     let impact = UIImpactFeedbackGenerator()
@@ -173,22 +152,21 @@ class ViewController: UIViewController {
         circleView1.layer.cornerRadius = circleView1.frame.size.width / 2
         backgroundGradientView?.setGradientBackground(colorOne: Colors.darkBackground, colorTwo: Colors.lightBackground)
         
+        step1View.layer.cornerRadius = step1View.frame.height/2
+        step2View.layer.cornerRadius = step2View.frame.height/2
+        step3View.layer.cornerRadius = step3View.frame.height/2
+        step4View.layer.cornerRadius = step4View.frame.height/2
+        
+        countdownStackView.layer.isHidden = true
+        
         playButton.isHidden = false
         playButton.isHighlighted = false
-        timerLabel.alpha = 0
-//        resetButtonContainer.alpha = 0
-//        onboardingLabel.alpha = 0
-//        onboardingWelcomeLabel.alpha = 0
-//        onboardingDownArrow.alpha = 0
         
         resetCountdown()
         resetAnimationStartPositions()
         showOnboarding()
         bounceOnboarding()
         pulsateRipples()
-        
-        quoteLabel.text = ""
-        quoteAttributionLabel.text = ""
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -318,7 +296,6 @@ class ViewController: UIViewController {
             seconds -= 1
             baseTime += 1
             print(baseTime)
-            timerLabel.text = timeString(time: TimeInterval(seconds))
             transfromShapes()
         }
         else {
@@ -407,13 +384,7 @@ class ViewController: UIViewController {
             if currentCircleSize != heightOfView {
                 UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
                     circle!.transform = CGAffineTransform(scaleX: 25, y: 25)
-                }, completion: { _ in
-                    UIView.animate(withDuration: 0.6, delay: 0, options: [.curveEaseIn], animations: {
-                        self.quoteLabel.alpha = 1
-                    }, completion: nil)
-                    self.showQuoteAttribution()
-                    self.moveCompletedQuote()
-                })
+                }, completion: nil)
             }
         }
     }
@@ -479,10 +450,7 @@ class ViewController: UIViewController {
     
     // The function that resets everything back to normal
     func resetCountdown() {
-        timerLabel.text = blankCountdown
         resetAnimationStartPositions()
-        resetQuoteOpacity()
-        hideQuoteAttribution()
         isRunning = false
         isPaused = false
         isReset = true
@@ -508,47 +476,16 @@ class ViewController: UIViewController {
     }
     
     
-    
-    func resetQuoteOpacity() {
-        UIView.animate(withDuration: 0.4, delay: 0.2, options: [.curveEaseOut], animations: {
-            let quoteLabelTransform = CGAffineTransform.init(translationX: 0, y: -30)
-            self.quoteLabel.transform = quoteLabelTransform
-            self.quoteLabel.alpha = 0
-        }, completion: nil)
-        print("Your quote text has been hidden.")
-    }
-    
-    func showQuoteAttribution() {
-        UIView.animate(withDuration: 0.8, delay: 0.5, options: [.curveEaseIn], animations: {
-            self.quoteAttributionLabel.alpha = 1
-        }, completion: nil)
-    }
-    
-    func hideQuoteAttribution() {
-        UIView.animate(withDuration: 0.4, delay: 0.2, options: [.curveEaseOut], animations: {
-            let quoteAttributionTransform = CGAffineTransform.init(translationX: 0, y: -26)
-            self.quoteAttributionLabel.transform = quoteAttributionTransform
-            self.quoteAttributionLabel.alpha = 0
-        }, completion: nil)
-    }
-    
-    func moveCompletedQuote() {
-        UIView.animate(withDuration: 0.8, delay: 0.4, options: [.curveEaseInOut], animations: {
-            let completedQuoteLabelTransform = CGAffineTransform.init(translationX: 0, y: 40)
-            self.quoteLabel.transform = completedQuoteLabelTransform
-            
-            let completedAttributionLabelTransform = CGAffineTransform.init(translationX: 0, y: 50)
-            self.quoteAttributionLabel.transform = completedAttributionLabelTransform
-        }, completion: nil)
-    }
+// MARK: - THE ANIMATIONS I USED FOR THE QUOTE
+//    func showQuoteAttribution() {
+//        UIView.animate(withDuration: 0.8, delay: 0.5, options: [.curveEaseIn], animations: {
+//            self.quoteAttributionLabel.alpha = 1
+//        }, completion: nil)
+//    }
     
     
     func resetAnimationStartPositions() {
         UIView.animate(withDuration: 0.4, delay: 0.1, options: [.curveEaseOut], animations: {
-            let timerLabelTransform = CGAffineTransform.init(translationX: 0, y: 30)
-            self.timerLabel.transform = timerLabelTransform
-            self.timerLabel.alpha = 0
-            
             let replayButtonTransformAway = CGAffineTransform.init(translationX: 0, y: 10)
             self.resetButtonContainer.transform = replayButtonTransformAway
             self.resetButtonContainer.alpha = 0
