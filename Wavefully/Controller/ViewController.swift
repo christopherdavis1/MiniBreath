@@ -457,35 +457,44 @@ class ViewController: UIViewController {
     // MARK: - Functions for finishing and resetting the countdown.
     // The function that dictates what happens when the countdown ends
     func countdownFinished() {
-        randomQuote()
+        // randomQuote()
+        // countOfMeditations()
         finishFill()
-        countOfMeditations()
+        timer.invalidate()
+        impact.impactOccurred()
+        countdownFinishedSound()
         isRunning = false
         isPaused = false
         
-        UIView.animate(withDuration: 0.4, delay: 0.1, options: [.curveEaseOut], animations: {
-            
-            let replayButtonTransformInto = CGAffineTransform.init(translationX: 0, y: -10)
-            self.resetButtonContainer.transform = replayButtonTransformInto
-            self.resetButtonContainer.alpha = 1
-            self.playButton.alpha = 0
-        }, completion: nil)
-        
-        if seconds < 1 && countdownTimerChimed == false {
-            countdownFinishedSound()
-            impact.impactOccurred()
-            countdownTimerChimed = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            // Slide in the quote view from the bottom as the screen turns red.
+            let completedView = self.storyboard?.instantiateViewController(withIdentifier: "quoteView") as! QuoteViewController
+            self.navigationController?.pushViewController(completedView, animated: true)
         }
         
-        timer.invalidate()
-        timerLabel.text = countdownSuccessMessage
-        quoteLabel.alpha = 1
-        circleView1.layer.opacity = 1.0
-        
-        UIView.animate(withDuration: 0.4, delay: 2, options: [.curveEaseInOut],animations: {
-            self.settingsButton.tintColor = .white
-            self.settingsButton.layer.opacity = 1
-        })
+//        UIView.animate(withDuration: 0.4, delay: 0.1, options: [.curveEaseOut], animations: {
+//
+//            let replayButtonTransformInto = CGAffineTransform.init(translationX: 0, y: -10)
+//            self.resetButtonContainer.transform = replayButtonTransformInto
+//            self.resetButtonContainer.alpha = 1
+//            self.playButton.alpha = 0
+//        }, completion: nil)
+//
+//        if seconds < 1 && countdownTimerChimed == false {
+//            countdownFinishedSound()
+//            impact.impactOccurred()
+//            countdownTimerChimed = true
+//        }
+//
+//        timer.invalidate()
+//        timerLabel.text = countdownSuccessMessage
+//        quoteLabel.alpha = 1
+//        circleView1.layer.opacity = 1.0
+//
+//        UIView.animate(withDuration: 0.4, delay: 2, options: [.curveEaseInOut],animations: {
+//            self.settingsButton.tintColor = .white
+//            self.settingsButton.layer.opacity = 1
+//        })
         
         print("Your countdown has finished.")
     }
