@@ -16,15 +16,7 @@ import RealmSwift
 class ViewController: UIViewController {
     
     // MARK: - ACTIONS
-    
-    @IBAction func seeNewPageButtonTapped(_ sender: UIButton) {}
-    
-    
     @IBAction func settingButtonTapped(_ sender: UIButton) {}
-    
-    @IBAction func resetButtonTapped(_ sender: UIButton) {
-        resetCountdown()
-    }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
         playButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
@@ -52,6 +44,13 @@ class ViewController: UIViewController {
                 
                 // Functions
                 runTimer()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.headerTextLabel.layer.opacity = 1
+                    self.subheaderTextLabel.layer.opacity = 0.5
+                    self.countdownStackView.layer.opacity = 1
+                }
+                
                 
                 if baseTime >= 0 && baseTime < 10 {
                     UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
@@ -95,7 +94,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var backgroundGradientView: UIView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var resetButtonContainer: UIView!
-    @IBOutlet weak var resetIcon: UIImageView!
     @IBOutlet weak var onboardingWelcomeLabel: UILabel!
     @IBOutlet weak var onboardingLabel: UILabel!
     @IBOutlet weak var onboardingDownArrow: UIImageView!
@@ -128,17 +126,17 @@ class ViewController: UIViewController {
     var audioPlayer: AVAudioPlayer?
     var numberOfSessions = 0
     var numberOfSeconds = 0
-    var firstCycleDone = false
-    var secondCycleDone = false
-    var step1StartingWidth: Int = 18
-    var step1CurrentWidth: Int = 18
-    var step1UpdatedWidth: Int = 0
+    
+    var breathPhaseTime: Int = 0
+    var totalCycleTime = 0
+    var countOfSeconds = 20
     
     // MARK: - CONSTANTS
     let impact = UIImpactFeedbackGenerator()
     let defaults: UserDefaults = UserDefaults.standard
     
     
+    // MARK: - VIEW LOADING & HIDING
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -157,17 +155,31 @@ class ViewController: UIViewController {
         step3View.layer.cornerRadius = step3View.frame.height/2
         step4View.layer.cornerRadius = step4View.frame.height/2
         
-        countdownStackView.layer.isHidden = true
-        
         playButton.isHidden = false
         playButton.isHighlighted = false
         
+        headerTextLabel.layer.opacity = 0
+        subheaderTextLabel.layer.opacity = 0
+        countdownStackView.layer.opacity = 0
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super .viewDidAppear(animated)
+        
         resetCountdown()
-        resetAnimationStartPositions()
         showOnboarding()
         bounceOnboarding()
         pulsateRipples()
     }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setBaseColors()
+        backgroundGradientView?.setGradientBackground(colorOne: Colors.darkBackground, colorTwo: Colors.lightBackground)
+    }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -177,23 +189,9 @@ class ViewController: UIViewController {
     }
     
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
     
     
-    // MARK: - VIEW DID LOAD
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setBaseColors()
-        backgroundGradientView?.setGradientBackground(colorOne: Colors.darkBackground, colorTwo: Colors.lightBackground)
-    }
-    
-    
-    
-    
-    // MARK: - MISC FUNCTIONS
+    // MARK: - FUNCTIONS
     
     
     // MARK: - Functions to set UI:
@@ -278,6 +276,10 @@ class ViewController: UIViewController {
     }
     
     
+    
+    
+    
+    // Timer Functions
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
         isRunning = true
@@ -292,20 +294,106 @@ class ViewController: UIViewController {
     }
     
     @objc func updateTimer() {
-        if seconds != 0 {
+        if countOfSeconds != 0 {
+            
+            breathPhaseTime += 1
+            totalCycleTime += 1
+            countOfSeconds -= 1
+            
             seconds -= 1
             baseTime += 1
+            
+            if breathPhaseTime == 5 {
+                breathPhaseTime = 0
+                
+                UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+                    self.step1View.frame.size.width = self.step1View.frame.size.width - 78
+                    self.step4View.layer.opacity = 1
+                    self.step4View.layer.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.8862745098, blue: 0.8901960784, alpha: 1)
+                    self.step3View.layer.opacity = 1
+                    self.step3View.layer.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.8862745098, blue: 0.8901960784, alpha: 1)
+                    self.step2View.layer.opacity = 1
+                    self.step2View.layer.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.8862745098, blue: 0.8901960784, alpha: 1)
+                    self.step1View.layer.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.8862745098, blue: 0.8901960784, alpha: 1)
+                }, completion: nil)
+            }
+            
+            if breathPhaseTime == 1 {
+                UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+                    self.step1View.layer.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.0862745098, blue: 0.0862745098, alpha: 1)
+                }, completion: nil)
+            } else if breathPhaseTime == 2 {
+                UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+                    self.step1View.frame.size.width = self.step1View.frame.size.width + 26
+                    self.step2View.layer.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.0862745098, blue: 0.0862745098, alpha: 1)
+                    self.step2View.layer.opacity = 0
+                }, completion: nil)
+            } else if breathPhaseTime == 3 {
+                UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+                    self.step1View.frame.size.width = self.step1View.frame.size.width + 26
+                    self.step3View.layer.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.0862745098, blue: 0.0862745098, alpha: 1)
+                    self.step3View.layer.opacity = 0
+                }, completion: nil)
+            } else if breathPhaseTime == 4 {
+                UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+                    self.step1View.frame.size.width = self.step1View.frame.size.width + 26
+                    self.step4View.layer.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.0862745098, blue: 0.0862745098, alpha: 1)
+                    self.step4View.layer.opacity = 0
+                }, completion: nil)
+            }
+            
+            
+            if totalCycleTime > 0 && totalCycleTime <= 4 {
+                userIsInhaling()
+            }
+            
+            else if totalCycleTime > 4 && totalCycleTime <= 9 {
+                userIsHoldingBreath()
+            }
+            
+            else if totalCycleTime > 9 && totalCycleTime <= 14 {
+                userIsExhaling()
+            }
+            
+            else if totalCycleTime > 14 && totalCycleTime <= 19 {
+                userIsHoldingBreath()
+            }
+            
             print(baseTime)
-            transfromShapes()
         }
         else {
             countdownFinished()
         }
     }
     
+    
     func timeString(time:TimeInterval) -> String {
         let seconds = Int(time) % 60
         return String(format: "%2i", seconds)
+    }
+    
+    
+    // Breathing Functions
+    
+    func userIsInhaling() {
+        headerTextLabel.text = "Inhale"
+        subheaderTextLabel.text = "Deeply through the nose"
+        transfromShapes()
+        if totalCycleTime == 5 {impact.impactOccurred()}
+    }
+    
+    func userIsHoldingBreath() {
+        headerTextLabel.text = "Pause"
+        subheaderTextLabel.text = "Hold that breath"
+        pulsateRipples()
+        if totalCycleTime == 10 {impact.impactOccurred()}
+    }
+    
+    func userIsExhaling() {
+        headerTextLabel.text = "Exhale"
+        subheaderTextLabel.text = "Fully, through the mouth"
+        transfromShapes()
+        if totalCycleTime == 15 {impact.impactOccurred()}
     }
     
     
@@ -450,15 +538,17 @@ class ViewController: UIViewController {
     
     // The function that resets everything back to normal
     func resetCountdown() {
-        resetAnimationStartPositions()
         isRunning = false
         isPaused = false
         isReset = true
         countdownTimerChimed = false
         seconds = 10
         baseTime = 0
-        //resetButtonSound()
-        //impact.impactOccurred()
+        
+        breathPhaseTime = 0
+        totalCycleTime = 0
+        countOfSeconds = 20
+        
         print("You reset your timer.")
         
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0.25, options: .curveEaseOut, animations: {
@@ -484,17 +574,7 @@ class ViewController: UIViewController {
 //    }
     
     
-    func resetAnimationStartPositions() {
-        UIView.animate(withDuration: 0.4, delay: 0.1, options: [.curveEaseOut], animations: {
-            let replayButtonTransformAway = CGAffineTransform.init(translationX: 0, y: 10)
-            self.resetButtonContainer.transform = replayButtonTransformAway
-            self.resetButtonContainer.alpha = 0
-            
-            self.playButton.alpha = 1
-        }, completion: nil)
-    }
     
-
     // MARK: — UI SOUNDS
     
     // Play a sound when the countdown begins
