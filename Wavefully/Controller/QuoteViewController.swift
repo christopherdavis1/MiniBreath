@@ -49,6 +49,9 @@ class QuoteViewController: UIViewController {
     var quotes: Results<QuoteObject>!
     var allQuotes = uiRealm.objects(QuoteObject.self)
     var unseenQuotes = uiRealm.objects(QuoteObject.self).filter("hasSeen = false")
+    var numberOfMeditationsCount: Int = 0
+    var secondsOfMeditationCount: Int = 0
+    weak var delegate: ViewController!
     
     
     // MARK: - CONSTANTS
@@ -71,10 +74,20 @@ class QuoteViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         
     }
-
     
     
-    // MARK: — Database Stuff
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        totalSecondsCountLabel.text = String(secondsOfMeditationCount)
+        totalSessionsCountLabel.text = String(numberOfMeditationsCount)
+    }
+    
+    
+    
+    
+    
+    // MARK: — Functions: Database Stuff
     
     // Get data from Firebase
     func grabData() {

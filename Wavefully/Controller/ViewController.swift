@@ -151,13 +151,9 @@ class ViewController: UIViewController {
     var isReset = false
     var countdownTimerChimed = false
     var audioPlayer: AVAudioPlayer?
-    var databaseRef: DatabaseReference!
-    var quotes: Results<QuoteObject>!
-    var allQuotes = uiRealm.objects(QuoteObject.self)
-    var unseenQuotes = uiRealm.objects(QuoteObject.self).filter("hasSeen = false")
     var numberOfPlayTaps = 0
-    var numberOfMeditations = 0
-    var secondsOfMeditation = 0
+    var numberOfSessions = 0
+    var numberOfSeconds = 0
     
     // MARK: - CONSTANTS
     let impact = UIImpactFeedbackGenerator()
@@ -460,10 +456,19 @@ class ViewController: UIViewController {
         isRunning = false
         isPaused = false
         
+        numberOfSeconds = numberOfSeconds + 10
+        print(numberOfSeconds)
+        numberOfSessions = numberOfSessions + 1
+        print(numberOfSessions)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            
             // Slide in the quote view from the bottom as the screen turns red.
-            let completedView = self.storyboard?.instantiateViewController(withIdentifier: "quoteView") as! QuoteViewController
-            self.navigationController?.pushViewController(completedView, animated: true)
+//            let completedView = self.storyboard?.instantiateViewController(withIdentifier: "quoteView") as! QuoteViewController
+//            self.navigationController?.pushViewController(completedView, animated: true)
+
+            self.performSegue(withIdentifier: "pushToQuoteView", sender: Any?.self)
+            
         }
         
 //        UIView.animate(withDuration: 0.4, delay: 0.1, options: [.curveEaseOut], animations: {
@@ -491,20 +496,6 @@ class ViewController: UIViewController {
 //        })
         
         print("Your countdown has finished.")
-    }
-    
-    
-    // Count the number of meditations, and total time meditated
-    
-    func countOfMeditations() {
-        
-        // Increase total number of meditations
-        numberOfMeditations = numberOfMeditations + 1
-        print("\(numberOfMeditations)\(" meditation completed.")")
-        
-        // Total seconds meditated
-        secondsOfMeditation = numberOfMeditations * 10
-        print("\(secondsOfMeditation)\(" seconds meditated.")")
     }
     
     
@@ -637,8 +628,23 @@ class ViewController: UIViewController {
     }
     
     
+    // MARK: - Segues!
+    
+    // Step sessions & second count on countdown completion
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "pushToQuoteView" {
+            let destinationVC = segue.destination as! QuoteViewController
+            
+            destinationVC.secondsOfMeditationCount = numberOfSeconds
+            print(numberOfSeconds)
+            
+            destinationVC.numberOfMeditationsCount = numberOfSessions
+            print(numberOfSessions)
+        }
+    }
     
 
-    // MARK: - Closing Bracket  👇 🤙
+// MARK: - Closing Bracket  👇 🤙
 }
 

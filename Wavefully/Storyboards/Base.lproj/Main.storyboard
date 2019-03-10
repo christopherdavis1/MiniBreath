@@ -306,6 +306,7 @@
                         <outlet property="resetButtonContainer" destination="hYP-T1-A2c" id="Gne-Ng-U7u"/>
                         <outlet property="settingsButton" destination="xpj-4d-mdK" id="V90-Kv-ijS"/>
                         <outlet property="timerLabel" destination="gby-HU-feK" id="R8W-ME-D0f"/>
+                        <segue destination="Frb-yz-uZA" kind="show" identifier="pushToQuoteView" id="fCN-lg-tTf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -726,7 +727,7 @@
                                 </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Zj-bw-ToC" userLabel="quoteContainerView">
-                                <rect key="frame" x="24" y="68" width="366" height="400"/>
+                                <rect key="frame" x="24" y="112" width="366" height="400"/>
                                 <subviews>
                                     <view alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czr-K1-VSQ" userLabel="bgQuoteImageContainer">
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="400"/>
@@ -808,7 +809,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="z1m-AH-Yeg">
-                                <rect key="frame" x="24" y="484" width="366" height="146"/>
+                                <rect key="frame" x="24" y="528" width="366" height="146"/>
                                 <subviews>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNB-gc-mPT">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="146"/>
