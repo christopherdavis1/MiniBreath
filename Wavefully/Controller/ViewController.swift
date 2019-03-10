@@ -157,6 +157,8 @@ class ViewController: UIViewController {
     
     // MARK: - CONSTANTS
     let impact = UIImpactFeedbackGenerator()
+    let defaults: UserDefaults = UserDefaults.standard
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -446,56 +448,32 @@ class ViewController: UIViewController {
     // MARK: - Functions for finishing and resetting the countdown.
     // The function that dictates what happens when the countdown ends
     func countdownFinished() {
-        // randomQuote()
-        // countOfMeditations()
         finishFill()
         timer.invalidate()
         impact.impactOccurred()
-        //randomQuote()
         countdownFinishedSound()
         isRunning = false
         isPaused = false
         
-        numberOfSeconds = numberOfSeconds + 10
-        print(numberOfSeconds)
-        numberOfSessions = numberOfSessions + 1
-        print(numberOfSessions)
+        incrimentStats()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            
-            // Slide in the quote view from the bottom as the screen turns red.
-//            let completedView = self.storyboard?.instantiateViewController(withIdentifier: "quoteView") as! QuoteViewController
-//            self.navigationController?.pushViewController(completedView, animated: true)
-
             self.performSegue(withIdentifier: "pushToQuoteView", sender: Any?.self)
-            
         }
-        
-//        UIView.animate(withDuration: 0.4, delay: 0.1, options: [.curveEaseOut], animations: {
-//
-//            let replayButtonTransformInto = CGAffineTransform.init(translationX: 0, y: -10)
-//            self.resetButtonContainer.transform = replayButtonTransformInto
-//            self.resetButtonContainer.alpha = 1
-//            self.playButton.alpha = 0
-//        }, completion: nil)
-//
-//        if seconds < 1 && countdownTimerChimed == false {
-//            countdownFinishedSound()
-//            impact.impactOccurred()
-//            countdownTimerChimed = true
-//        }
-//
-//        timer.invalidate()
-//        timerLabel.text = countdownSuccessMessage
-//        quoteLabel.alpha = 1
-//        circleView1.layer.opacity = 1.0
-//
-//        UIView.animate(withDuration: 0.4, delay: 2, options: [.curveEaseInOut],animations: {
-//            self.settingsButton.tintColor = .white
-//            self.settingsButton.layer.opacity = 1
-//        })
-        
+
         print("Your countdown has finished.")
+    }
+    
+    
+    func incrimentStats() {
+        
+        numberOfSeconds = numberOfSeconds + 10
+        defaults.set(numberOfSeconds, forKey: "numberOfSecondsCount")
+        print(defaults.integer(forKey: "numberOfSecondsCount"))
+
+        numberOfSessions = numberOfSessions + 1
+        defaults.set(numberOfSessions, forKey: "numberOfSessionsCount")
+        print(defaults.integer(forKey: "numberOfSessionsCount"))
     }
     
     
@@ -636,11 +614,11 @@ class ViewController: UIViewController {
         if segue.identifier == "pushToQuoteView" {
             let destinationVC = segue.destination as! QuoteViewController
             
-            destinationVC.secondsOfMeditationCount = numberOfSeconds
-            print(numberOfSeconds)
+            let currentNumberOfSeconds = defaults.integer(forKey: "numberOfSecondsCount")
+            let currentNumberOfSessions = defaults.integer(forKey: "numberOfSessionsCount")
             
-            destinationVC.numberOfMeditationsCount = numberOfSessions
-            print(numberOfSessions)
+            destinationVC.secondsOfMeditationCount = currentNumberOfSeconds
+            destinationVC.numberOfMeditationsCount = currentNumberOfSessions
         }
     }
     
