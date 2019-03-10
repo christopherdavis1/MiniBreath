@@ -730,23 +730,28 @@
                                     <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BVW-Do-yrf" userLabel="quoteImageGradientCover">
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="400"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dND-QF-WkV" userLabel="quoteStackView">
-                                                <rect key="frame" x="24" y="161" width="318" height="207"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="KL7-N7-KrX" userLabel="quoteContentStackView">
+                                                <rect key="frame" x="22" y="137" width="322" height="231"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="The only way to make sense out of change is to plunge into it, move with it, and join the dance." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxe-f9-rqk">
-                                                        <rect key="frame" x="5" y="0.0" width="308.5" height="120.5"/>
-                                                        <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="22"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alan Watts" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGN-FM-bCP">
-                                                        <rect key="frame" x="120.5" y="128.5" width="77" height="20.5"/>
-                                                        <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="15"/>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dND-QF-WkV" userLabel="quoteStackView">
+                                                        <rect key="frame" x="4" y="0.0" width="314.5" height="161"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="The only way to make sense out of change is to plunge into it, move with it, and join the dance." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxe-f9-rqk">
+                                                                <rect key="frame" x="0.0" y="0.0" width="314.5" height="131"/>
+                                                                <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="24"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alan Watts" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGN-FM-bCP">
+                                                                <rect key="frame" x="116" y="139" width="82" height="22"/>
+                                                                <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="16"/>
+                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pD6-B0-5R2">
-                                                        <rect key="frame" x="134" y="157" width="50" height="50"/>
+                                                        <rect key="frame" x="136" y="181" width="50" height="50"/>
                                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="shareButton"/>
                                                         <connections>
@@ -758,10 +763,9 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="dND-QF-WkV" secondAttribute="bottom" constant="32" id="0fa-4R-aZq"/>
-                                            <constraint firstAttribute="trailing" secondItem="dND-QF-WkV" secondAttribute="trailing" constant="24" id="4Ud-2b-dRg"/>
-                                            <constraint firstItem="dND-QF-WkV" firstAttribute="leading" secondItem="BVW-Do-yrf" secondAttribute="leading" constant="24" id="EXA-8o-5rb"/>
-                                            <constraint firstItem="dND-QF-WkV" firstAttribute="centerX" secondItem="BVW-Do-yrf" secondAttribute="centerX" id="dpD-0l-CHL"/>
+                                            <constraint firstAttribute="bottom" secondItem="KL7-N7-KrX" secondAttribute="bottom" constant="32" id="Gca-is-BdQ"/>
+                                            <constraint firstItem="KL7-N7-KrX" firstAttribute="leading" secondItem="BVW-Do-yrf" secondAttribute="leading" constant="22" id="L8j-UB-4e6"/>
+                                            <constraint firstAttribute="trailing" secondItem="KL7-N7-KrX" secondAttribute="trailing" constant="22" id="cWA-6V-4Lk"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -930,6 +934,6 @@
         <image name="shareButton" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="79X-u9-Siu"/>
+        <segue reference="puu-2L-1gb"/>
     </inferredMetricsTieBreakers>
 </document>

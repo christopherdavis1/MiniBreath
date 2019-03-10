@@ -320,24 +320,25 @@ class ViewController: UIViewController {
             
             if breathPhaseTime == 1 {
                 UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
-                    self.step1View.layer.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.0862745098, blue: 0.0862745098, alpha: 1)
+                    self.step1View.layer.backgroundColor = #colorLiteral(red: 0.7725490196, green: 0, blue: 0, alpha: 1)
                 }, completion: nil)
             } else if breathPhaseTime == 2 {
                 UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
                     self.step1View.frame.size.width = self.step1View.frame.size.width + 26
-                    self.step2View.layer.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.0862745098, blue: 0.0862745098, alpha: 1)
+                    self.step2View.layer.backgroundColor = #colorLiteral(red: 0.7725490196, green: 0, blue: 0, alpha: 1)
                     self.step2View.layer.opacity = 0
                 }, completion: nil)
             } else if breathPhaseTime == 3 {
                 UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
                     self.step1View.frame.size.width = self.step1View.frame.size.width + 26
-                    self.step3View.layer.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.0862745098, blue: 0.0862745098, alpha: 1)
+                    //self.step3View.layer.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.0862745098, blue: 0.0862745098, alpha: 1)
+                    self.step3View.layer.backgroundColor = #colorLiteral(red: 0.7725490196, green: 0, blue: 0, alpha: 1)
                     self.step3View.layer.opacity = 0
                 }, completion: nil)
             } else if breathPhaseTime == 4 {
                 UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
                     self.step1View.frame.size.width = self.step1View.frame.size.width + 26
-                    self.step4View.layer.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.0862745098, blue: 0.0862745098, alpha: 1)
+                    self.step4View.layer.backgroundColor = #colorLiteral(red: 0.7725490196, green: 0, blue: 0, alpha: 1)
                     self.step4View.layer.opacity = 0
                 }, completion: nil)
             }
@@ -379,21 +380,24 @@ class ViewController: UIViewController {
         headerTextLabel.text = "Inhale"
         subheaderTextLabel.text = "Deeply through the nose"
         transfromShapes()
-        if totalCycleTime == 5 {impact.impactOccurred()}
+        if breathPhaseTime >= 1 && breathPhaseTime <= 4 {rippleSound()}
+        if totalCycleTime == 4 {impact.impactOccurred()}
     }
     
     func userIsHoldingBreath() {
         headerTextLabel.text = "Pause"
         subheaderTextLabel.text = "Hold that breath"
         pulsateRipples()
-        if totalCycleTime == 10 {impact.impactOccurred()}
+        if breathPhaseTime >= 1 && breathPhaseTime <= 4 {rippleSound()}
+        if totalCycleTime == 9 {impact.impactOccurred()}
     }
     
     func userIsExhaling() {
         headerTextLabel.text = "Exhale"
         subheaderTextLabel.text = "Fully, through the mouth"
         transfromShapes()
-        if totalCycleTime == 15 {impact.impactOccurred()}
+        if breathPhaseTime >= 1 && breathPhaseTime <= 4 {rippleSound()}
+        if totalCycleTime == 14 {impact.impactOccurred()}
     }
     
     
@@ -422,7 +426,7 @@ class ViewController: UIViewController {
                 circle?.transform = CGAffineTransform(scaleX: newXScale, y: newYScale)
             }, completion: nil)
 
-            rippleSound()
+            //rippleSound()
             
             if isRunning != true {
                 pulsateRipples()
@@ -471,6 +475,10 @@ class ViewController: UIViewController {
             // If we're about at the end of our time
             if currentCircleSize != heightOfView {
                 UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
+                    self.headerTextLabel.layer.opacity = 0
+                    self.subheaderTextLabel.layer.opacity = 0
+                    self.countdownStackView.layer.opacity = 0
+                    
                     circle!.transform = CGAffineTransform(scaleX: 25, y: 25)
                 }, completion: nil)
             }
@@ -494,7 +502,7 @@ class ViewController: UIViewController {
             let newScaleX = currentScaleX! + CGFloat(animateSizeBy!)
             let newScaleY = currentScaleY! + CGFloat(animateSizeBy!)
             
-            UIView.animate(withDuration: 1.0, delay: 0.25, options: [.repeat, .autoreverse, .curveEaseInOut], animations: {
+            UIView.animate(withDuration: 0.75, delay: 0.25, options: [.repeat, .autoreverse, .curveEaseInOut], animations: {
                 circle?.transform = CGAffineTransform(scaleX: newScaleX, y: newScaleY)
             }, completion: nil)
         }
