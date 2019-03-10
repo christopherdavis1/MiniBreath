@@ -34,21 +34,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQP-Aa-Bvi" userLabel="backgroundGradientView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrZ-Dk-hSQ">
-                                        <rect key="frame" x="158.5" y="161" width="97" height="30"/>
-                                        <state key="normal" title="See new page"/>
-                                        <connections>
-                                            <action selector="seeNewPageButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZnO-Cg-Wan"/>
-                                            <segue destination="Frb-yz-uZA" kind="show" id="Yoc-Rm-Euy"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="DrZ-Dk-hSQ" firstAttribute="centerX" secondItem="rQP-Aa-Bvi" secondAttribute="centerX" id="KVk-h6-keT"/>
-                                    <constraint firstItem="DrZ-Dk-hSQ" firstAttribute="top" secondItem="rQP-Aa-Bvi" secondAttribute="top" constant="161" id="cO7-PW-mna"/>
-                                </constraints>
                                 <variation key="heightClass=compact" hidden="YES"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="A0A-dh-IVn" userLabel="onboardingStack">
@@ -740,7 +726,7 @@
                                 </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Zj-bw-ToC" userLabel="quoteContainerView">
-                                <rect key="frame" x="24" y="112" width="366" height="400"/>
+                                <rect key="frame" x="24" y="68" width="366" height="400"/>
                                 <subviews>
                                     <view alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czr-K1-VSQ" userLabel="bgQuoteImageContainer">
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="400"/>
@@ -822,7 +808,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="z1m-AH-Yeg">
-                                <rect key="frame" x="24" y="528" width="366" height="146"/>
+                                <rect key="frame" x="24" y="484" width="366" height="146"/>
                                 <subviews>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNB-gc-mPT">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="146"/>
@@ -964,6 +950,6 @@
         <image name="shareButton" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="puu-2L-1gb"/>
+        <segue reference="79X-u9-Siu"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -163,7 +163,6 @@ class ViewController: UIViewController {
     let impact = UIImpactFeedbackGenerator()
     
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(animated)
         
         // Hide the navigation bar
@@ -179,12 +178,20 @@ class ViewController: UIViewController {
         playButton.isHidden = false
         playButton.isHighlighted = false
         timerLabel.alpha = 0
-        resetButtonContainer.alpha = 0
-        onboardingLabel.alpha = 0
-        onboardingWelcomeLabel.alpha = 0
-        onboardingDownArrow.alpha = 0
+//        resetButtonContainer.alpha = 0
+//        onboardingLabel.alpha = 0
+//        onboardingWelcomeLabel.alpha = 0
+//        onboardingDownArrow.alpha = 0
+        
+        resetCountdown()
+        resetAnimationStartPositions()
+        showOnboarding()
+        bounceOnboarding()
+        pulsateRipples()
+        
+        quoteLabel.text = ""
+        quoteAttributionLabel.text = ""
     }
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -196,14 +203,6 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        quoteLabel.text = ""
-        quoteAttributionLabel.text = ""
-        
-        pulsateRipples()
-        resetAnimationStartPositions()
-        showOnboarding()
-        bounceOnboarding()
-    
     }
     
     
@@ -213,12 +212,6 @@ class ViewController: UIViewController {
         
         setBaseColors()
         backgroundGradientView?.setGradientBackground(colorOne: Colors.darkBackground, colorTwo: Colors.lightBackground)
-        
-        // Connect to Firebase
-        databaseRef = Database.database().reference()
-        grabData()
-        print(allQuotes.count)
-        
     }
     
     
@@ -462,6 +455,7 @@ class ViewController: UIViewController {
         finishFill()
         timer.invalidate()
         impact.impactOccurred()
+        //randomQuote()
         countdownFinishedSound()
         isRunning = false
         isPaused = false
@@ -526,8 +520,8 @@ class ViewController: UIViewController {
         countdownTimerChimed = false
         seconds = 10
         baseTime = 0
-        resetButtonSound()
-        impact.impactOccurred()
+        //resetButtonSound()
+        //impact.impactOccurred()
         print("You reset your timer.")
         
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0.25, options: .curveEaseOut, animations: {
@@ -592,92 +586,6 @@ class ViewController: UIViewController {
             
             self.playButton.alpha = 1
         }, completion: nil)
-    }
-
-    
-    // MARK: — Database Stuff
-    
-    // Get data from Firebase
-    func grabData() {
-        
-        databaseRef.child("quotes").observe(.value, with: {
-            snapshot in
-            
-            for snap in snapshot.children.allObjects as! [DataSnapshot] {
-                
-                guard let dictionary = snap.value as? NSDictionary else {
-                    return
-                }
-                
-                let quote = dictionary["quoteText"] as? String
-                let author = dictionary["quoteAttribution"] as? String
-                let hasSeen = dictionary["hasSeen"] as? Bool
-                let id = dictionary["quoteID"] as? String
-                
-                let quoteToAdd = QuoteObject()
-                
-                quoteToAdd.quoteText = quote
-                quoteToAdd.quoteAttribution = author
-                quoteToAdd.hasSeen = hasSeen!
-                quoteToAdd.quoteID = id
-                
-                quoteToAdd.writeToRealm()
-                
-                self.reloadData()
-            }
-        })
-    }
-    
-    
-    func reloadData() {
-        quotes = uiRealm.objects(QuoteObject.self)
-    }
-
-    
-    // Grabs a random quote from Realm
-    func randomQuote() {
-        
-        resetHasSeen()
-        
-        let singleQuote = allQuotes.randomElement()!
-        let singleQuoteText = singleQuote.quoteText
-        let singleQuoteAttribution = singleQuote.quoteAttribution
-        let singleQuoteSeen = singleQuote.hasSeen
-        let singleQuoteID = singleQuote.quoteID
-        
-        // If a quote has not been seen, display it.
-        if singleQuoteSeen == false {
-            quoteLabel.text = singleQuoteText
-            quoteAttributionLabel.text = singleQuoteAttribution
-            
-            try! uiRealm.write {
-                singleQuote.hasSeen = true
-                print(singleQuoteID as Any)
-                print(singleQuoteText as Any)
-                print(unseenQuotes.count)
-                print("Wrote to Realm")
-            }
-        } else {
-            // if it has been seen, skip it.
-            print("Skipped quote")
-            randomQuote()
-        }
-    }
-    
-    
-    // If all quotes have been seen, reset all of them to unseen.
-    func resetHasSeen() {
-        let seenQuotesCount = unseenQuotes.count
-        
-        if seenQuotesCount == 0 {
-            for quote in allQuotes {
-                
-                try! uiRealm.write {
-                    quote.hasSeen = false
-                }
-            }
-            print("Reset all quotes to unseen.")
-        }
     }
     
 

@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import AVFoundation
+import FirebaseDatabase
+import RealmSwift
+
 
 class QuoteViewController: UIViewController {
 
@@ -39,28 +43,121 @@ class QuoteViewController: UIViewController {
     
     
     // MARK: - VARIABLES
+    var quoteTextContent: String = ""
+    var quoteAttributionContent: String = ""
+    var databaseRef: DatabaseReference!
+    var quotes: Results<QuoteObject>!
+    var allQuotes = uiRealm.objects(QuoteObject.self)
+    var unseenQuotes = uiRealm.objects(QuoteObject.self).filter("hasSeen = false")
     
+    
+    // MARK: - CONSTANTS
+    let impact = UIImpactFeedbackGenerator()
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Connect to Firebase
+        databaseRef = Database.database().reference()
+        grabData()
+        print(allQuotes.count)
+        
+        randomQuote()
 
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         
     }
+
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    // MARK: — Database Stuff
+    
+    // Get data from Firebase
+    func grabData() {
+        
+        databaseRef.child("quotes").observe(.value, with: {
+            snapshot in
+            
+            for snap in snapshot.children.allObjects as! [DataSnapshot] {
+                
+                guard let dictionary = snap.value as? NSDictionary else {
+                    return
+                }
+                
+                let quote = dictionary["quoteText"] as? String
+                let author = dictionary["quoteAttribution"] as? String
+                let hasSeen = dictionary["hasSeen"] as? Bool
+                let id = dictionary["quoteID"] as? String
+                
+                let quoteToAdd = QuoteObject()
+                
+                quoteToAdd.quoteText = quote
+                quoteToAdd.quoteAttribution = author
+                quoteToAdd.hasSeen = hasSeen!
+                quoteToAdd.quoteID = id
+                
+                quoteToAdd.writeToRealm()
+                
+                self.reloadData()
+            }
+        })
     }
-    */
-
+    
+    
+    func reloadData() {
+        quotes = uiRealm.objects(QuoteObject.self)
+    }
+    
+    // Grabs a random quote from Realm
+    func randomQuote() {
+        
+        resetHasSeen()
+        
+        let singleQuote = allQuotes.randomElement()!
+        let singleQuoteText = singleQuote.quoteText
+        let singleQuoteAttribution = singleQuote.quoteAttribution
+        let singleQuoteSeen = singleQuote.hasSeen
+        let singleQuoteID = singleQuote.quoteID
+        
+        // If a quote has not been seen, display it.
+        if singleQuoteSeen == false {
+            quoteText.text = singleQuoteText
+            quoteAttribution.text = singleQuoteAttribution
+            
+            try! uiRealm.write {
+                singleQuote.hasSeen = true
+                print(singleQuoteID as Any)
+                print(singleQuoteText as Any)
+                print(unseenQuotes.count)
+                print("Wrote to Realm")
+            }
+        } else {
+            // if it has been seen, skip it.
+            print("Skipped quote")
+            randomQuote()
+        }
+    }
+    
+    
+    // If all quotes have been seen, reset all of them to unseen.
+    func resetHasSeen() {
+        let seenQuotesCount = unseenQuotes.count
+        
+        if seenQuotesCount == 0 {
+            for quote in allQuotes {
+                
+                try! uiRealm.write {
+                    quote.hasSeen = false
+                }
+            }
+            print("Reset all quotes to unseen.")
+        }
+    }
+    
+    
+// MARK: - CLOSING BRACKET!
 }
