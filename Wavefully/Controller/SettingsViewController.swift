@@ -129,7 +129,7 @@ class SettingsViewController: UITableViewController {
     
     // Open the Twitter app to my app's profile, or open to the web.
     func launchAppTwitter() {
-        let screenName = "ObviousUnrest"
+        let screenName = "WavefullyApp"
         let appURL = NSURL(string: "twitter://user?screen_name=\(screenName)")!
         let webURL = NSURL(string: "https://twitter.com/\(screenName)")!
         
