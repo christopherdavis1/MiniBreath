@@ -40,9 +40,12 @@ class ViewController: UIViewController {
         
         // Start the long press
         if gestureRecognizer.state == .began {
+
+            if isRunning != true {
+                isRunning = true
+            }
+            
             if isRunning == true {
-                
-                // Functions
                 runTimer()
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -52,21 +55,16 @@ class ViewController: UIViewController {
                 }
                 
                 
-                if baseTime >= 0 && baseTime < 10 {
+                if breathPhaseTime >= 0 && breathPhaseTime < 20 {
                     UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
                         self.settingsButton.layer.opacity = 0
                     }, completion: nil)
                 }
-                
-                
-                // Animations
+
                 // Ripple the waves
                 UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
                     self.transfromShapeSmall()
                 }, completion: nil)
-             
-                // Other actions:
-                print("You're pressing the timer.")
                 
             }
         }
