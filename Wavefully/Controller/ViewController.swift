@@ -115,8 +115,8 @@ class ViewController: UIViewController {
     // MARK: - VARIABLES
     var countdownSuccessMessage = "Reset"
     var timer = Timer()
-    var seconds = 10
-    var zero = "0"
+//    var seconds = 10
+//    var zero = "0"
     var baseTime = 0
     var isPaused = false
     var isRunning = false
@@ -299,7 +299,7 @@ class ViewController: UIViewController {
             totalCycleTime += 1
             countOfSeconds -= 1
             
-            seconds -= 1
+//            seconds -= 1
             baseTime += 1
             
             if breathPhaseTime == 5 {
@@ -549,8 +549,8 @@ class ViewController: UIViewController {
         isPaused = false
         isReset = true
         countdownTimerChimed = false
-        seconds = 10
-        baseTime = 0
+//        seconds = 10
+//        baseTime = 0
         
         breathPhaseTime = 0
         totalCycleTime = 0
@@ -587,7 +587,7 @@ class ViewController: UIViewController {
     // Play a sound when the countdown begins
     func countdownStartSound() {
         do {
-            if seconds > 9 {
+            if countOfSeconds > 19 {
                 audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "playStartSound", ofType: "m4a")!))
                 audioPlayer?.play()
             }
@@ -599,7 +599,7 @@ class ViewController: UIViewController {
     
     func countdownFinishedSound() {
         do {
-            if seconds < 1 {
+            if countOfSeconds < 1 {
                 audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "countdownFinishedSound", ofType: "m4a")!))
                 audioPlayer?.play()
             }
