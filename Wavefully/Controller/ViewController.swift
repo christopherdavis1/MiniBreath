@@ -45,6 +45,7 @@ class ViewController: UIViewController {
                 isRunning = true
             }
             
+            
             if isRunning == true {
                 runTimer()
                 
