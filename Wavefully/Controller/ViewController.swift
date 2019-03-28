@@ -115,9 +115,7 @@ class ViewController: UIViewController {
     // MARK: - VARIABLES
     var countdownSuccessMessage = "Reset"
     var timer = Timer()
-//    var seconds = 10
-//    var zero = "0"
-    var baseTime = 0
+//    var baseTime = 0
     var isPaused = false
     var isRunning = false
     var isReset = false
@@ -211,16 +209,16 @@ class ViewController: UIViewController {
     // Hide settings button on during exercise and bring it back when it's done.
     
     func hideAndShowSettingsButton() {
-        if baseTime >= 1 && baseTime <= 9 {
+        if countOfSeconds >= 1 && countOfSeconds <= 19 {
             UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut], animations: {
                 self.settingsButton.layer.opacity = 0
             }, completion: nil)
-        } else if baseTime == 10 {
+        } else if countOfSeconds == 20 {
             UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut], animations: {
                 self.settingsButton.layer.opacity = 1
                 self.settingsButton.tintColor = .white
             }, completion: nil)
-        } else if baseTime == 0 {
+        } else if countOfSeconds == 0 {
             UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut], animations: {
                 self.settingsButton.layer.opacity = 0
             }, completion: nil)
@@ -300,7 +298,7 @@ class ViewController: UIViewController {
             countOfSeconds -= 1
             
 //            seconds -= 1
-            baseTime += 1
+//            baseTime += 1
             
             if breathPhaseTime == 5 {
                 breathPhaseTime = 0
@@ -359,7 +357,7 @@ class ViewController: UIViewController {
                 userIsHoldingBreath()
             }
             
-            print(baseTime)
+            print(countOfSeconds)
         }
         else {
             countdownFinished()
@@ -571,15 +569,6 @@ class ViewController: UIViewController {
             }
         })
     }
-    
-    
-// MARK: - THE ANIMATIONS I USED FOR THE QUOTE
-//    func showQuoteAttribution() {
-//        UIView.animate(withDuration: 0.8, delay: 0.5, options: [.curveEaseIn], animations: {
-//            self.quoteAttributionLabel.alpha = 1
-//        }, completion: nil)
-//    }
-    
     
     
     // MARK: — UI SOUNDS
