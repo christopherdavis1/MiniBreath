@@ -14,5 +14,4 @@ target 'Wavefully' do
   pod 'Firebase/Database'
   pod 'Instabug'
 
-
 end

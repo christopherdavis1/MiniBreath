@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3D0594289CC4F199450CC10CB4FFC367"
+               BlueprintIdentifier = "D4DF65FA540DCAD48A7BEEAB17E8B945"
                BlueprintName = "Pods-Wavefully"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "Pods-Wavefully.framework">
