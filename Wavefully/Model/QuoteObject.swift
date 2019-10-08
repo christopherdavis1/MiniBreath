@@ -23,7 +23,7 @@ class QuoteObject: Object {
 extension QuoteObject {
     func writeToRealm() {
         try! uiRealm.write {
-            uiRealm.add(self, update: true)
+            uiRealm.add(self, update: .all)
         }
     }
 }
